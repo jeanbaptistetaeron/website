@@ -593,27 +593,18 @@
   <script defer>
     document.addEventListener('DOMContentLoaded', function() {
       const images = Array.from(document.querySelectorAll('.responsive-image'));
-      let currentIndex = 0;
+      
       const loadImage = (img) => {
         const realSrc = img.getAttribute('data-src');
         if (realSrc) {
           img.src = realSrc;
           img.onload = () => {
             img.classList.add('loaded');
-            currentIndex++;
-            if (currentIndex < images.length) {
-              loadImage(images[currentIndex]);
-            }
           };
         }
       };
 
-      // Start loading the first image immediately
-      if (images.length > 0) {
-        loadImage(images[0]);
-      }
-
-      // Set up intersection observer for subsequent images
+      // Set up intersection observer for all images
       const imageObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -625,12 +616,12 @@
           }
         });
       }, {
-        rootMargin: '100px 0px',
+        rootMargin: '200px 0px',
         threshold: 0.1
       });
 
-      // Observe all images except the first one
-      images.slice(1).forEach(img => {
+      // Observe all images
+      images.forEach(img => {
         imageObserver.observe(img);
       });
     });
