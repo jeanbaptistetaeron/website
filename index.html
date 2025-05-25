@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Jean-Baptiste Tatsumi Taeron - Portfolio and Works" />
+  <meta name="keywords" content="Jean-Baptiste Tatsumi Taeron, Portfolio, Art, Design" />
+  <meta property="og:title" content="Jean-Baptiste Tatsumi Taeron" />
+  <meta property="og:description" content="Portfolio and Works" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://tatsumitaeron.com" />
+  <meta name="twitter:card" content="summary_large_image" />
+  
+  <link rel="icon" type="image/x-icon" href="image/favicon.ico">
+  
+  <title>Jean-Baptiste Tatsumi Taeron</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #0D0D0D;
+      color: #FFF;
+      font-family: "Minion Pro", serif;
+      font-weight: normal;
+      font-size: 20px;
+      line-height: 1em;
+      letter-spacing: 0.01em;
+    }
+
+    .header {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      padding: 24px;
+      height: 240px;
+      box-sizing: border-box;
+    }
+
+    .intro {
+      max-width: 60%;
+      line-height: 1.2em;
+    }
+
+    .name {
+      color: #666666;
+    }
+
+    .tagline {
+      color: #666666;
+      font-style: italic;
+    }
+
+    .contact-text {
+      color: #666666;
+    }
+
+    .contact-info {
+      margin-top: 1em;
+      color: #666666;
+    }
+
+    .contact-info a {
+      color: #666666;
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 0.1em;
+      transition: color 0.1s ease;
+    }
+
+    .contact-info a:hover {
+      color: #FFFFFF;
+    }
+
+    .contact {
+      display: none;
+    }
+
+    .contact .hover-link {
+      color: #666666;
+    }
+
+    .contact .hover-link:hover {
+      color: #FFFFFF;
+    }
+
+    .hover-link {
+      color: #FFFFFF;
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.1em;
+      transition: color 0.1s ease;
+    }
+
+    .hover-link:hover {
+      color: #666666;
+    }
+
+    .intro a[href^="mailto:"] {
+      color: #666666 !important;
+      text-decoration: none;
+    }
+
+    .intro a[href^="mailto:"]:hover {
+      color: #FFFFFF !important;
+      text-decoration: none;
+    }
+
+    .image-grid {
+      display: flex;
+      flex-wrap: wrap;
+      column-gap: 12px;
+      row-gap: 12px;
+      justify-content: center;
+      align-items: flex-end;
+      padding: 0px;
+    }
+
+    .image-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      height: fit-content;
+      justify-content: flex-end;
+      position: relative;
+    }
+
+    .image-placeholder {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #1A1A1A;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .responsive-image {
+      opacity: 0;
+      transition: opacity 0.3s ease-in;
+    }
+    .responsive-image.loaded {
+      opacity: 1;
+    }
+
+    .footer {
+      height: 288px;
+      width: 100%;
+      background: #0D0D0D;
+      position: relative;
+    }
+
+    .footer-content {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      color: #666666;
+      line-height: 1.2em;
+    }
+
+    .footer-content a {
+      color: #666666;
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.1em;
+      transition: color 0.1s ease;
+    }
+
+    .footer-content a:hover {
+      color: #FFFFFF;
+    }
+
+    .caption {
+      font-size: 10px;
+      line-height: 1.2;
+      margin-top: 4px;
+      text-align: left;
+      color: #666666;
+      height: 36px;
+    }
+
+    .caption br + *,
+    .caption br::after {
+      font-style: normal;
+    }
+
+    .responsive-video {
+      width: auto;
+    }
+
+    .video-container {
+      width: 30vw;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .video-wrapper {
+      width: 100%;
+      aspect-ratio: 4/5;
+      background: #000000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .responsive-video {
+      width: 90%;
+      height: 90%;
+      object-fit: contain;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .section-title {
+      color: #666666;
+      font-size: 20px;
+      line-height: 1.2em;
+      margin-bottom: 24px;
+      width: 100%;
+      padding-left: 24px;
+      text-align: left;
+    }
+
+    @media (max-width: 600px) {
+      .responsive-image, .responsive-video {
+        width: 100vw !important;
+      }
+      body {
+        background: #FFFFFF;
+        color: #000000;
+      }
+      .header {
+        flex-direction: column;
+        height: auto;
+        padding: 24px;
+      }
+      .image-grid {
+        margin-top: 216px;
+      }
+      .intro {
+        max-width: 100%;
+        font-size: 20px;
+        line-height: 1.2;
+      }
+      .contact-info {
+        color: #AAAAAA;
+        margin-top: -0.8em;
+      }
+      .contact-info a {
+        color: #AAAAAA;
+        text-decoration: underline;
+        text-decoration-thickness: 2px;
+        text-underline-offset: 0.1em;
+      }
+      .contact-info a:hover,
+      .contact-info a:active {
+        color: #000000;
+      }
+      .video-container {
+        width: 100vw;
+      }
+      .footer {
+        background: #FFFFFF;
+      }
+      .caption {
+        margin-left: 6px;
+        color: #AAAAAA;
+      }
+      .hide-on-mobile {
+        display: none;
+      }
+      .hover-link {
+        color: #000000;
+      }
+      .hover-link:hover {
+        color: #AAAAAA;
+      }
+      .intro a[href^="mailto:"] {
+        color: #000000 !important;
+      }
+      .intro a[href^="mailto:"]:hover {
+        color: #AAAAAA !important;
+      }
+      .intro span {
+        color: #000000;
+      }
+      .footer-content {
+        color: #000000;
+      }
+      .footer-content a {
+        color: #000000;
+      }
+      .footer-content a:hover {
+        color: #AAAAAA;
+      }
+      .section-title {
+        color: #000000;
+      }
+    }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const images = document.querySelectorAll('.responsive-image');
+      const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            img.classList.add('loaded');
+            observer.unobserve(img);
+          }
+        });
+      });
+
+      images.forEach(img => {
+        imageObserver.observe(img);
+      });
+    });
+  </script>
+</head>
+<body>
+  <div class="header">
+    <div class="intro">
+      <span class="name">jean-baptiste tatsumi taëron</span><br>
+      <span class="tagline">de l'idée à la réalisation</span><br>
+      <a href="mailto:jeanbaptistetaeron@gmail.com" class="hover-link" target="_blank">jeanbaptistetaeron@gmail.com</a><br>
+      <span class="contact-text">+33 7 88 30 52 25</span>
+    </div>
+  </div>
+
+  <div class="image-grid">
+    <div class="image-container">
+      <img src="image/tatsumi-taeron-american-express-centurion-new-york-1.jpg" style="width: 45vw;" class="responsive-image" loading="lazy">
+      <div class="caption">American Express, Centurion, New York<br>for black card members</div>
+    </div>
+    <div class="image-container">
+      <img src="image/tatsumi-taeron-american-express-centurion-new-york-2.jpg" style="width: 45vw;" class="responsive-image" loading="lazy">
+      <div class="caption">American Express, Centurion, New York<br>strategic collaboration with Yabu Pushelberg</div>
+    </div>
+    <div class="video-container">
+      <div class="video-wrapper">
+        <video class="responsive-video" autoplay loop muted playsinline>
+          <source src="video/tatsumi_taeron_lightning_studio_website_portrait_compressed.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="caption">Lightning Studio, New York<br>website</div>
+    </div>
+    <div class="image-container">
+      <img src="image/tatsumi-taeron-lightning-studio-address.png" style="width: 40vw;" class="responsive-image">
+      <div class="caption">Lightning Studio, New York<br>lightning bolt and candlelight</div>
+    </div>
+    <div class="image-container">
+      <img src="image/tatsumi-taeron-yabu-pushelberg-logo-grid.jpg" style="width: 60vw;" class="responsive-image">
+      <div class="caption">Yabu Pushelberg, designer, Toronto, New York<br>construction plan</div>
+    </div>
+    <div class="video-container">
+      <div class="video-wrapper">
+        <video class="responsive-video" autoplay loop muted playsinline>
+          <source src="video/tatsumi_taeron_yabu_pushelberg_website_2_laptop_720.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="caption">Yabu Pushelberg, designer, Toronto, New York<br>new website</div>
+    </div>
+    <div class="image-container">
+      <img src="image/tatsumi-taeron-yabu-pushelberg-signage-side.jpg" style="width: 40vw;" class="responsive-image">
+      <div class="caption">Yabu Pushelberg, designer<br>signage for the New York studio</div>
+    </div>
+    <div class="image-container">
+      <img src="image/tatsumi-taeron-yabu-pushelberg-signage-front.jpg" style="width: 40vw;" class="responsive-image">
+      <div class="caption">Yabu Pushelberg, designer<br>signage, again</div>
+    </div>
+    <div class="image-container">
+      <img src="image/tatsumi-taeron-metrolinx-train.jpg" style="width: 40vw;" class="responsive-image">
+      <div class="caption">Metrolinx, Toronto public transportion<br>the first and last letter of Metrolinx, overlapping into one</div>
+    </div>
+    <div class="image-container">
+      <img src="image/tatsumi-taeron-metrolinx-forest.png" style="width: 50vw;" class="responsive-image">
+      <div class="caption">Metrolinx, Toronto public transportion<br>M for departure, X for arrival</div>
+    </div>
+    <div class="image-container">
+      <img src="image/tatsumi-taeron-asics-tiger-packaging.png" style="width: 30vw;" class="responsive-image">
+      <div class="caption">Asics Tiger, Japanese footwear<br>breaking the old logo</div>
+    </div>
+    <div class="image-container">
+      <img src="image/tatsumi-taeron-asics-tiger-typeface.webp" style="width: 60vw;" class="responsive-image">
+      <div class="caption">Asics Tiger, Japanese footwear<br>a logo turned into a typeface</div>
+    </div>
+    <div class="image-container">
+      <img src="image/tatsumi-taeron-asics-tiger-wild-posting.jpg" style="width: 50vw;" class="responsive-image">
+      <div class="caption">Asics Tiger, Japanese footwear<br>layout system</div>
+    </div>
+    <div class="image-container">
+      <img src="image/tatsumi-taeron-asics-tiger-kith.jpg" style="width: 40vw;" class="responsive-image" loading="lazy" alt="Asics Tiger Kith">
+      <div class="caption">Asics Tiger, Japanese footwear<br>in collaboration with Bruce Mau Design</div>
+    </div>
+    <div class="image-container hide-on-mobile">
+      <img src="image/tatsumi-taeron-barcelona-design-museum-cerda-plan.webp" style="width: 80vw;" class="responsive-image">
+      <div class="caption">Barcelona Design Museum<br>layout inspired by Cerdà's grid</div>
+    </div>
+    <div class="image-container">
+      <img src="image/tatsumi-taeron-barcelona-design-museum-manual.jpg" style="width: 60vw;" class="responsive-image">
+      <div class="caption">Barcelona Design Museum<br>eighteen months of drawing</div>
+    </div>
+    <div class="image-container">
+      <img src="image/tatsumi-taeron-barcelona-design-museum-wall.jpg" style="width: 30vw;" class="responsive-image">
+      <div class="caption">Barcelona Design Museum<br>posters near my old screen</div>
+    </div>
+    <div class="image-container">
+      <img src="image/tatsumi-taeron-barcelona-design-museum-editorial.jpg" style="width: 40vw;" class="responsive-image">
+      <div class="caption">Barcelona Design Museum<br>editorial design</div>
+    </div>
+    <div class="image-container">
+      <img src="image/tatsumi-taeron-barcelona-design-museum-poster-dieter-rams.jpeg" style="width: 50vw;" class="responsive-image">
+      <div class="caption">Barcelona Design Museum<br>content over brand</div>
+    </div>
+    <div class="image-container">
+      <img src="image/tatsumi-taeron-barcelona-design-museum-poster-kenya-hara.jpeg" style="width: 50vw;" class="responsive-image">
+      <div class="caption">Barcelona Design Museum<br>the logo fills the remaining space</div>
+    </div>
+    <div class="image-container">
+      <img src="image/tatsumi-taeron-barcelona-design-museum-signage-2.jpg" style="width: 40vw;" class="responsive-image">
+      <div class="caption">Barcelona Design Museum<br>designing at human scale</div>
+    </div>
+    <div class="image-container">
+      <img src="image/tatsumi-taeron-barcelona-design-museum-signage-3.jpg" style="width: 70vw;" class="responsive-image">
+      <div class="caption">Barcelona Design Museum<br>floor-by-floor navigation</div>
+    </div>
+    <div class="image-container">
+      <img src="image/tatsumi-taeron-barcelona-design-museum-signage-4.jpg" style="width: 70vw;" class="responsive-image">
+      <div class="caption">Barcelona Design Museum<br>in collaboration with Atlas</div>
+    </div>
+    <div class="image-container hide-on-mobile">
+      <img src="image/tatsumi-taeron-petit-plus-logo-grid.png" style="width: 40vw;" class="responsive-image">
+      <div class="caption">Petit+, little more, Paris<br>construction plan</div>
+    </div>
+    <div class="image-container hide-on-mobile">
+      <img src="image/tatsumi-taeron-petit-plus-packaging.jpg" style="width: 50vw;" class="responsive-image">
+      <div class="caption">Petit+, little more, Paris<br>products reflecting diverse tones</div>
+    </div>
+    <div class="image-container">
+      <img src="image/tatsumi-taeron-ynra-signage.jpg" style="width: 50vw;" class="responsive-image">
+      <div class="caption">YNRA, gastronomy, Paris<br>a family tree</div>
+    </div>
+    <div class="image-container">
+      <img src="image/tatsumi-taeron-corsair-logo.png" style="width: 50vw;" class="responsive-image">
+      <div class="caption">Corsair, French airline<br>a triangle nested</div>
+    </div>
+    <div class="image-container">
+      <img src="image/tatsumi-taeron-corsair-making-of.jpg" style="width: 40vw;" class="responsive-image">
+      <div class="caption">Corsair, French airline<br>a sailboat in the sky</div>
+    </div>
+    <div class="image-container">
+      <img src="image/tatsumi-taeron-issey-miyake-packaging-making-of.jpg" style="width: 60vw;" class="responsive-image">
+      <div class="caption">Issey Miyake, A Scent<br>no glue, no ink, just light</div>
+    </div>
+    <div class="image-container">
+      <img src="image/tatsumi-taeron-90-days-1.jpg" style="width: 40vw;" class="responsive-image">
+      <div class="caption">90 days, thesis project<br>a light box</div>
+    </div>
+    <div class="image-container">
+      <img src="image/tatsumi-taeron-90-days-2.jpg" style="width: 50vw;" class="responsive-image">
+      <div class="caption">90 days, thesis project<br>a train in motion, a camera recording, a screen transmitting</div>
+    </div>
+    <div class="image-container">
+      <img src="image/tatsumi-taeron-90-days-3.jpg" style="width: 50vw;" class="responsive-image">
+      <div class="caption">90 days, thesis project<br>the letters look like 3D on TV</div>
+    </div>
+    <div class="image-container">
+      <img src="image/tatsumi-taeron-90-days-4.jpg" style="width: 40vw;" class="responsive-image">
+      <div class="caption">90 days, thesis project<br>misused tool, novel outcome</div>
+    </div>
+    <div class="image-container">
+      <img src="image/tatsumi-taeron-A4-paper-typeface-grid.jpg" style="width: 40vw;" class="responsive-image">
+      <div class="caption">A4 paper, typefacepaper<br>height equals square diagonal<br>no pencil, no ruler</div>
+    </div>
+    <div class="image-container">
+      <img src="image/tatsumi-taeron-A4-paper-window.jpg" style="width: 50vw;" class="responsive-image">
+      <div class="caption">A4 paper, typefacepaper<br>paper as writing medium</div>
+    </div>
+    <div class="image-container">
+      <img src="image/tatsumi-taeron-katapult-typeface-grid-a.jpg" style="width: 45vw;" class="responsive-image">
+      <div class="caption">Katapult, electronic music, Paris<br>minimal music, minimal typography</div>
+    </div>
+    <div class="image-container">
+      <img src="image/tatsumi-taeron-katapult-typeface-grid-p.jpg" style="width: 45vw;" class="responsive-image">
+      <div class="caption">Katapult, electronic music, Paris<br>wooden strip: 4x4 cm</div>
+    </div>
+    <div class="image-container">
+      <img src="image/tatsumi-taeron-katapult-making-of-1.jpg" style="width: 30vw;" class="responsive-image">
+      <div class="caption">Katapult, electronic music, Paris<br>more contours, less mass</div>
+    </div>
+    <div class="image-container">
+      <img src="image/tatsumi-taeron-katapult-making-of-2.jpg" style="width: 60vw;" class="responsive-image">
+      <div class="caption">Katapult, electronic music, Paris<br>more emptiness, less matter</div>
+    </div>
+    <div class="image-container">
+      <img src="image/tatsumi-taeron-katapult-typeface-small.jpg" style="width: 50vw;" class="responsive-image">
+      <div class="caption">Katapult, electronic music, Paris<br>each color corresponds to a different angle on the circular saw</div>
+    </div>
+    <div class="image-container">
+      <img src="image/tatsumi-taeron-opaz-making-of.jpg" style="width: 40vw;" class="responsive-image">
+      <div class="caption">Katapult, electronic music, Paris<br>scraps recycled for the sponsor</div>
+    </div>
+    <div class="image-container">
+      <img src="image/tatsumi-taeron-tsigan-album-cover.jpg" style="width: 70vw;" class="responsive-image">
+      <div class="caption">Tsigan, album cover<br>packaged like Gitanes cigarettes</div>
+    </div>
+    <div class="image-container hide-on-mobile">
+      <img src="image/tatsumi-taeron-pistolet-en-bois.webp" style="width: 90vw;" class="responsive-image">
+      <div class="caption">pistolet en bois, drawing<br>my first construction plan</div>
+    </div>
+    <div class="image-container hide-on-mobile">
+      <img src="image/tatsumi-taeron-insecte-et-papillons.jpg" style="width: 20vw;" class="responsive-image">
+      <div class="caption">papillons et insectes, dessin<br>avec mon père</div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="footer-content">
+      also collecting
+      <a href="https://tatsumi-taeron-logo-collection.tumblr.com" target="_blank">signs</a>,
+      <a href="https://tatsumi-taeron-grid-collection.tumblr.com" target="_blank">plans</a>,
+      <a href="https://environmental-design.tumblr.com/" target="_blank">constructions</a>,<br>
+      <a href="https://love-letter-project.tumblr.com/" target="_blank">love letters</a>,
+      <a href="https://tatsumi-taeron-wonderwall.tumblr.com/" target="_blank">systems</a>, and
+      <a href="https://tatsumi-taeron-idea-collection.tumblr.com" target="_blank">ideas</a>
+    </div>
+  </div>
+</body>
+</html>
