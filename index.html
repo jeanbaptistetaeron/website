@@ -28,12 +28,9 @@
     }
 
     .header {
-      display: flex;
-      justify-content: flex-start;
-      align-items: flex-start;
+      height: 288px;
       padding: 24px;
-      height: 240px;
-      box-sizing: border-box;
+      margin: 0;
     }
 
     .intro {
@@ -149,6 +146,8 @@
       width: 100%;
       background: #0D0D0D;
       position: relative;
+      padding: 24px;
+      margin: 0;
     }
 
     .footer-content {
@@ -233,19 +232,23 @@
       body {
         background: #FFFFFF;
         color: #000000;
+        margin: 0;
+        padding: 0;
       }
       .header {
-        flex-direction: column;
-        height: auto;
-        padding: 24px;
+        height: 288px;
+        padding: 12px;
+        margin: 0;
       }
       .image-grid {
-        margin-top: 216px;
+        margin-top: 12px;
+        row-gap: 72px;
       }
       .intro {
         max-width: 100%;
         font-size: 20px;
         line-height: 1.2;
+        margin: 0;
       }
       .contact-info {
         color: #AAAAAA;
@@ -266,6 +269,15 @@
       }
       .footer {
         background: #FFFFFF;
+        margin: 0;
+        height: 288px;
+        padding: 12px;
+      }
+      .footer-content {
+        position: absolute;
+        bottom: 12px;
+        left: 12px;
+        color: #000000;
       }
       .caption {
         margin-left: 6px;
@@ -302,6 +314,10 @@
         color: #000000;
       }
     }
+
+    @media (max-width: 768px) {
+      /* Remove this media query as it's redundant */
+    }
   </style>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -310,10 +326,16 @@
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             const img = entry.target;
-            img.classList.add('loaded');
-            observer.unobserve(img);
+            if (img.dataset.src) {
+              img.src = img.dataset.src;
+              img.classList.add('loaded');
+              observer.unobserve(img);
+            }
           }
         });
+      }, {
+        rootMargin: '100px 0px',
+        threshold: 0.1
       });
 
       images.forEach(img => {
@@ -334,11 +356,11 @@
 
   <div class="image-grid">
     <div class="image-container">
-      <img src="image/tatsumi-taeron-american-express-centurion-new-york-1.jpg" style="width: 45vw;" class="responsive-image" loading="lazy">
+      <img data-src="image/tatsumi-taeron-american-express-centurion-new-york-1.jpg" style="width: 45vw;" class="responsive-image" loading="lazy" decoding="async" alt="American Express Centurion New York">
       <div class="caption">American Express, Centurion, New York<br>for black card members</div>
     </div>
     <div class="image-container">
-      <img src="image/tatsumi-taeron-american-express-centurion-new-york-2.jpg" style="width: 45vw;" class="responsive-image" loading="lazy">
+      <img data-src="image/tatsumi-taeron-american-express-centurion-new-york-2.jpg" style="width: 45vw;" class="responsive-image" loading="lazy" alt="American Express Centurion New York">
       <div class="caption">American Express, Centurion, New York<br>strategic collaboration with Yabu Pushelberg</div>
     </div>
     <div class="video-container">
@@ -350,11 +372,11 @@
       <div class="caption">Lightning Studio, New York<br>website</div>
     </div>
     <div class="image-container">
-      <img src="image/tatsumi-taeron-lightning-studio-address.png" style="width: 40vw;" class="responsive-image">
+      <img data-src="image/tatsumi-taeron-lightning-studio-address.png" style="width: 40vw;" class="responsive-image" loading="lazy" alt="Lightning Studio Address">
       <div class="caption">Lightning Studio, New York<br>lightning bolt and candlelight</div>
     </div>
     <div class="image-container">
-      <img src="image/tatsumi-taeron-yabu-pushelberg-logo-grid.jpg" style="width: 60vw;" class="responsive-image">
+      <img data-src="image/tatsumi-taeron-yabu-pushelberg-logo-grid.jpg" style="width: 60vw;" class="responsive-image" loading="lazy" alt="Yabu Pushelberg Logo Grid">
       <div class="caption">Yabu Pushelberg, designer, Toronto, New York<br>construction plan</div>
     </div>
     <div class="video-container">
@@ -366,161 +388,161 @@
       <div class="caption">Yabu Pushelberg, designer, Toronto, New York<br>new website</div>
     </div>
     <div class="image-container">
-      <img src="image/tatsumi-taeron-yabu-pushelberg-signage-side.jpg" style="width: 40vw;" class="responsive-image">
+      <img data-src="image/tatsumi-taeron-yabu-pushelberg-signage-side.jpg" style="width: 40vw;" class="responsive-image" loading="lazy" alt="Yabu Pushelberg Signage Side">
       <div class="caption">Yabu Pushelberg, designer<br>signage for the New York studio</div>
     </div>
     <div class="image-container">
-      <img src="image/tatsumi-taeron-yabu-pushelberg-signage-front.jpg" style="width: 40vw;" class="responsive-image">
+      <img data-src="image/tatsumi-taeron-yabu-pushelberg-signage-front.jpg" style="width: 40vw;" class="responsive-image" loading="lazy" alt="Yabu Pushelberg Signage Front">
       <div class="caption">Yabu Pushelberg, designer<br>signage, again</div>
     </div>
     <div class="image-container">
-      <img src="image/tatsumi-taeron-metrolinx-train.jpg" style="width: 40vw;" class="responsive-image">
+      <img data-src="image/tatsumi-taeron-metrolinx-train.jpg" style="width: 40vw;" class="responsive-image" loading="lazy" alt="Metrolinx Train">
       <div class="caption">Metrolinx, Toronto public transportion<br>the first and last letter of Metrolinx, overlapping into one</div>
     </div>
     <div class="image-container">
-      <img src="image/tatsumi-taeron-metrolinx-forest.png" style="width: 50vw;" class="responsive-image">
+      <img data-src="image/tatsumi-taeron-metrolinx-forest.png" style="width: 50vw;" class="responsive-image" loading="lazy" alt="Metrolinx Forest">
       <div class="caption">Metrolinx, Toronto public transportion<br>M for departure, X for arrival</div>
     </div>
     <div class="image-container">
-      <img src="image/tatsumi-taeron-asics-tiger-packaging.png" style="width: 30vw;" class="responsive-image">
+      <img data-src="image/tatsumi-taeron-asics-tiger-packaging.png" style="width: 30vw;" class="responsive-image" loading="lazy" alt="Asics Tiger Packaging">
       <div class="caption">Asics Tiger, Japanese footwear<br>breaking the old logo</div>
     </div>
     <div class="image-container">
-      <img src="image/tatsumi-taeron-asics-tiger-typeface.webp" style="width: 60vw;" class="responsive-image">
+      <img data-src="image/tatsumi-taeron-asics-tiger-typeface.webp" style="width: 60vw;" class="responsive-image" loading="lazy" alt="Asics Tiger Typeface">
       <div class="caption">Asics Tiger, Japanese footwear<br>a logo turned into a typeface</div>
     </div>
     <div class="image-container">
-      <img src="image/tatsumi-taeron-asics-tiger-wild-posting.jpg" style="width: 50vw;" class="responsive-image">
+      <img data-src="image/tatsumi-taeron-asics-tiger-wild-posting.jpg" style="width: 50vw;" class="responsive-image" loading="lazy" alt="Asics Tiger Wild Posting">
       <div class="caption">Asics Tiger, Japanese footwear<br>layout system</div>
     </div>
     <div class="image-container">
-      <img src="image/tatsumi-taeron-asics-tiger-kith.jpg" style="width: 40vw;" class="responsive-image" loading="lazy" alt="Asics Tiger Kith">
+      <img data-src="image/tatsumi-taeron-asics-tiger-kith.jpg" style="width: 40vw;" class="responsive-image" loading="lazy" alt="Asics Tiger Kith">
       <div class="caption">Asics Tiger, Japanese footwear<br>in collaboration with Bruce Mau Design</div>
     </div>
     <div class="image-container hide-on-mobile">
-      <img src="image/tatsumi-taeron-barcelona-design-museum-cerda-plan.webp" style="width: 80vw;" class="responsive-image">
+      <img data-src="image/tatsumi-taeron-barcelona-design-museum-cerda-plan.webp" style="width: 80vw;" class="responsive-image" loading="lazy" alt="Barcelona Design Museum Cerdà Plan">
       <div class="caption">Barcelona Design Museum<br>layout inspired by Cerdà's grid</div>
     </div>
     <div class="image-container">
-      <img src="image/tatsumi-taeron-barcelona-design-museum-manual.jpg" style="width: 60vw;" class="responsive-image">
+      <img data-src="image/tatsumi-taeron-barcelona-design-museum-manual.jpg" style="width: 60vw;" class="responsive-image" loading="lazy" alt="Barcelona Design Museum Manual">
       <div class="caption">Barcelona Design Museum<br>eighteen months of drawing</div>
     </div>
     <div class="image-container">
-      <img src="image/tatsumi-taeron-barcelona-design-museum-wall.jpg" style="width: 30vw;" class="responsive-image">
+      <img data-src="image/tatsumi-taeron-barcelona-design-museum-wall.jpg" style="width: 30vw;" class="responsive-image" loading="lazy" alt="Barcelona Design Museum Wall">
       <div class="caption">Barcelona Design Museum<br>posters near my old screen</div>
     </div>
     <div class="image-container">
-      <img src="image/tatsumi-taeron-barcelona-design-museum-editorial.jpg" style="width: 40vw;" class="responsive-image">
+      <img data-src="image/tatsumi-taeron-barcelona-design-museum-editorial.jpg" style="width: 40vw;" class="responsive-image" loading="lazy" alt="Barcelona Design Museum Editorial">
       <div class="caption">Barcelona Design Museum<br>editorial design</div>
     </div>
     <div class="image-container">
-      <img src="image/tatsumi-taeron-barcelona-design-museum-poster-dieter-rams.jpeg" style="width: 50vw;" class="responsive-image">
+      <img data-src="image/tatsumi-taeron-barcelona-design-museum-poster-dieter-rams.jpeg" style="width: 50vw;" class="responsive-image" loading="lazy" alt="Barcelona Design Museum Poster Dieter Rams">
       <div class="caption">Barcelona Design Museum<br>content over brand</div>
     </div>
     <div class="image-container">
-      <img src="image/tatsumi-taeron-barcelona-design-museum-poster-kenya-hara.jpeg" style="width: 50vw;" class="responsive-image">
+      <img data-src="image/tatsumi-taeron-barcelona-design-museum-poster-kenya-hara.jpeg" style="width: 50vw;" class="responsive-image" loading="lazy" alt="Barcelona Design Museum Poster Kenya Hara">
       <div class="caption">Barcelona Design Museum<br>the logo fills the remaining space</div>
     </div>
     <div class="image-container">
-      <img src="image/tatsumi-taeron-barcelona-design-museum-signage-2.jpg" style="width: 40vw;" class="responsive-image">
+      <img data-src="image/tatsumi-taeron-barcelona-design-museum-signage-2.jpg" style="width: 40vw;" class="responsive-image" loading="lazy" alt="Barcelona Design Museum Signage 2">
       <div class="caption">Barcelona Design Museum<br>designing at human scale</div>
     </div>
     <div class="image-container">
-      <img src="image/tatsumi-taeron-barcelona-design-museum-signage-3.jpg" style="width: 70vw;" class="responsive-image">
+      <img data-src="image/tatsumi-taeron-barcelona-design-museum-signage-3.jpg" style="width: 70vw;" class="responsive-image" loading="lazy" alt="Barcelona Design Museum Signage 3">
       <div class="caption">Barcelona Design Museum<br>floor-by-floor navigation</div>
     </div>
     <div class="image-container">
-      <img src="image/tatsumi-taeron-barcelona-design-museum-signage-4.jpg" style="width: 70vw;" class="responsive-image">
+      <img data-src="image/tatsumi-taeron-barcelona-design-museum-signage-4.jpg" style="width: 70vw;" class="responsive-image" loading="lazy" alt="Barcelona Design Museum Signage 4">
       <div class="caption">Barcelona Design Museum<br>in collaboration with Atlas</div>
     </div>
     <div class="image-container hide-on-mobile">
-      <img src="image/tatsumi-taeron-petit-plus-logo-grid.png" style="width: 40vw;" class="responsive-image">
+      <img data-src="image/tatsumi-taeron-petit-plus-logo-grid.png" style="width: 40vw;" class="responsive-image" loading="lazy" alt="Petit+ Logo Grid">
       <div class="caption">Petit+, little more, Paris<br>construction plan</div>
     </div>
     <div class="image-container hide-on-mobile">
-      <img src="image/tatsumi-taeron-petit-plus-packaging.jpg" style="width: 50vw;" class="responsive-image">
+      <img data-src="image/tatsumi-taeron-petit-plus-packaging.jpg" style="width: 50vw;" class="responsive-image" loading="lazy" alt="Petit+ Packaging">
       <div class="caption">Petit+, little more, Paris<br>products reflecting diverse tones</div>
     </div>
     <div class="image-container">
-      <img src="image/tatsumi-taeron-ynra-signage.jpg" style="width: 50vw;" class="responsive-image">
+      <img data-src="image/tatsumi-taeron-ynra-signage.jpg" style="width: 50vw;" class="responsive-image" loading="lazy" alt="YNRA Signage">
       <div class="caption">YNRA, gastronomy, Paris<br>a family tree</div>
     </div>
     <div class="image-container">
-      <img src="image/tatsumi-taeron-corsair-logo.png" style="width: 50vw;" class="responsive-image">
+      <img data-src="image/tatsumi-taeron-corsair-logo.png" style="width: 50vw;" class="responsive-image" loading="lazy" alt="Corsair Logo">
       <div class="caption">Corsair, French airline<br>a triangle nested</div>
     </div>
     <div class="image-container">
-      <img src="image/tatsumi-taeron-corsair-making-of.jpg" style="width: 40vw;" class="responsive-image">
+      <img data-src="image/tatsumi-taeron-corsair-making-of.jpg" style="width: 40vw;" class="responsive-image" loading="lazy" alt="Corsair Making of">
       <div class="caption">Corsair, French airline<br>a sailboat in the sky</div>
     </div>
     <div class="image-container">
-      <img src="image/tatsumi-taeron-issey-miyake-packaging-making-of.jpg" style="width: 60vw;" class="responsive-image">
+      <img data-src="image/tatsumi-taeron-issey-miyake-packaging-making-of.jpg" style="width: 60vw;" class="responsive-image" loading="lazy" alt="Issey Miyake Packaging Making of">
       <div class="caption">Issey Miyake, A Scent<br>no glue, no ink, just light</div>
     </div>
     <div class="image-container">
-      <img src="image/tatsumi-taeron-90-days-1.jpg" style="width: 40vw;" class="responsive-image">
+      <img data-src="image/tatsumi-taeron-90-days-1.jpg" style="width: 40vw;" class="responsive-image" loading="lazy" alt="90 Days 1">
       <div class="caption">90 days, thesis project<br>a light box</div>
     </div>
     <div class="image-container">
-      <img src="image/tatsumi-taeron-90-days-2.jpg" style="width: 50vw;" class="responsive-image">
+      <img data-src="image/tatsumi-taeron-90-days-2.jpg" style="width: 50vw;" class="responsive-image" loading="lazy" alt="90 Days 2">
       <div class="caption">90 days, thesis project<br>a train in motion, a camera recording, a screen transmitting</div>
     </div>
     <div class="image-container">
-      <img src="image/tatsumi-taeron-90-days-3.jpg" style="width: 50vw;" class="responsive-image">
+      <img data-src="image/tatsumi-taeron-90-days-3.jpg" style="width: 50vw;" class="responsive-image" loading="lazy" alt="90 Days 3">
       <div class="caption">90 days, thesis project<br>the letters look like 3D on TV</div>
     </div>
     <div class="image-container">
-      <img src="image/tatsumi-taeron-90-days-4.jpg" style="width: 40vw;" class="responsive-image">
+      <img data-src="image/tatsumi-taeron-90-days-4.jpg" style="width: 40vw;" class="responsive-image" loading="lazy" alt="90 Days 4">
       <div class="caption">90 days, thesis project<br>misused tool, novel outcome</div>
     </div>
     <div class="image-container">
-      <img src="image/tatsumi-taeron-A4-paper-typeface-grid.jpg" style="width: 40vw;" class="responsive-image">
+      <img data-src="image/tatsumi-taeron-A4-paper-typeface-grid.jpg" style="width: 40vw;" class="responsive-image" loading="lazy" alt="A4 Paper Typeface Grid">
       <div class="caption">A4 paper, typefacepaper<br>height equals square diagonal<br>no pencil, no ruler</div>
     </div>
     <div class="image-container">
-      <img src="image/tatsumi-taeron-A4-paper-window.jpg" style="width: 50vw;" class="responsive-image">
+      <img data-src="image/tatsumi-taeron-A4-paper-window.jpg" style="width: 50vw;" class="responsive-image" loading="lazy" alt="A4 Paper Window">
       <div class="caption">A4 paper, typefacepaper<br>paper as writing medium</div>
     </div>
     <div class="image-container">
-      <img src="image/tatsumi-taeron-katapult-typeface-grid-a.jpg" style="width: 45vw;" class="responsive-image">
+      <img data-src="image/tatsumi-taeron-katapult-typeface-grid-a.jpg" style="width: 45vw;" class="responsive-image" loading="lazy" alt="Katapult Typeface Grid A">
       <div class="caption">Katapult, electronic music, Paris<br>minimal music, minimal typography</div>
     </div>
     <div class="image-container">
-      <img src="image/tatsumi-taeron-katapult-typeface-grid-p.jpg" style="width: 45vw;" class="responsive-image">
+      <img data-src="image/tatsumi-taeron-katapult-typeface-grid-p.jpg" style="width: 45vw;" class="responsive-image" loading="lazy" alt="Katapult Typeface Grid P">
       <div class="caption">Katapult, electronic music, Paris<br>wooden strip: 4x4 cm</div>
     </div>
     <div class="image-container">
-      <img src="image/tatsumi-taeron-katapult-making-of-1.jpg" style="width: 30vw;" class="responsive-image">
+      <img data-src="image/tatsumi-taeron-katapult-making-of-1.jpg" style="width: 30vw;" class="responsive-image" loading="lazy" alt="Katapult Making of 1">
       <div class="caption">Katapult, electronic music, Paris<br>more contours, less mass</div>
     </div>
     <div class="image-container">
-      <img src="image/tatsumi-taeron-katapult-making-of-2.jpg" style="width: 60vw;" class="responsive-image">
+      <img data-src="image/tatsumi-taeron-katapult-making-of-2.jpg" style="width: 60vw;" class="responsive-image" loading="lazy" alt="Katapult Making of 2">
       <div class="caption">Katapult, electronic music, Paris<br>more emptiness, less matter</div>
     </div>
     <div class="image-container">
-      <img src="image/tatsumi-taeron-katapult-typeface-small.jpg" style="width: 50vw;" class="responsive-image">
+      <img data-src="image/tatsumi-taeron-katapult-typeface-small.jpg" style="width: 50vw;" class="responsive-image" loading="lazy" alt="Katapult Typeface Small">
       <div class="caption">Katapult, electronic music, Paris<br>each color corresponds to a different angle on the circular saw</div>
     </div>
     <div class="image-container">
-      <img src="image/tatsumi-taeron-opaz-making-of.jpg" style="width: 40vw;" class="responsive-image">
+      <img data-src="image/tatsumi-taeron-opaz-making-of.jpg" style="width: 40vw;" class="responsive-image" loading="lazy" alt="Katapult Opaz Making of">
       <div class="caption">Katapult, electronic music, Paris<br>scraps recycled for the sponsor</div>
     </div>
     <div class="image-container">
-      <img src="image/tatsumi-taeron-tsigan-album-cover.jpg" style="width: 70vw;" class="responsive-image">
+      <img data-src="image/tatsumi-taeron-tsigan-album-cover.jpg" style="width: 70vw;" class="responsive-image" loading="lazy" alt="Tsigan Album Cover">
       <div class="caption">Tsigan, album cover<br>packaged like Gitanes cigarettes</div>
     </div>
     <div class="image-container hide-on-mobile">
-      <img src="image/tatsumi-taeron-pistolet-en-bois.webp" style="width: 90vw;" class="responsive-image">
+      <img data-src="image/tatsumi-taeron-pistolet-en-bois.webp" style="width: 90vw;" class="responsive-image" loading="lazy" alt="Pistolet en Bois">
       <div class="caption">pistolet en bois, drawing<br>my first construction plan</div>
     </div>
     <div class="image-container hide-on-mobile">
-      <img src="image/tatsumi-taeron-insecte-et-papillons.jpg" style="width: 20vw;" class="responsive-image">
+      <img data-src="image/tatsumi-taeron-insecte-et-papillons.jpg" style="width: 20vw;" class="responsive-image" loading="lazy" alt="Insectes et Papillons">
       <div class="caption">papillons et insectes, dessin<br>avec mon père</div>
     </div>
   </div>
   <div class="footer">
     <div class="footer-content">
-      also collecting
+      collecting
       <a href="https://tatsumi-taeron-logo-collection.tumblr.com" target="_blank">signs</a>,
       <a href="https://tatsumi-taeron-grid-collection.tumblr.com" target="_blank">plans</a>,
       <a href="https://environmental-design.tumblr.com/" target="_blank">constructions</a>,<br>
