@@ -552,7 +552,7 @@
     </div>
     <div class="image-container">
       <img data-src="image/tatsumi-taeron-issey-miyake-packaging-making-of.jpg" style="width: 60vw;" class="responsive-image" alt="Issey Miyake Packaging Making of">
-      <div class="caption">issey miyake, a scent<br>a japanese paper and some light<br>no glue, no ink</div>
+      <div class="caption">Issey Miyake, A Scent<br>a japanese paper and some light<br>no glue, no ink</div>
     </div>
     <div class="image-container">
       <img data-src="image/tatsumi-taeron-90-days-1.jpg" style="width: 40vw;" class="responsive-image" alt="90 Days 1">
@@ -608,7 +608,7 @@
     </div>
     <div class="image-container hide-on-mobile">
       <img data-src="image/tatsumi-taeron-pistolet-en-bois.webp" style="width: 90vw;" class="responsive-image" alt="Pistolet en Bois">
-      <div class="caption">pistolet en bois, drawing<br>my first construction plan<br>it was built with wood pulp</div>
+      <div class="caption">pistolet en bois, drawing<br>my first construction plan</div>
     </div>
     <div class="image-container hide-on-mobile">
       <img data-src="image/tatsumi-taeron-insecte-et-papillons.jpg" style="width: 20vw;" class="responsive-image" alt="Insectes et Papillons">
@@ -632,8 +632,9 @@
     document.addEventListener('DOMContentLoaded', function() {
       const images = Array.from(document.querySelectorAll('.responsive-image'));
       let currentIndex = 0;
+      const maxRetries = 3;
 
-      const loadImage = (img) => {
+      const loadImage = (img, retryCount = 0) => {
         let realSrc = img.getAttribute('data-src');
         
         if (window.innerWidth <= 600 && img.hasAttribute('data-src-mobile')) {
@@ -648,11 +649,17 @@
             }
           };
           tempImg.onerror = () => {
-            img.src = realSrc;
-            img.classList.add('loaded');
-            currentIndex++;
-            if (currentIndex < images.length) {
-              loadImage(images[currentIndex]);
+            if (retryCount < maxRetries) {
+              console.log(`Retrying mobile image load (${retryCount + 1}/${maxRetries}):`, mobileSrc);
+              setTimeout(() => loadImage(img, retryCount + 1), 1000);
+            } else {
+              console.error('Failed to load mobile image after retries:', mobileSrc);
+              img.src = realSrc;
+              img.classList.add('loaded');
+              currentIndex++;
+              if (currentIndex < images.length) {
+                loadImage(images[currentIndex]);
+              }
             }
           };
           tempImg.src = mobileSrc;
@@ -666,11 +673,16 @@
             }
           };
           img.onerror = () => {
-            console.error('Failed to load image:', realSrc);
-            img.classList.add('loaded');
-            currentIndex++;
-            if (currentIndex < images.length) {
-              loadImage(images[currentIndex]);
+            if (retryCount < maxRetries) {
+              console.log(`Retrying image load (${retryCount + 1}/${maxRetries}):`, realSrc);
+              setTimeout(() => loadImage(img, retryCount + 1), 1000);
+            } else {
+              console.error('Failed to load image after retries:', realSrc);
+              img.classList.add('loaded');
+              currentIndex++;
+              if (currentIndex < images.length) {
+                loadImage(images[currentIndex]);
+              }
             }
           };
         }
