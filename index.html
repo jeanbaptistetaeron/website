@@ -19,7 +19,7 @@
       margin: 0;
       padding: 0;
       background: #0D0D0D;
-      color: #666666;
+      color: #7F7F7F;
       font-family: "Times New Roman", Times, serif;
       font-weight: normal;
       font-size: 20px;
@@ -86,7 +86,7 @@
     }
 
     .hover-link:hover {
-      color: #666666;
+      color: #7F7F7F;
     }
 
     .intro a[href^="mailto:"] {
@@ -364,7 +364,7 @@
       }
 
       .hover-link:hover {
-        color: #666666;
+        color: #7F7F7F;
       }
 
       .intro a[href^="mailto:"] {
@@ -635,10 +635,8 @@
       const loadImage = (img) => {
         let realSrc = img.getAttribute('data-src');
         
-        // Only try to use mobile version if it exists and we're on mobile
         if (window.innerWidth <= 600 && img.hasAttribute('data-src-mobile')) {
           const mobileSrc = img.getAttribute('data-src-mobile');
-          // Create a temporary image to check if mobile version exists
           const tempImg = new Image();
           tempImg.onload = () => {
             img.src = mobileSrc;
@@ -649,7 +647,6 @@
             }
           };
           tempImg.onerror = () => {
-            // If mobile version fails to load, use desktop version
             img.src = realSrc;
             img.classList.add('loaded');
             currentIndex++;
@@ -659,7 +656,6 @@
           };
           tempImg.src = mobileSrc;
         } else {
-          // On desktop or if no mobile version, use desktop version
           img.src = realSrc;
           img.onload = () => {
             img.classList.add('loaded');
@@ -679,12 +675,10 @@
         }
       };
 
-      // Start loading the first image immediately
       if (images.length > 0) {
         loadImage(images[0]);
       }
 
-      // Reload images on window resize
       let resizeTimeout;
       window.addEventListener('resize', () => {
         clearTimeout(resizeTimeout);
