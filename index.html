@@ -522,7 +522,7 @@
       <div class="caption">issey miyake, a scent<br>no glue, no ink, just light</div>
     </div>
     <div class="image-container">
-      <img data-src="image/tatsumi-taeron-90-days-1.jpg" data-src-mobile="image/tatsumi-taeron-90-days-1-mobile.jpg" style="width: 40vw;" class="responsive-image" alt="90 Days 1">
+      <img data-src="image/tatsumi-taeron-90-days-1.jpg" style="width: 40vw;" class="responsive-image" alt="90 Days 1">
       <div class="caption">90 days, thesis project<br>a light box</div>
     </div>
     <div class="image-container">
@@ -538,7 +538,7 @@
       <div class="caption">90 days, thesis project<br>misused tool, novel outcome</div>
     </div>
     <div class="image-container">
-      <img data-src="image/tatsumi-taeron-A4-paper-typeface-grid.jpg" data-src-mobile="image/tatsumi-taeron-A4-paper-typeface-grid-mobile.jpg" style="width: 40vw;" class="responsive-image" alt="A4 Paper Typeface Grid">
+      <img data-src="image/tatsumi-taeron-A4-paper-typeface-grid.jpg" style="width: 40vw;" class="responsive-image" alt="A4 Paper Typeface Grid">
       <div class="caption">A4 paper, typeface<br>height equals square diagonal<br>no ruler, no pencil</div>
     </div>
     <div class="image-container">
@@ -601,10 +601,33 @@
       let currentIndex = 0;
 
       const loadImage = (img) => {
-        const realSrc = window.innerWidth <= 600 && img.hasAttribute('data-src-mobile') 
-          ? img.getAttribute('data-src-mobile')
-          : img.getAttribute('data-src');
-        if (realSrc) {
+        let realSrc = img.getAttribute('data-src');
+        
+        // Only try to use mobile version if it exists and we're on mobile
+        if (window.innerWidth <= 600 && img.hasAttribute('data-src-mobile')) {
+          const mobileSrc = img.getAttribute('data-src-mobile');
+          // Create a temporary image to check if mobile version exists
+          const tempImg = new Image();
+          tempImg.onload = () => {
+            img.src = mobileSrc;
+            img.classList.add('loaded');
+            currentIndex++;
+            if (currentIndex < images.length) {
+              loadImage(images[currentIndex]);
+            }
+          };
+          tempImg.onerror = () => {
+            // If mobile version fails to load, use desktop version
+            img.src = realSrc;
+            img.classList.add('loaded');
+            currentIndex++;
+            if (currentIndex < images.length) {
+              loadImage(images[currentIndex]);
+            }
+          };
+          tempImg.src = mobileSrc;
+        } else {
+          // On desktop or if no mobile version, use desktop version
           img.src = realSrc;
           img.onload = () => {
             img.classList.add('loaded');
@@ -615,7 +638,7 @@
           };
           img.onerror = () => {
             console.error('Failed to load image:', realSrc);
-            img.classList.add('loaded'); // Add loaded class even on error to prevent blocking
+            img.classList.add('loaded');
             currentIndex++;
             if (currentIndex < images.length) {
               loadImage(images[currentIndex]);
