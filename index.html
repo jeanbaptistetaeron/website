@@ -447,7 +447,7 @@
     </div>
     <div class="image-container">
       <img data-src="image/tatsumi-taeron-asics-tiger-packaging.png" style="width: 30vw;" class="responsive-image" alt="Asics Tiger Packaging">
-      <div class="caption">Asics Tiger, Japanese footwear<br>deconstructing the herb lubalin's logo<br>breaking in between ligatures</div>
+      <div class="caption">Asics Tiger, Japanese footwear<br>deconstructing the Herb Lubalin's logo<br>breaking in between ligatures</div>
     </div>
     <div class="image-container">
       <img data-src="image/tatsumi-taeron-asics-tiger-typeface.webp" style="width: 60vw;" class="responsive-image" alt="Asics Tiger Typeface">
@@ -613,6 +613,14 @@
               loadImage(images[currentIndex]);
             }
           };
+          img.onerror = () => {
+            console.error('Failed to load image:', realSrc);
+            img.classList.add('loaded'); // Add loaded class even on error to prevent blocking
+            currentIndex++;
+            if (currentIndex < images.length) {
+              loadImage(images[currentIndex]);
+            }
+          };
         }
       };
 
@@ -620,6 +628,22 @@
       if (images.length > 0) {
         loadImage(images[0]);
       }
+
+      // Reload images on window resize
+      let resizeTimeout;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+          images.forEach(img => {
+            const realSrc = window.innerWidth <= 600 && img.hasAttribute('data-src-mobile') 
+              ? img.getAttribute('data-src-mobile')
+              : img.getAttribute('data-src');
+            if (realSrc && img.src !== realSrc) {
+              img.src = realSrc;
+            }
+          });
+        }, 250);
+      });
     });
   </script>
 </body>
