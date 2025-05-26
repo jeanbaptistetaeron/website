@@ -378,6 +378,11 @@
       .intro span.contact-text {
         text-decoration: none !important;
       }
+
+      .responsive-image[alt="A4 Paper Typeface Grid"] {
+        transform: rotate(-90deg);
+        transform-origin: center center;
+      }
     }
   </style>
 </head>
@@ -414,7 +419,7 @@
     </div>
     <div class="image-container">
       <img data-src="image/tatsumi-taeron-yabu-pushelberg-logo-grid.jpg" style="width: 60vw;" class="responsive-image" alt="Yabu Pushelberg Logo Grid">
-      <div class="caption">Yabu Pushelberg, designer, Toronto, New York<br>construction plan</div>
+      <div class="caption">Yabu Pushelberg, designer, Toronto, New York<br>Yabu meets Pushelberg, a common ground</div>
     </div>
     <div class="video-container">
       <div class="video-wrapper">
@@ -517,7 +522,7 @@
       <div class="caption">Issey Miyake, A Scent<br>no glue, no ink, just light</div>
     </div>
     <div class="image-container">
-      <img data-src="image/tatsumi-taeron-90-days-1.jpg" style="width: 40vw;" class="responsive-image" alt="90 Days 1">
+      <img data-src="image/tatsumi-taeron-90-days-1.jpg" data-src-mobile="image/tatsumi-taeron-90-days-1-mobile.jpg" style="width: 40vw;" class="responsive-image" alt="90 Days 1">
       <div class="caption">90 days, thesis project<br>a light box</div>
     </div>
     <div class="image-container">
@@ -533,7 +538,7 @@
       <div class="caption">90 days, thesis project<br>misused tool, novel outcome</div>
     </div>
     <div class="image-container">
-      <img data-src="image/tatsumi-taeron-A4-paper-typeface-grid.jpg" style="width: 40vw;" class="responsive-image" alt="A4 Paper Typeface Grid">
+      <img data-src="image/tatsumi-taeron-A4-paper-typeface-grid.jpg" data-src-mobile="image/tatsumi-taeron-A4-paper-typeface-grid-mobile.jpg" style="width: 40vw;" class="responsive-image" alt="A4 Paper Typeface Grid">
       <div class="caption">A4 paper, typeface<br>height equals square diagonal<br>no pencil, no ruler</div>
     </div>
     <div class="image-container">
@@ -596,7 +601,9 @@
       let currentIndex = 0;
 
       const loadImage = (img) => {
-        const realSrc = img.getAttribute('data-src');
+        const realSrc = window.innerWidth <= 600 && img.hasAttribute('data-src-mobile') 
+          ? img.getAttribute('data-src-mobile')
+          : img.getAttribute('data-src');
         if (realSrc) {
           img.src = realSrc;
           img.onload = () => {
