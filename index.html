@@ -272,6 +272,25 @@
     }
 
     @media (max-width: 600px) {
+      .header {
+        height: 288px;
+        padding: 12px;
+        margin: 0;
+      }
+
+      .intro {
+        max-width: 100%;
+        font-size: 20px;
+        line-height: 1.2;
+        margin: 0;
+      }
+
+      .email-links {
+        position: static;
+        text-align: left;
+        margin-top: 1em;
+      }
+
       .responsive-image, .responsive-video {
         width: 100vw !important;
         max-width: 100vw;
@@ -286,26 +305,10 @@
         overflow-x: hidden;
       }
 
-      .header {
-        height: 288px;
-        padding: 12px;
-        margin: 0;
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-      }
-
       .image-grid {
         row-gap: 72px;
         width: 100vw;
         overflow-x: hidden;
-      }
-
-      .intro {
-        max-width: 60%;
-        font-size: 20px;
-        line-height: 1.2;
-        margin: 0;
       }
 
       .contact-info {
@@ -431,9 +434,8 @@
 
       .email-links {
         position: static;
-        text-align: right;
-        margin-top: 0;
-        max-width: 40%;
+        text-align: left;
+        margin-top: 1em;
       }
     }
   </style>
