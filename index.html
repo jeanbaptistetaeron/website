@@ -41,6 +41,7 @@
       height: 288px;
       padding: 24px;
       margin: 0;
+      position: relative;
     }
 
     .intro {
@@ -262,6 +263,14 @@
       color: #FFFFFF;
     }
 
+    .email-links {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      text-align: right;
+      line-height: 1.2em;
+    }
+
     @media (max-width: 600px) {
       .responsive-image, .responsive-video {
         width: 100vw !important;
@@ -416,6 +425,12 @@
         bottom: 12px;
         left: 12px;
       }
+
+      .email-links {
+        position: static;
+        text-align: left;
+        margin-top: 1em;
+      }
     }
   </style>
 </head>
@@ -423,8 +438,9 @@
   <div class="header">
     <div class="intro">
       <span class="name">jean-baptiste tatsumi taëron</span><br>
-      <span class="tagline">identities</span><br>
-      <br>
+      <span class="tagline">identities</span>
+    </div>
+    <div class="email-links">
       <a href="mailto:jeanbaptistetaeron@gmail.com" class="hover-link" target="_blank">jeanbaptistetaeron@gmail.com</a><br>
       <a href="mailto:tatsumitaeron@gmail.com" class="hover-link" target="_blank">tatsumitaeron@gmail.com</a>
     </div>
@@ -449,7 +465,7 @@
     </div>
     <div class="image-container">
       <img data-src="image/tatsumi-taeron-lightning-studio-address.png" style="width: 40vw;" class="responsive-image" alt="Lightning Studio Address">
-      <div class="caption">Lightning Studio, New York<br>lightning bolt and candlelight</div>
+      <div class="caption">Lightning Studio, New York<br>address</div>
     </div>
     <div class="image-container">
       <img data-src="image/tatsumi-taeron-yabu-pushelberg-logo-grid.jpg" style="width: 60vw;" class="responsive-image" alt="Yabu Pushelberg Logo Grid">
@@ -557,7 +573,7 @@
     </div>
     <div class="image-container">
       <img data-src="image/tatsumi-taeron-90-days-1.jpg" style="width: 40vw;" class="responsive-image" alt="90 Days 1">
-      <div class="caption">Thesis Project<br>lot of light</div>
+      <div class="caption">Thesis Project<br>a light box</div>
     </div>
     <div class="image-container">
       <img data-src="image/tatsumi-taeron-90-days-2.jpg" style="width: 50vw;" class="responsive-image" alt="90 Days 2">
