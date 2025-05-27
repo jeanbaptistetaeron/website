@@ -291,8 +291,12 @@
       }
 
       .email-links a {
-        display: block;
+        display: inline;
         text-align: left;
+      }
+
+      .email-links a:first-child::after {
+        content: ", ";
       }
 
       .responsive-image, .responsive-video {
