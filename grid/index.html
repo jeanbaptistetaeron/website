@@ -278,6 +278,26 @@
       line-height: 1.2em;
     }
 
+    .menu {
+      position: absolute;
+      bottom: 24px;
+      right: 24px;
+      text-align: right;
+      line-height: 1.2em;
+    }
+
+    .menu a {
+      color: #da291c;
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.1em;
+      transition: color 0.1s ease;
+    }
+
+    .menu a:hover {
+      color: #FFFFFF;
+    }
+
     @media (max-width: 600px) {
       .header {
         height: 288px;
@@ -464,6 +484,19 @@
       }
     }
   </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const images = document.querySelectorAll('.responsive-image');
+      images.forEach(img => {
+        img.onload = function() {
+          img.classList.add('loaded');
+        };
+        if (img.complete) {
+          img.classList.add('loaded');
+        }
+      });
+    });
+  </script>
 </head>
 <body>
   <div class="header">
