@@ -256,45 +256,53 @@
     }
 
     .collection {
-  position: absolute;
-  bottom: 24px;
-  left: 24px;
-  max-width: 60%;
-  color: #da291c;
-  line-height: 1.2em;
-}
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      color: #da291c;
+      line-height: 1.2em;
+    }
 
-.collection a {
-  color: #da291c;
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.1em;
-  transition: color 0.1s ease;
-}
+    .collection a {
+      color: #da291c;
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.1em;
+      transition: color 0.1s ease;
+    }
 
-.collection a:hover {
-  color: #FFFFFF;
-}
+    .collection a:hover {
+      color: #FFFFFF;
+    }
 
-.menu {
-  position: absolute;
-  bottom: 24px;
-  right: 24px;
-  text-align: right;
-  line-height: 1.2em;
-}
+    .menu {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 1000;
+      text-align: right;
+      line-height: 1.2em;
+    }
 
-.menu a {
-  color: #da291c;
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.1em;
-  transition: color 0.1s ease;
-}
+    .menu-content {
+      position: absolute;
+      bottom: 24px;
+      right: 24px;
+      text-align: right;
+      line-height: 1.2em;
+    }
 
-.menu a:hover {
-  color: #FFFFFF;
-}
+    .menu-content a {
+      color: #da291c;
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.1em;
+      transition: color 0.1s ease;
+    }
+
+    .menu-content a:hover {
+      color: #FFFFFF;
+    }
 
 
 
@@ -447,7 +455,6 @@ body {
   position: absolute;
   bottom: 12px;
   left: 12px;
-  color: #da291c;
 }
 
 .collection a {
@@ -727,11 +734,12 @@ body {
       <a href="https://tatsumi-taeron-idea-collection.tumblr.com" target="_blank">ideas</a>
     </div>
   </div>
-    <div class="menu">
-      <div class="menu-content">
-        <a href="https://tatsumitaeron.com" target="_blank">work</a><br>
-        <a href="#" style="pointer-events: none; color: #da291c; text-decoration: line-through; cursor: not-allowed;">about</a>
+  <div class="menu" style="position:fixed;bottom:24px;right:24px;z-index:1000;text-align:right;">
+    <div class="menu-content">
+      <a href="https://tatsumitaeron.com" target="_blank" style="color:#da291c;">work</a><br>
+      <a href="#" style="pointer-events:none;color:#da291c;text-decoration:line-through;cursor:not-allowed;">about</a>
     </div>
+  </div>
 
   <script defer>
   // Image lazy loading is now handled by the browser via loading="lazy". No custom JS needed.
