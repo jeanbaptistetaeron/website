@@ -11,7 +11,7 @@
   <meta property="og:url" content="https://tatsumitaeron.com" />
   <meta name="twitter:card" content="summary_large_image" />
   
-  <link rel="icon" type="image/x-icon" href="image/favicon.ico">
+  <link rel="icon" type="image/x-icon" href="/logo/image/favicon.ico">
   
   <title>Logo</title>
   <style>
@@ -475,6 +475,40 @@ body {
 
 
   </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const images = document.querySelectorAll('.responsive-image');
+      
+      const loadImage = (img) => {
+        const src = img.getAttribute('src');
+        if (!src) return;
+        
+        const tempImg = new Image();
+        tempImg.onload = () => {
+          img.classList.add('loaded');
+        };
+        tempImg.onerror = () => {
+          console.error('Failed to load image:', src);
+        };
+        tempImg.src = src;
+      };
+
+      // Load all images
+      images.forEach(loadImage);
+
+      // Handle lazy loading
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            loadImage(entry.target);
+            observer.unobserve(entry.target);
+          }
+        });
+      });
+
+      images.forEach(img => observer.observe(img));
+    });
+  </script>
 </head>
 <body>
   <div class="header">
@@ -499,7 +533,7 @@ body {
       <div class="caption">Cy Twombly<br></div>
     </div>
     <div class="image-container">
-      <img src="/logo/image/Photo by Telerama on January 26, 2017.jpg" style="width: 40vw;" class="responsive-image" alt="Unknown" loading="lazy">
+      <img src="/logo/image/Photo by Telerama on January 26, 2017.jpg" style="width: 40vw;" class="responsive-image" alt="Unknown Artwork" loading="lazy">
       <div class="caption">Unknown<br></div>
     </div>
     <div class="image-container">
@@ -829,86 +863,5 @@ body {
         <a href="#" style="pointer-events: none; color: #da291c; text-decoration: line-through; cursor: not-allowed;">about</a>
     </div>
   </div>
-
-  <script defer>
-    document.addEventListener('DOMContentLoaded', function() {
-      const images = Array.from(document.querySelectorAll('.responsive-image'));
-      let currentIndex = 0;
-      const maxRetries = 3;
-
-      const loadImage = (img, retryCount = 0) => {
-        let realSrc = img.getAttribute('data-src');
-        
-        if (window.innerWidth <= 600 && img.hasAttribute('data-src-mobile')) {
-          const mobileSrc = img.getAttribute('data-src-mobile');
-          const tempImg = new Image();
-          tempImg.onload = () => {
-            img.src = mobileSrc;
-            img.classList.add('loaded');
-            currentIndex++;
-            if (currentIndex < images.length) {
-              loadImage(images[currentIndex]);
-            }
-          };
-          tempImg.onerror = () => {
-            if (retryCount < maxRetries) {
-              console.log(`Retrying mobile image load (${retryCount + 1}/${maxRetries}):`, mobileSrc);
-              setTimeout(() => loadImage(img, retryCount + 1), 1000);
-            } else {
-              console.error('Failed to load mobile image after retries:', mobileSrc);
-              img.src = realSrc;
-              img.classList.add('loaded');
-              currentIndex++;
-              if (currentIndex < images.length) {
-                loadImage(images[currentIndex]);
-              }
-            }
-          };
-          tempImg.src = mobileSrc;
-        } else {
-          img.src = realSrc;
-          img.onload = () => {
-            img.classList.add('loaded');
-            currentIndex++;
-            if (currentIndex < images.length) {
-              loadImage(images[currentIndex]);
-            }
-          };
-          img.onerror = () => {
-            if (retryCount < maxRetries) {
-              console.log(`Retrying image load (${retryCount + 1}/${maxRetries}):`, realSrc);
-              setTimeout(() => loadImage(img, retryCount + 1), 1000);
-            } else {
-              console.error('Failed to load image after retries:', realSrc);
-              img.classList.add('loaded');
-              currentIndex++;
-              if (currentIndex < images.length) {
-                loadImage(images[currentIndex]);
-              }
-            }
-          };
-        }
-      };
-
-      if (images.length > 0) {
-        loadImage(images[0]);
-      }
-
-      let resizeTimeout;
-      window.addEventListener('resize', () => {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(() => {
-          images.forEach(img => {
-            const realSrc = window.innerWidth <= 600 && img.hasAttribute('data-src-mobile') 
-              ? img.getAttribute('data-src-mobile')
-              : img.getAttribute('data-src');
-            if (realSrc && img.src !== realSrc) {
-              img.src = realSrc;
-            }
-          });
-        }, 250);
-      });
-    });
-  </script>
 </body>
 </html>
