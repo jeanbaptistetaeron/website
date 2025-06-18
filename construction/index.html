@@ -284,7 +284,11 @@
   line-height: 1.2em;
 }
 
-.menu a {
+.menu-content {
+  /* Remove position, bottom, right; only use for content grouping */
+}
+
+.menu-content a {
   color: #7f7f7f;
   text-decoration: underline;
   text-decoration-thickness: 1px;
@@ -292,7 +296,7 @@
   transition: color 0.1s ease;
 }
 
-.menu a:hover {
+.menu-content a:hover {
   color: #FFFFFF;
 }
 
@@ -702,11 +706,11 @@ body {
       <a href="/wonderwall/" target="_blank">systems</a>, and
       <a href="https://tatsumi-taeron-idea-collection.tumblr.com" target="_blank">ideas</a>
     </div>
-    <div class="menu">
-      <div class="menu-content">
-        <a href="https://tatsumitaeron.com" target="_blank" style="color:#7f7f7f;">work</a><br>
-        <a href="#" style="pointer-events:none;color:#7f7f7f;text-decoration:line-through;cursor:not-allowed;">about</a>
-      </div>
+  </div>
+  <div class="menu">
+    <div class="menu-content">
+      <a href="https://tatsumitaeron.com" target="_blank">work</a><br>
+      <a href="#" style="pointer-events: none; color: #7f7f7f; text-decoration: line-through; cursor: not-allowed;">about</a>
     </div>
   </div>
 
