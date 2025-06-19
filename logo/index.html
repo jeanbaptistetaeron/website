@@ -129,7 +129,12 @@
       font-style: normal;
     }
 
-
+    .image-container .caption {
+      display: none;
+    }
+    .image-container img.image-loaded + .caption {
+      display: block;
+    }
 
     .header {
       height: 288px;
@@ -156,8 +161,6 @@
       padding-left: 24px;
       text-align: left;
     }
-
-
 
     .contact-info {
       margin-top: 1em;
@@ -250,8 +253,6 @@
       line-height: 1.2em;
     }
 
-
-
     .footer {
       height: 288px;
       padding: 24px;
@@ -299,9 +300,6 @@
 .menu a:hover {
   color: #FFFFFF;
 }
-
-
-
 
 @media (max-width: 600px) {
 
@@ -351,8 +349,6 @@ body {
   width: 100%;
   box-sizing: border-box;
 }
-
-
 
 .header {
   height: 288px;
@@ -471,9 +467,6 @@ body {
 }
 }
 
-
-
-
   </style>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -507,6 +500,18 @@ body {
       });
 
       images.forEach(img => observer.observe(img));
+
+      document.querySelectorAll('.image-container').forEach(container => {
+        const img = container.querySelector('img');
+        function showCaption() {
+          img.classList.add('image-loaded');
+        }
+        if (img.complete && img.naturalWidth !== 0) {
+          showCaption();
+        } else {
+          img.addEventListener('load', showCaption, { once: true });
+        }
+      });
     });
   </script>
 </head>
