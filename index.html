@@ -278,6 +278,26 @@
       line-height: 1.2em;
     }
 
+    .menu {
+      position: absolute;
+      bottom: 24px;
+      right: 24px;
+      text-align: right;
+      line-height: 1.2em;
+    }
+
+    .menu-content a {
+      color: #666666;
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.1em;
+      transition: color 0.1s ease;
+    }
+
+    .menu-content a:hover {
+      color: #FFFFFF;
+    }
+
     @media (max-width: 600px) {
       .header {
         height: 288px;
@@ -465,6 +485,11 @@
         position: static;
         text-align: right;
         margin-top: 1em;
+      }
+
+      .menu {
+        bottom: 12px;
+        right: 12px;
       }
     }
   </style>
@@ -669,96 +694,21 @@
   </div>
 
   <div class="footer">
-    <div class="footer-content">
-      collecting
-      <a href="/logo/" target="_blank">signs</a>,
-      <a href="/grid/" target="_blank">plans</a>,
-      <a href="/construction/" target="_blank">constructions</a>,<br>
-      <a href="/love-letter/" target="_blank">love letters</a>,
-      <a href="/wonderwall/" target="_blank">systems</a>, and
+    <div class="collection">
+      <span style="white-space:nowrap;">collecting
+      <a href="/logo/">logos</a>,
+      <a href="/grid/">grids</a>,
+      <a href="/construction/">constructions</a>,</span><br>
+      <a href="/love-letter/">love letters</a>,
+      <a href="/wonderwall/">systems</a>, and
       <a href="https://tatsumi-taeron-idea-collection.tumblr.com" target="_blank">ideas</a>
     </div>
   </div>
-
-  <script defer>
-    document.addEventListener('DOMContentLoaded', function() {
-      const images = Array.from(document.querySelectorAll('.responsive-image'));
-      let currentIndex = 0;
-      const maxRetries = 3;
-
-      const loadImage = (img, retryCount = 0) => {
-        let realSrc = img.getAttribute('data-src');
-        
-        if (window.innerWidth <= 600 && img.hasAttribute('data-src-mobile')) {
-          const mobileSrc = img.getAttribute('data-src-mobile');
-          const tempImg = new Image();
-          tempImg.onload = () => {
-            img.src = mobileSrc;
-            img.classList.add('loaded');
-            currentIndex++;
-            if (currentIndex < images.length) {
-              loadImage(images[currentIndex]);
-            }
-          };
-          tempImg.onerror = () => {
-            if (retryCount < maxRetries) {
-              console.log(`Retrying mobile image load (${retryCount + 1}/${maxRetries}):`, mobileSrc);
-              setTimeout(() => loadImage(img, retryCount + 1), 1000);
-            } else {
-              console.error('Failed to load mobile image after retries:', mobileSrc);
-              img.src = realSrc;
-              img.classList.add('loaded');
-              currentIndex++;
-              if (currentIndex < images.length) {
-                loadImage(images[currentIndex]);
-              }
-            }
-          };
-          tempImg.src = mobileSrc;
-        } else {
-          img.src = realSrc;
-          img.onload = () => {
-            img.classList.add('loaded');
-            currentIndex++;
-            if (currentIndex < images.length) {
-              loadImage(images[currentIndex]);
-            }
-          };
-          img.onerror = () => {
-            if (retryCount < maxRetries) {
-              console.log(`Retrying image load (${retryCount + 1}/${maxRetries}):`, realSrc);
-              setTimeout(() => loadImage(img, retryCount + 1), 1000);
-            } else {
-              console.error('Failed to load image after retries:', realSrc);
-              img.classList.add('loaded');
-              currentIndex++;
-              if (currentIndex < images.length) {
-                loadImage(images[currentIndex]);
-              }
-            }
-          };
-        }
-      };
-
-      if (images.length > 0) {
-        loadImage(images[0]);
-      }
-
-      let resizeTimeout;
-      window.addEventListener('resize', () => {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(() => {
-          images.forEach(img => {
-            const realSrc = window.innerWidth <= 600 && img.hasAttribute('data-src-mobile') 
-              ? img.getAttribute('data-src-mobile')
-              : img.getAttribute('data-src');
-            if (realSrc && img.src !== realSrc) {
-              img.src = realSrc;
-            }
-          });
-        }, 250);
-      });
-    });
-  </script>
+  <div class="menu">
+    <div class="menu-content">
+      <a href="https://tatsumitaeron.com" target="_blank">work</a><br>
+      <a href="#" style="pointer-events: none; color: #666666; text-decoration: line-through; cursor: not-allowed;">about</a>
+    </div>
+  </div>
 </body>
 </html>
