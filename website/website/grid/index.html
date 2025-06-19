@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Jean-Baptiste Tatsumi Taeron - Portfolio and Works" />
+  <meta name="keywords" content="Jean-Baptiste Tatsumi Taeron, Portfolio, Art, Design, minimalist, typography, branding, identity, construction, grid, system, light, space, architecture, signage, editorial, packaging, Japanese, French, New York, Paris" />
+  <meta property="og:title" content="Jean-Baptiste Tatsumi Taeron" />
+  <meta property="og:description" content="Portfolio and Works - Minimalist design, typography, and branding with a focus on construction, grid systems, and spatial relationships. Japanese-French designer." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://tatsumitaeron.com" />
+  <meta name="twitter:card" content="summary_large_image" />
+  
+  <link rel="icon" type="image/x-icon" href="/grid/image/favicon.ico">
+  
+  <title>Grid</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #ffb511;
+      color: #da291c;
+      font-family: "Times New Roman", Times, serif;
+      font-weight: normal;
+      font-size: 15px;
+      line-height: 1em;
+      letter-spacing: 0.01em;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+      width: 100%;
+      position: relative;
+    }
+
+    html {
+      overflow-x: hidden;
+      width: 100%;
+    }
+
+    .header {
+      height: 288px;
+      padding: 24px;
+      margin: 0;
+      position: relative;
+    }
+
+    .intro {
+      max-width: 60%;
+      line-height: 1.2em;
+    }
+
+    .name, .tagline, .contact-text {
+      color: #da291c;
+    }
+
+    .tagline {
+      font-style: italic;
+    }
+
+    .contact-info {
+      margin-top: 1em;
+      color: #da291c;
+    }
+
+    .contact-info a {
+      color: #da291c;
+      text-decoration: none;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 0.1em;
+      transition: color 0.1s ease;
+    }
+
+    .contact-info a:hover {
+      color: #FFFFFF;
+    }
+
+    .contact {
+      display: none;
+    }
+
+    .hover-link {
+      color: #da291c;
+      text-decoration: none;
+      transition: color 0.1s ease;
+    }
+
+    .hover-link:hover {
+      color: #FFFFFF;
+    }
+
+    .intro a[href^="mailto:"] {
+      color: #da291c !important;
+      text-decoration: none;
+    }
+
+    .intro a[href^="mailto:"]:hover {
+      color: #FFFFFF !important;
+      text-decoration: none;
+    }
+
+    .image-grid {
+      display: flex;
+      flex-wrap: wrap;
+      column-gap: 12px;
+      row-gap: 12px;
+      justify-content: center;
+      align-items: flex-end;
+      padding: 0;
+    }
+
+    .image-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      height: fit-content;
+      justify-content: flex-end;
+      position: relative;
+      background: #FFFFFF;
+      padding: 0;
+      margin: 0;
+    }
+
+    .responsive-image {
+      opacity: 0;
+      transition: opacity 0.3s ease-in;
+      background: #FFFFFF;
+    }
+
+    .responsive-image.loaded {
+      opacity: 1;
+    }
+
+    .footer {
+      height: 288px;
+      width: 100%;
+      background: #ffb511;
+      position: relative;
+      padding: 24px;
+      margin: 0;
+    }
+
+    .collection {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      color: #da291c;
+      line-height: 1.2em;
+    }
+
+    .collection a {
+      color: #da291c;
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.1em;
+      transition: color 0.1s ease;
+    }
+
+    .collection a:hover {
+      color: #FFFFFF;
+    }
+
+    .caption {
+      font-size: 10px;
+      line-height: 1.2;
+      margin: 0 0 0 0;
+      padding: 4px 0;
+      text-align: left;
+      color: #da291c;
+      height: 36px;
+      background: #ffb511;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .caption br + *,
+    .caption br::after {
+      font-style: normal;
+    }
+
+    .video-container {
+      width: 30vw;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      height: fit-content;
+      justify-content: flex-end;
+      position: relative;
+      margin: 0;
+      padding: 0;
+      flex-shrink: 0;
+      background: #ffb511;
+    }
+
+    .video-wrapper {
+      width: 100%;
+      aspect-ratio: 4/5;
+      background: #ffb511;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      margin: 0;
+      padding: 0;
+      flex-shrink: 0;
+    }
+
+    .responsive-video {
+      width: 90%;
+      height: 90%;
+      object-fit: contain;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      margin: 0;
+      padding: 0;
+      flex-shrink: 0;
+      background: #ffb511;
+    }
+
+    .section-title {
+      color: #da291c;
+      font-size: 15px;
+      line-height: 1.2em;
+      margin-bottom: 24px;
+      width: 100%;
+      padding-left: 24px;
+      text-align: left;
+    }
+
+    .contact-text {
+      color: #666666;
+      text-decoration: none !important;
+    }
+
+    .intro .contact-text {
+      text-decoration: none !important;
+    }
+
+    .intro span.contact-text {
+      text-decoration: none !important;
+    }
+
+    .contact-section {
+      height: 288px;
+      width: 100%;
+      background: #0032a0;
+      position: relative;
+      padding: 24px;
+      margin: 0;
+    }
+
+    .contact-content {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      color: #666666;
+      line-height: 1.2em;
+    }
+
+    .contact-content a {
+      color: #666666;
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.1em;
+      transition: color 0.1s ease;
+    }
+
+    .contact-content a:hover {
+      color: #FFFFFF;
+    }
+
+    .email-links {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      text-align: right;
+      line-height: 1.2em;
+    }
+
+    .menu {
+      position: absolute;
+      bottom: 24px;
+      right: 24px;
+      text-align: right;
+      line-height: 1.2em;
+    }
+
+    .menu-content a {
+      color: #da291c;
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.1em;
+      transition: color 0.1s ease;
+    }
+
+    .menu-content a:hover {
+      color: #FFFFFF;
+    }
+
+    @media (max-width: 600px) {
+      .header {
+        height: 288px;
+        padding: 12px;
+        margin: 0;
+      }
+
+      .intro {
+        max-width: 100%;
+        font-size: 15px;
+        line-height: 1.2;
+        margin: 0;
+      }
+
+      .email-links {
+        position: static;
+        text-align: left;
+        margin-top: 0;
+        line-height: 1.2;
+      }
+
+      .email-links a {
+        display: inline;
+        text-align: left;
+      }
+
+      .email-links a:first-child::after {
+        content: "";
+      }
+
+      .responsive-image, .responsive-video {
+        width: 100vw !important;
+        max-width: 100vw;
+        background: #ffb511;
+      }
+
+      .image-container {
+        background: #FFFFFF;
+        width: 100vw;
+      }
+
+      body {
+        background: #ffb511;
+        color: #da291c;
+        margin: 0;
+        padding: 0;
+        width: 100vw;
+        overflow-x: hidden;
+      }
+
+      .image-grid {
+        row-gap: 72px;
+        width: 100vw;
+        overflow-x: hidden;
+      }
+
+      .contact-info {
+        color: #da291c;
+        margin-top: -0.8em;
+      }
+
+      .contact-info a {
+        color: #da291c;
+        text-decoration: none;
+        text-underline-offset: 0.1em;
+      }
+
+      .contact-info a:hover,
+      .contact-info a:active {
+        color: #FFFFFF;
+      }
+
+      .video-container {
+        width: 100vw;
+        margin: 0;
+        padding: 0;
+        flex-shrink: 0;
+        background: #ffb511;
+      }
+
+      .video-wrapper {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        flex-shrink: 0;
+        background: #ffb511;
+      }
+
+      .responsive-video {
+        width: 90%;
+        height: 90%;
+        margin: 0;
+        padding: 0;
+        flex-shrink: 0;
+        background: #ffb511;
+      }
+
+      .footer {
+        background: #ffb511;
+        margin: 0;
+        height: 288px;
+        padding: 12px;
+      }
+
+      .collection {
+        position: absolute;
+        bottom: 12px;
+        left: 12px;
+        color: #da291c;
+      }
+
+      .caption {
+        margin: 0 0 0 0;
+        padding: 4px;
+        color: #da291c;
+        font-size: 10px;
+        background: #ffb511;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      .hide-on-mobile {
+        display: none;
+      }
+
+      .hover-link {
+        color: #da291c;
+      }
+
+      .hover-link:hover {
+        color: #FFFFFF;
+      }
+
+      .intro a[href^="mailto:"] {
+        color: #da291c !important;
+      }
+
+      .intro a[href^="mailto:"]:hover {
+        color: #FFFFFF !important;
+      }
+
+      .intro span {
+        color: #da291c;
+      }
+
+      .collection a {
+        color: #da291c;
+      }
+
+      .collection a:hover {
+        color: #FFFFFF;
+      }
+
+      .section-title {
+        color: #da291c;
+      }
+
+      .contact-text {
+        color: #da291c;
+        text-decoration: none !important;
+      }
+
+      .intro .contact-text {
+        text-decoration: none !important;
+      }
+
+      .intro span.contact-text {
+        text-decoration: none !important;
+      }
+
+      .contact-section {
+        padding: 12px;
+      }
+
+      .contact-content {
+        bottom: 12px;
+        left: 12px;
+      }
+
+      .email-links {
+        position: static;
+        text-align: right;
+        margin-top: 1em;
+      }
+
+      .menu {
+        bottom: 12px;
+        right: 12px;
+      }
+    }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const images = document.querySelectorAll('.responsive-image');
+      images.forEach(img => {
+        img.onload = function() {
+          img.classList.add('loaded');
+        };
+        if (img.complete) {
+          img.classList.add('loaded');
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+  <div class="header">
+    <div class="intro">
+      <span class="name">jean-baptiste tatsumi taëron</span><br>
+      <span>identities</span>
+    </div>
+    <div class="email-links">
+      <a href="mailto:jeanbaptistetaeron@gmail.com" class="hover-link" target="_blank">jeanbaptistetaeron(at)gmail.com</a><br>
+      <a href="mailto:tatsumitaeron@gmail.com" class="hover-link" target="_blank">tatsumitaeron(at)gmail.com</a>
+    </div>
+  </div>
+
+<div class="image-grid">
+
+  <div class="image-container">
+    <img src="/grid/image/neville-brody.jpg" style="width: 40vw;" class="responsive-image" alt="Neville Brody" loading="lazy">
+    <div class="caption">Neville Brody</div>
+</div>
+
+<div class="image-container">
+  <img src="/grid/image/yusaku-kamakura-tokyo-1964.jpg" style="width: 20vw;" class="responsive-image" alt="Yusaku Kamakura" loading="lazy">
+  <div class="caption">Yusaku Kamakura</div>
+</div>
+
+<div class="image-container">
+  <img src="/grid/image/milton-glaser-i-heart-ny.jpg" style="width: 60vw;" class="responsive-image" alt="Milton Glaser" loading="lazy">
+  <div class="caption">Milton Glaser</div>
+</div>
+
+<div class="image-container">
+  <img src="/grid/image/josef-muller-brockmann.jpg" style="width: 30vw;" class="responsive-image" alt="Josef Müller-Brockmann" loading="lazy">
+  <div class="caption">Josef Müller-Brockmann</div>
+</div>
+
+<div class="image-container">
+  <img src="/grid/image/moon.jpg" style="width: 20vw;" class="responsive-image" alt="Tokyo 1964 Official emblem by Yusaku Kamakura" loading="lazy">
+  <div class="caption">Unknown</div>
+</div>
+
+<div class="image-container">
+  <img src="/grid/image/stone.jpg" style="width: 20vw;" class="responsive-image" alt="Tokyo 1964 Official emblem by Yusaku Kamakura" loading="lazy">
+  <div class="caption">Unknown</div>
+</div>
+
+<div class="image-container">
+  <img src="/grid/image/swissair.jpg" style="width: 30vw;" class="responsive-image" alt="Tokyo 1964 Official emblem by Yusaku Kamakura" loading="lazy">
+  <div class="caption">Unknown</div>
+</div>
+
+  <div class="image-container">
+      <img src="/grid/image/ikko-tanaka.jpg" style="width: 20vw;" class="responsive-image" alt="Ikko Tanaka" loading="lazy">
+      <div class="caption">Ikko Tanaka</div>
+  </div>
+
+  <div class="image-container">
+      <img src="/grid/image/etienne-robial.png" style="width: 30vw;" class="responsive-image" alt="Etienne Robial" loading="lazy">
+      <div class="caption">Etienne Robial</div>
+  </div>
+
+  <div class="image-container">
+      <img src="/grid/image/bruno-monguzzi.png" style="width: 20vw;" class="responsive-image" alt="Bruno Monguzzi" loading="lazy">
+      <div class="caption">Bruno Monguzzi</div>
+  </div>
+
+  <div class="image-container">
+      <img src="/grid/image/josef-muller-brockmann-sbb.jpg" style="width: 20vw;" class="responsive-image" alt="Josef Müller-Brockmann — SBB CFF FFS Manual" loading="lazy">
+      <div class="caption">Josef Müller-Brockmann</div>
+  </div>
+
+  <div class="image-container">
+      <img src="/grid/image/paul-rand-westinghouse.jpg" style="width: 20vw;" class="responsive-image" alt="Paul Rand — Westinghouse (1960)" loading="lazy">
+      <div class="caption">Paul Rand</div>
+  </div>
+
+  <div class="image-container">
+      <img src="/grid/image/bernard-tschumi-folies.jpg" style="width: 20vw;" class="responsive-image" alt="Bernard Tschumi Architects – Esquisse pour les Folies de La Villette" loading="lazy">
+      <div class="caption">Bernard Tschumi</div>
+  </div>
+
+  <div class="image-container">
+      <img src="/grid/image/jean-widmer-pompidou.jpg" style="width: 30vw;" class="responsive-image" alt="Visuel Design (Jean Widmer) — Centre Georges Pompidou" loading="lazy">
+      <div class="caption">Jean Widmer</div>
+  </div>
+
+  <div class="image-container">
+      <img src="/grid/image/etienne-robial-canal-futura.jpg" style="width: 15vw;" class="responsive-image" alt="Etienne Robial — Canal+" loading="lazy">
+      <div class="caption">Etienne Robial</div>
+  </div>
+
+  <div class="image-container">
+      <img src="/grid/image/johannes-gutenberg-bible.jpg" style="width: 30vw;" class="responsive-image" alt="Johannes Gutenberg — Page of the 42 line bible" loading="lazy">
+      <div class="caption">Johannes Gutenberg</div>
+  </div>
+
+  <div class="image-container">
+      <img src="/grid/image/josef-muller-brockmann-grid.jpg" style="width: 30vw;" class="responsive-image" alt="Josef Müller-Brockmann — Grid systems in graphic design" loading="lazy">
+      <div class="caption">Josef Müller-Brockmann</div>
+  </div>
+
+  <div class="image-container">
+      <img src="/grid/image/hans-rudolf-bosshard-grid-1.jpg" style="width: 15vw;" class="responsive-image" alt="Hans Rudolf Bosshard — The typographic grid" loading="lazy">
+      <div class="caption">Hans Rudolf Bosshard</div>
+  </div>
+
+  <div class="image-container">
+      <img src="/grid/image/romek-barber-penguin.jpg" style="width: 15vw;" class="responsive-image" alt="Romek Barber — Penguin Book cover" loading="lazy">
+      <div class="caption">Romek Barber</div>
+  </div>
+
+  <div class="image-container">
+      <img src="/grid/image/karl-gerstner.jpg" style="width: 20vw;" class="responsive-image" alt="Karl Gerstner" loading="lazy">
+      <div class="caption">Karl Gerstner</div>
+  </div>
+
+  <div class="image-container">
+      <img src="/grid/image/enzo-mari-puzzle.jpg" style="width: 20vw;" class="responsive-image" alt="Enzo Mari — 16 Animali Puzzle for Danese Milano" loading="lazy">
+      <div class="caption">Enzo Mari</div>
+  </div>
+
+  <div class="image-container">
+    <img src="/grid/image/hans-rudolf-bosshard-grid-2.jpg" style="width: 15vw;" class="responsive-image" alt="Hans Rudolf Bosshard — The typographic grid" loading="lazy">
+    <div class="caption">Hans Rudolf Bosshard</div>
+  </div>
+
+  <div class="image-container">
+      <img src="/grid/image/juriaan-schrofer.png" style="width: 20vw;" class="responsive-image" alt="Juriaan Schrofer" loading="lazy">
+      <div class="caption">Juriaan Schrofer</div>
+  </div>
+
+  <div class="image-container">
+      <img src="/grid/image/pierre-mendell-vitra.jpg" style="width: 30vw;" class="responsive-image" alt="Vitra by Pierre Mendell" loading="lazy">
+      <div class="caption">Pierre Mendell</div>
+  </div>
+
+  <div class="image-container">
+      <img src="/grid/image/paul-rand-ibm.jpg" style="width: 30vw;" class="responsive-image" alt="IBM by Paul Rand" loading="lazy">
+      <div class="caption">Paul Rand</div>
+  </div>
+
+  <div class="image-container">
+      <img src="/grid/image/le-corbusier.jpg" style="width: 30vw;" class="responsive-image" alt="Le Corbusier" loading="lazy">
+      <div class="caption">Le Corbusier</div>
+  </div>
+
+  <div class="image-container">
+      <img src="/grid/image/katsura-daitokuji-temple.jpg" style="width: 30vw;" class="responsive-image" alt="Katsura & Daitokuji temple" loading="lazy">
+      <div class="caption">Unknown</div>
+  </div>
+
+  <div class="image-container">
+      <img src="/grid/image/norm-hammer.jpg" style="width: 30vw;" class="responsive-image" alt="Norm — Hammer" loading="lazy">
+      <div class="caption">Norm</div>
+  </div>
+
+  <div class="image-container">
+      <img src="/grid/image/etienne-robial-m6.jpg" style="width: 20vw;" class="responsive-image" alt="M6 par Etienne Robial" loading="lazy">
+      <div class="caption">Etienne Robial</div>
+  </div>
+
+  <div class="image-container">
+      <img src="/grid/image/anton-stankowski-deutsche-bank.jpg" style="width: 20vw;" class="responsive-image" alt="Deutsche Bank by Anton Stankowski" loading="lazy">
+      <div class="caption">Anton Stankowski</div>
+  </div>
+
+  <div class="image-container">
+      <img src="/grid/image/notre-dame-paris.jpg" style="width: 20vw;" class="responsive-image" alt="Notre Dame de Paris" loading="lazy">
+      <div class="caption">Unknown</div>
+  </div>
+
+  <div class="image-container">
+      <img src="/grid/image/le-corbusier-modulor.jpg" style="width: 20vw;" class="responsive-image" alt="Le modulor par Le Corbusier" loading="lazy">
+      <div class="caption">Le Corbusier</div>
+  </div>
+
+  <div class="image-container">
+      <img src="/grid/image/folded-paper.jpg" style="width: 20vw;" class="responsive-image" alt="Folded paper" loading="lazy">
+      <div class="caption">Unknown</div>
+  </div>
+  </div>
+
+  <div class="footer">
+    <div class="collection">
+      <span style="white-space:nowrap;">collecting
+      <a href="/logo/">logos</a>,
+      <a href="/grid/">grids</a>,
+      <a href="/construction/">constructions</a>,</span><br>
+      <a href="/love-letter/">love letters</a>,
+      <a href="/wonderwall/">systems</a>, and
+      <a href="https://tatsumi-taeron-idea-collection.tumblr.com" target="_blank">ideas</a>
+    </div>
+  </div>
+  <div class="menu">
+    <div class="menu-content">
+      <a href="https://tatsumitaeron.com" target="_blank">work</a><br>
+      <a href="#" style="pointer-events: none; color: #da291c; text-decoration: line-through; cursor: not-allowed;">about</a>
+    </div>
+  </div>
+</body>
+</html>

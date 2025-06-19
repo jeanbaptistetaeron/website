@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Jean-Baptiste Tatsumi Taeron - Portfolio and Works" />
+  <meta name="keywords" content="Jean-Baptiste Tatsumi Taeron, Portfolio, Art, Design, minimalist, typography, branding, identity, construction, grid, system, light, space, architecture, signage, editorial, packaging, Japanese, French, New York, Paris" />
+  <meta property="og:title" content="Jean-Baptiste Tatsumi Taeron" />
+  <meta property="og:description" content="Portfolio and Works - Minimalist design, typography, and branding with a focus on construction, grid systems, and spatial relationships. Japanese-French designer." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://tatsumitaeron.com" />
+  <meta name="twitter:card" content="summary_large_image" />
+  
+  <link rel="icon" type="image/x-icon" href="/wonderwall/image/favicon.ico">
+  
+  <title>Wonderwall</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #000000;
+      color: #7f7f7f;
+      font-family: "Times New Roman", Times, serif;
+      font-weight: normal;
+      font-size: 15px;
+      line-height: 1em;
+      letter-spacing: 0.01em;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+      width: 100%;
+      position: relative;
+    }
+
+    html {
+      overflow-x: hidden;
+      width: 100%;
+    }
+
+    .header {
+      height: 288px;
+      padding: 24px;
+      margin: 0;
+      position: relative;
+    }
+
+    .intro {
+      max-width: 60%;
+      line-height: 1.2em;
+    }
+
+    .name, .tagline, .contact-text {
+      color: #7f7f7f;
+    }
+
+    .tagline {
+      font-style: italic;
+    }
+
+    .contact-info {
+      margin-top: 1em;
+      color: #7f7f7f;
+    }
+
+    .contact-info a {
+      color: #7f7f7f;
+      text-decoration: none;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 0.1em;
+      transition: color 0.1s ease;
+    }
+
+    .contact-info a:hover {
+      color: #FFFFFF;
+    }
+
+    .contact {
+      display: none;
+    }
+
+    .hover-link {
+      color: #7f7f7f;
+      text-decoration: none;
+      transition: color 0.1s ease;
+    }
+
+    .hover-link:hover {
+      color: #FFFFFF;
+    }
+
+    .intro a[href^="mailto:"] {
+      color: #7f7f7f !important;
+      text-decoration: none;
+    }
+
+    .intro a[href^="mailto:"]:hover {
+      color: #FFFFFF !important;
+      text-decoration: none;
+    }
+
+    .image-grid {
+      display: flex;
+      flex-wrap: wrap;
+      column-gap: 12px;
+      row-gap: 12px;
+      justify-content: center;
+      align-items: flex-end;
+      padding: 0;
+    }
+
+    .image-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      height: fit-content;
+      justify-content: flex-end;
+      position: relative;
+      background: #000000;
+      padding: 0;
+      margin: 0;
+    }
+
+    .responsive-image {
+      background: #000000;
+      transition: opacity 0.3s ease-in;
+      opacity: 1;
+    }
+
+    .footer {
+      height: 288px;
+      width: 100%;
+      background: #000000;
+      position: relative;
+      padding: 24px;
+      margin: 0;
+    }
+
+    .collection {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      color: #7f7f7f;
+      line-height: 1.2em;
+    }
+
+    .collection a {
+      color: #7f7f7f;
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.1em;
+      transition: color 0.1s ease;
+    }
+
+    .collection a:hover {
+      color: #FFFFFF;
+    }
+
+    .caption {
+      font-size: 10px;
+      line-height: 1.2;
+      margin: 0 0 0 0;
+      padding: 4px 0;
+      text-align: left;
+      color: #7f7f7f;
+      height: 36px;
+      background: #000000;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .caption br + *,
+    .caption br::after {
+      font-style: normal;
+    }
+
+    .video-container {
+      width: 30vw;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      height: fit-content;
+      justify-content: flex-end;
+      position: relative;
+      margin: 0;
+      padding: 0;
+      flex-shrink: 0;
+      background: #000000;
+    }
+
+    .video-wrapper {
+      width: 100%;
+      aspect-ratio: 4/5;
+      background: #000000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      margin: 0;
+      padding: 0;
+      flex-shrink: 0;
+    }
+
+    .responsive-video {
+      width: 90%;
+      height: 90%;
+      object-fit: contain;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      margin: 0;
+      padding: 0;
+      flex-shrink: 0;
+      background: #000000;
+    }
+
+    .section-title {
+      color: #7f7f7f;
+      font-size: 15px;
+      line-height: 1.2em;
+      margin-bottom: 24px;
+      width: 100%;
+      padding-left: 24px;
+      text-align: left;
+    }
+
+    .contact-text {
+      color: #7f7f7f;
+      text-decoration: none !important;
+    }
+
+    .intro .contact-text {
+      text-decoration: none !important;
+    }
+
+    .intro span.contact-text {
+      text-decoration: none !important;
+    }
+
+    .contact-section {
+      height: 288px;
+      width: 100%;
+      background: #ffb511;
+      position: relative;
+      padding: 24px;
+      margin: 0;
+    }
+
+    .contact-content {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      color: #7f7f7f;
+      line-height: 1.2em;
+    }
+
+    .contact-content a {
+      color: #7f7f7f;
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.1em;
+      transition: color 0.1s ease;
+    }
+
+    .contact-content a:hover {
+      color: #FFFFFF;
+    }
+
+    .email-links {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      text-align: right;
+      line-height: 1.2em;
+    }
+
+    .menu {
+      position: absolute;
+      bottom: 24px;
+      right: 24px;
+      text-align: right;
+      line-height: 1.2em;
+    }
+
+    .menu-content a {
+      color: #7f7f7f;
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.1em;
+      transition: color 0.1s ease;
+    }
+
+    .menu-content a:hover {
+      color: #FFFFFF;
+    }
+
+    @media (max-width: 600px) {
+      .header {
+        height: 288px;
+        padding: 12px;
+        margin: 0;
+      }
+
+      .intro {
+        max-width: 100%;
+        font-size: 15px;
+        line-height: 1.2;
+        margin: 0;
+      }
+
+      .email-links {
+        position: static;
+        text-align: left;
+        margin-top: 0;
+        line-height: 1.2;
+      }
+
+      .email-links a {
+        display: inline;
+        text-align: left;
+      }
+
+      .email-links a:first-child::after {
+        content: "";
+      }
+
+      .responsive-image, .responsive-video {
+        width: 100vw !important;
+        max-width: 100vw;
+        background: #000000;
+      }
+
+      .image-container {
+        background: #000000;
+        width: 100vw;
+      }
+
+      body {
+        background: #000000;
+        color: #7f7f7f;
+        margin: 0;
+        padding: 0;
+        width: 100vw;
+        overflow-x: hidden;
+      }
+
+      .image-grid {
+        row-gap: 72px;
+        width: 100vw;
+        overflow-x: hidden;
+      }
+
+      .contact-info {
+        color: #7f7f7f;
+        margin-top: -0.8em;
+      }
+
+      .contact-info a {
+        color: #7f7f7f;
+        text-decoration: none;
+        text-underline-offset: 0.1em;
+      }
+
+      .contact-info a:hover,
+      .contact-info a:active {
+        color: #FFFFFF;
+      }
+
+      .video-container {
+        width: 100vw;
+        margin: 0;
+        padding: 0;
+        flex-shrink: 0;
+        background: #000000;
+      }
+
+      .video-wrapper {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        flex-shrink: 0;
+        background: #000000;
+      }
+
+      .responsive-video {
+        width: 90%;
+        height: 90%;
+        margin: 0;
+        padding: 0;
+        flex-shrink: 0;
+        background: #000000;
+      }
+
+      .footer {
+        background: #000000;
+        margin: 0;
+        height: 288px;
+        padding: 12px;
+      }
+
+      .collection {
+        position: absolute;
+        bottom: 12px;
+        left: 12px;
+        color: #7f7f7f;
+      }
+
+      .caption {
+        margin: 0 0 0 0;
+        padding: 4px;
+        color: #7f7f7f;
+        font-size: 10px;
+        background: #000000;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      .hide-on-mobile {
+        display: none;
+      }
+
+      .hover-link {
+        color: #7f7f7f;
+      }
+
+      .hover-link:hover {
+        color: #FFFFFF;
+      }
+
+      .intro a[href^="mailto:"] {
+        color: #7f7f7f !important;
+      }
+
+      .intro a[href^="mailto:"]:hover {
+        color: #FFFFFF !important;
+      }
+
+      .intro span {
+        color: #7f7f7f;
+      }
+
+      .collection {
+        color: #7f7f7f;
+      }
+
+      .collection a {
+        color: #7f7f7f;
+      }
+
+      .collection a:hover {
+        color: #FFFFFF;
+      }
+
+      .section-title {
+        color: #7f7f7f;
+      }
+
+      .contact-text {
+        color: #7f7f7f;
+        text-decoration: none !important;
+      }
+
+      .intro .contact-text {
+        text-decoration: none !important;
+      }
+
+      .intro span.contact-text {
+        text-decoration: none !important;
+      }
+
+      .contact-section {
+        padding: 12px;
+      }
+
+      .contact-content {
+        bottom: 12px;
+        left: 12px;
+      }
+
+      .email-links {
+        position: static;
+        text-align: right;
+        margin-top: 1em;
+      }
+
+      .menu {
+        bottom: 12px;
+        right: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="intro">
+      <span class="name">jean-baptiste tatsumi taëron</span><br>
+      <span>identities</span>
+    </div>
+    <div class="email-links">
+      <a href="mailto:jeanbaptistetaeron@gmail.com" class="hover-link" target="_blank">jeanbaptistetaeron(at)gmail.com</a><br>
+      <a href="mailto:tatsumitaeron@gmail.com" class="hover-link" target="_blank">tatsumitaeron(at)gmail.com</a>
+    </div>
+  </div>
+
+  <div class="image-grid">
+
+    <div class="image-container">
+      <img src="/wonderwall/image/sempe-new-york.png" style="width: 40vw;" class="responsive-image" alt="Sempé" loading="lazy">
+      <div class="caption">Sempé</div>
+    </div>
+
+  <div class="image-container">
+    <img src="/wonderwall/image/archimaps-inside-the-scale-model-hall-of-the-ecole-nationale-des-ponts-et-chauss.jpg" style="width: 50vw;" class="responsive-image" alt="Ecole Nationale des Ponts et Chaussees" loading="lazy">
+    <div class="caption">Ecole Nationale des Ponts et Chaussees</div>
+  </div>
+
+  <div class="image-grid">
+    <div class="image-container">
+      <img src="/wonderwall/image/salan-dunand-and-his-son-work-on-panels-for-the-luxury-ship-atlantique-1930.jpg" style="width: 40vw;" class="responsive-image" alt="Jean Dunand" loading="lazy">
+      <div class="caption">Jean Dunand</div>
+    </div>
+
+    <div class="image-container">
+      <img src="/wonderwall/image/george-dunning-yellow-submarine.jpg" style="width: 40vw;" class="responsive-image" alt="Barry McGee" loading="lazy">
+      <div class="caption">George Dunning</div>
+    </div>
+
+    <div class="image-container">
+      <img src="/wonderwall/image/barry-mcgee.jpg" style="width: 20vw;" class="responsive-image" alt="Barry McGee" loading="lazy">
+      <div class="caption">Barry McGee</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/ellsworth-kelly.jpg" style="width: 30vw;" class="responsive-image" alt="Ellsworth Kelly" loading="lazy">
+      <div class="caption">Ellsworth Kelly</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/vitra.jpg" style="width: 40vw;" class="responsive-image" alt="Vitra" loading="lazy">
+      <div class="caption">Vitra</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/cruz-novillo-abecedario-animal-animal-alphabet.jpg" style="width: 10vw;" class="responsive-image" alt="Cruz Novillo – Abecedario Animal (animal alphabet)" loading="lazy">
+      <div class="caption">Cruz Novillo</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/dragon-ball-z.jpg" style="width: 20vw;" class="responsive-image" alt="Dragon Ball Z" loading="lazy">
+      <div class="caption">Akira Toriyama</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/enzo-mari.jpg" style="width: 20vw;" class="responsive-image" alt="Enzo Mari" loading="lazy">
+      <div class="caption">Enzo Mari</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/etienne-robial.jpg" style="width: 10vw;" class="responsive-image" alt="Etienne Robial" loading="lazy">
+      <div class="caption">Etienne Robial</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/peter-mendelsund.jpg" style="width: 30vw;" class="responsive-image" alt="Peter Mendelsund" loading="lazy">
+      <div class="caption">Peter Mendelsund</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/enzo-mari-bruno-munari-danese-boxes-and-packaging.jpg" style="width: 20vw;" class="responsive-image" alt="Enzo Mari, Bruno Munari — Danese boxes and packaging" loading="lazy">
+      <div class="caption">Enzo Mari, Bruno Munari</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/atlas-barcelona-design-museum-with-tatsumi-taron.jpg" style="width: 30vw;" class="responsive-image" alt="Atlas – Barcelona Design Museum (with Tatsumi Taëron)" loading="lazy">
+      <div class="caption">Atlas</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/peter-mendelsund-red-book.jpg" style="width: 40vw;" class="responsive-image" alt="Peter Mendelsund" loading="lazy">
+      <div class="caption">Peter Mendelsund</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/jean-philippe-bretin-inventaire-2008---2013.jpg" style="width: 30vw;" class="responsive-image" alt="Jean Philippe Bretin – Inventaire (2008 - 2013)" loading="lazy">
+      <div class="caption">Jean Philippe Bretin</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/willy-fleckhaus.jpg" style="width: 20vw;" class="responsive-image" alt="Willy Fleckhaus" loading="lazy">
+      <div class="caption">Willy Fleckhaus</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/jean-le-rond-dalembert-denis-diderot-figurative-system-of-human-knowledge.jpg" style="width: 30vw;" class="responsive-image" alt="Jean le Rond d'Alembert, Denis Diderot — Figurative system of human knowledge" loading="lazy">
+      <div class="caption">Jean le Rond d'Alembert, Denis Diderot</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/michael-bierut-30-years-90-notebooks-project-team-michael-bierut-partner-in-char.jpg" style="width: 10vw;" class="responsive-image" alt="Michael Bierut — 30 Years 90 Notebooks Project Team: Michael Bierut, partner-in-charge and designer Tracey Cameron, exhibition design and curation Hamish Smyth, poster design" loading="lazy">
+      <div class="caption">Michael Bierut</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/karel-martens.png" style="width: 30vw;" class="responsive-image" alt="Karel Martens" loading="lazy">
+      <div class="caption">Karel Martens</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/philippe-apeloig-vivo-in-typo-2008.jpg" style="width: 20vw;" class="responsive-image" alt="Philippe Apeloig — Vivo in Typo (2008)" loading="lazy">
+      <div class="caption">Philippe Apeloig</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/iwan-baan-olafur-eliasson-exhibition.jpg" style="width: 30vw;" class="responsive-image" alt="Iwan Baan – Olafur Eliasson exhibition" loading="lazy">
+      <div class="caption">Olafur Eliasson</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/burnham-celestial-handbook-1966.jpg" style="width: 15vw;" class="responsive-image" alt="Burnham – Celestial Handbook (1966)" loading="lazy">
+      <div class="caption">Burnham</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/sonia-delaunay-blaise-cendrars-la-prose-du-transsibrien-et-de-la-petite-jehanne-.jpg" style="width: 15vw;" class="responsive-image" alt="Sonia Delaunay, Blaise Cendrars – La prose du Transsibérien et de la Petite Jehanne de France (1913)" loading="lazy">
+      <div class="caption">Sonia Delaunay</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/johannes-vermeer-the-art-of-painting-1665-1667.jpg" style="width: 30vw;" class="responsive-image" alt="Johannes Vermeer – The art of painting (1665-1667)" loading="lazy">
+      <div class="caption">Johannes Vermeer</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/philippe-apeloig-typo-apeloig-2014-2015.jpg" style="width: 30vw;" class="responsive-image" alt="Philippe Apeloig – Typo Apeloig (2014-2015)" loading="lazy">
+      <div class="caption">Philippe Apeloig</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/enzo-mari.jpg" style="width: 20vw;" class="responsive-image" alt="Enzo Mari" loading="lazy">
+      <div class="caption">Enzo Mari</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/librairie-shakespeare.jpg" style="width: 30vw;" class="responsive-image" alt="Librairie Shakespeare" loading="lazy">
+      <div class="caption">Librairie Shakespeare</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/aby-warburg-mnemosyne-atlas.jpg" style="width: 20vw;" class="responsive-image" alt="Aby Warburg – Mnemosyne atlas" loading="lazy">
+      <div class="caption">Aby Warburg</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/the-beatles-sgt-peppers-lonely-hearts-club-band-1967-installation-peter-blake-ph.jpg" style="width: 20vw;" class="responsive-image" alt="The Beatles — Sgt. Pepper's Lonely Hearts Club Band (1967) Installation: Peter Blake Photography: Michael Cooper" loading="lazy">
+      <div class="caption">The Beatles</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/le-corbusier-la-cit-radieuse.jpg" style="width: 20vw;" class="responsive-image" alt="Le Corbusier — La cité radieuse" loading="lazy">
+      <div class="caption">Le Corbusier</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/kamon.jpg" style="width: 20vw;" class="responsive-image" alt="Kamon" loading="lazy">
+      <div class="caption">Kamon</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/paul-rand.jpg" style="width: 10vw;" class="responsive-image" alt="Paul Rand" loading="lazy">
+      <div class="caption">Paul Rand</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/herb-lubalin-idea.jpg" style="width: 20vw;" class="responsive-image" alt="Herb Lubalin — idea" loading="lazy">
+      <div class="caption">Herb Lubalin</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/cornel-windlin-ronan-erwan-bouroullec-drawing-2004-2012.jpg" style="width: 20vw;" class="responsive-image" alt="Cornel Windlin — Ronan & Erwan Bouroullec: Drawing (2004-2012)" loading="lazy">
+      <div class="caption">Ronan & Erwan Bouroullec</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/scott-mccloud-the-invisible-art.jpg" style="width: 40vw;" class="responsive-image" alt="Scott McCloud — The invisible art" loading="lazy">
+      <div class="caption">Scott McCloud</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/vassily-kandinsky.jpg" style="width: 40vw;" class="responsive-image" alt="Vassily Kandinsky" loading="lazy">
+      <div class="caption">Vassily Kandinsky</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/jean-widmer-centre-de-cration-industrielle.jpg" style="width: 20vw;" class="responsive-image" alt="Jean Widmer — Centre de création industrielle" loading="lazy">
+      <div class="caption">Jean Widmer</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/bruno-munari-design-as-art-1971.jpg" style="width: 20vw;" class="responsive-image" alt="Bruno Munari — Design as art (1971)" loading="lazy">
+      <div class="caption">Bruno Munari</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/charles-ray-eames.jpg" style="width: 10vw;" class="responsive-image" alt="CHarles & Ray Eames" loading="lazy">
+      <div class="caption">CHarles & Ray Eames</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/paul-rand-alone.jpg" style="width: 20vw;" class="responsive-image" alt="Paul Rand" loading="lazy">
+      <div class="caption">Paul Rand</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/paul-rand-wall.jpg" style="width: 20vw;" class="responsive-image" alt="Paul Rand" loading="lazy">
+      <div class="caption">Paul Rand</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/paul-renner-etienne-robial-avec-stphane-mailliard-marc-lescop-et-sylvain-massero.jpg" style="width: 20vw;" class="responsive-image" alt="Paul Renner, Etienne Robial avec Stéphane Mailliard, Marc Lescop et Sylvain Masseron — Futura Canal+ (1994)" loading="lazy">
+      <div class="caption">Paul Renner, Etienne Robial</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/oskar-schlemmer.jpg" style="width: 20vw;" class="responsive-image" alt="Oskar Schlemmer" loading="lazy">
+      <div class="caption">Oskar Schlemmer</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/icancauseaconstellation-sou-fujimoto---house-na---tokyo-japan---2011.jpg" style="width: 20vw;" class="responsive-image" alt="icancauseaconstellation: "   © sou fujimoto - house NA - tokyo, japan - 2011"" loading="lazy">
+      <div class="caption">Sou Fujimoto"</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/alexey-brodovitch-ballet.jpg" style="width: 20vw;" class="responsive-image" alt="Alexey Brodovitch — Ballet" loading="lazy">
+      <div class="caption">Alexey Brodovitch</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/herb-lubalin.jpg" style="width: 40vw;" class="responsive-image" alt="Herb Lubalin" loading="lazy">
+      <div class="caption">Herb Lubalin</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/gilles-barbier.jpg" style="width: 15vw;" class="responsive-image" alt="Gilles Barbier" loading="lazy">
+      <div class="caption">Gilles Barbier</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/hans-arp.jpg" style="width: 20vw;" class="responsive-image" alt="Hans Arp" loading="lazy">
+      <div class="caption">Hans Arp</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/etienne-robial-square.jpg" style="width: 30vw;" class="responsive-image" alt="Etienne Robial" loading="lazy">
+      <div class="caption">Etienne Robial</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/ladislaw-starewicz.jpg" style="width: 20vw;" class="responsive-image" alt="Ladislaw Starewicz" loading="lazy">
+      <div class="caption">Ladislaw Starewicz</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/paul-cox-book.jpg" style="width: 30vw;" class="responsive-image" alt="Paul Cox" loading="lazy">
+      <div class="caption">Paul Cox</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/cincinnatis-old-main-library-demolished-in-1955.jpg" style="width: 30vw;" class="responsive-image" alt="Cincinnati's Old Main library (demolished in 1955)" loading="lazy">
+      <div class="caption">Cincinnati library</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/henri-matisse.jpg" style="width: 20vw;" class="responsive-image" alt="Henri Matisse" loading="lazy">
+      <div class="caption">Henri Matisse</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/le-corbusier-painting.jpg" style="width: 15vw;" class="responsive-image" alt="Le Corbusier" loading="lazy">
+      <div class="caption">Le Corbusier</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/alexey-brodovitch-floor.jpg" style="width: 10vw;" class="responsive-image" alt="Alexey Brodovitch" loading="lazy">
+      <div class="caption">Alexey Brodovitch</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/jean-prouve-wall.jpg" style="width: 15vw;" class="responsive-image" alt="Jean Prouvé" loading="lazy">
+      <div class="caption">Jean Prouvé</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/marcia-hafif-oil-studies-197374.jpg" style="width: 20vw;" class="responsive-image" alt="Marcia Hafif — Oil Studies (1973/74)" loading="lazy">
+      <div class="caption">Marcia Hafif</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/pierre-chareau.jpg" style="width: 20vw;" class="responsive-image" alt="Pierre Chareau" loading="lazy">
+      <div class="caption">Pierre Chareau</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/jack-hudson.png" style="width: 15vw;" class="responsive-image" alt="Jack Hudson" loading="lazy">
+      <div class="caption">Jack Hudson</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/saul-steinberg.jpg" style="width: 20vw;" class="responsive-image" alt="Saul Steinberg" loading="lazy">
+      <div class="caption">Saul Steinberg</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/paul-cox-box.jpg" style="width: 15vw;" class="responsive-image" alt="Paul Cox" loading="lazy">
+      <div class="caption">Paul Cox</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/henri-matisse-drawing-images-for-the-chapelle-du-rosaire-vence-from-his-bed-in-t.jpg" style="width: 20vw;" class="responsive-image" alt="Henri Matisse — drawing images for the Chapelle du Rosaire, Vence, from his bed in the Hotel Regina, Nice-Ciminez (1950)" loading="lazy">
+      <div class="caption">Henri Matisse</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/ruth-asawa-in-her-home-with-her-crocheted-wire-sculptures-1954.jpg" style="width: 20vw;" class="responsive-image" alt="Ruth Asawa — in her home with her crocheted wire sculptures (1954)" loading="lazy">
+      <div class="caption">Ruth Asawa</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/charles-ray-eames-chair.jpg" style="width: 20vw;" class="responsive-image" alt="Charles & Ray Eames" loading="lazy">
+      <div class="caption">Charles & Ray Eames</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/bruno-munari-face.png" style="width: 20vw;" class="responsive-image" alt="Bruno Munari" loading="lazy">
+      <div class="caption">Bruno Munari</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/saul-steinberg-group.jpg" style="width: 20vw;" class="responsive-image" alt="Saul Steinberg" loading="lazy">
+      <div class="caption">Saul Steinberg</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/constantin-brancusi.jpg" style="width: 15vw;" class="responsive-image" alt="Constantin Brancusi" loading="lazy">
+      <div class="caption">Constantin Brancusi</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/andre-breton.jpg" style="width: 15vw;" class="responsive-image" alt="André Breton" loading="lazy">
+      <div class="caption">André Breton</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/renzo-piano.jpg" style="width: 15vw;" class="responsive-image" alt="Renzo Piano" loading="lazy">
+      <div class="caption">Renzo Piano</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/olle-eksell.jpg" style="width: 20vw;" class="responsive-image" alt="Olle Eksell" loading="lazy">
+      <div class="caption">Olle Eksell</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/ronan-erwan-bouroullec.jpg" style="width: 30vw;" class="responsive-image" alt="Ronan & Erwan Bouroullec" loading="lazy">
+      <div class="caption">Ronan & Erwan Bouroullec</div>
+    </div>
+    
+    <div class="image-container">
+      <img src="/wonderwall/image/lech-majewski.jpg" style="width: 20vw;" class="responsive-image" alt="Lech Majewski" loading="lazy">
+      <div class="caption">Lech Majewski</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="collection">
+      <span style="white-space:nowrap;">collecting
+      <a href="/logo/" target="_blank">signs</a>,
+      <a href="/grid/" target="_blank">plans</a>,
+      <a href="/construction/" target="_blank">constructions</a>,</span><br>
+      <a href="/love-letter/" target="_blank">love letters</a>,
+      <a href="/wonderwall/" target="_blank">systems</a>, and
+      <a href="https://tatsumi-taeron-idea-collection.tumblr.com" target="_blank">ideas</a>
+    </div>
+  </div>
+  <div class="menu">
+    <div class="menu-content">
+      <a href="https://tatsumitaeron.com" target="_blank">work</a><br>
+      <a href="#" style="pointer-events: none; color: #7f7f7f; text-decoration: line-through; cursor: not-allowed;">about</a>
+    </div>
+  </div>
+</body>
+</html>

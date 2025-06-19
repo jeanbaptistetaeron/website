@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Jean-Baptiste Tatsumi Taeron - Portfolio and Works" />
+  <meta name="keywords" content="Jean-Baptiste Tatsumi Taeron, Portfolio, Art, Design, minimalist, typography, branding, identity, construction, grid, system, light, space, architecture, signage, editorial, packaging, Japanese, French, New York, Paris" />
+  <meta property="og:title" content="Jean-Baptiste Tatsumi Taeron" />
+  <meta property="og:description" content="Portfolio and Works - Minimalist design, typography, and branding with a focus on construction, grid systems, and spatial relationships. Japanese-French designer." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://tatsumitaeron.com" />
+  <meta name="twitter:card" content="summary_large_image" />
+  
+  <link rel="icon" type="image/x-icon" href="/logo/image/favicon.ico">
+  
+  <title>Logo</title>
+  <style>
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: #ffb511;
+      color: #da291c;
+      font-family: "Times New Roman", Times, serif;
+      font-weight: normal;
+      font-size: 15px;
+      line-height: 1em;
+      letter-spacing: 0.01em;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+      width: 100%;
+      position: relative;
+    }
+
+    html {
+      overflow-x: hidden;
+      width: 100%;
+    }
+
+    .image-grid {
+      display: flex;
+      flex-wrap: wrap;
+      column-gap: 12px;
+      row-gap: 12px;
+      justify-content: center;
+      align-items: flex-end;
+      padding: 0;
+    }
+
+    .image-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      height: fit-content;
+      justify-content: flex-end;
+      position: relative;
+      background: #FFFFFF;
+      padding: 0;
+      margin: 0;
+    }
+
+    .video-container {
+      width: 30vw;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      height: fit-content;
+      justify-content: flex-end;
+      position: relative;
+      margin: 0;
+      padding: 0;
+      flex-shrink: 0;
+      background: #ffb511;
+    }
+
+    .responsive-image {
+      opacity: 0;
+      transition: opacity 0.3s ease-in;
+      background: #FFFFFF;
+    }
+
+    .responsive-image.loaded {
+      opacity: 1;
+    }
+
+    .responsive-video {
+      width: 90%;
+      height: 90%;
+      object-fit: contain;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      margin: 0;
+      padding: 0;
+      flex-shrink: 0;
+      background: #ffb511;
+    }
+    
+    .video-wrapper {
+      width: 100%;
+      aspect-ratio: 4/5;
+      background: #ffb511;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      margin: 0;
+      padding: 0;
+      flex-shrink: 0;
+    }
+    
+    .caption {
+      font-size: 10px;
+      line-height: 1.2;
+      margin: 0 0 0 0;
+      padding: 4px 0;
+      text-align: left;
+      color: #da291c;
+      height: 36px;
+      background: #ffb511;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .caption br + *,
+    .caption br::after {
+      font-style: normal;
+    }
+
+
+
+    .header {
+      height: 288px;
+      padding: 24px;
+      margin: 0;
+      position: relative;
+    }
+
+    .intro {
+      max-width: 60%;
+      line-height: 1.2em;
+    }
+
+    .name, .tagline, .contact-text {
+      color: #da291c;
+    }
+
+    .section-title {
+      color: #da291c;
+      font-size: 15px;
+      line-height: 1.2em;
+      margin-bottom: 24px;
+      width: 100%;
+      padding-left: 24px;
+      text-align: left;
+    }
+
+
+
+    .contact-info {
+      margin-top: 1em;
+      color: #da291c;
+    }
+
+    .contact-info a {
+      color: #da291c;
+      text-decoration: none;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 0.1em;
+      transition: color 0.1s ease;
+    }
+
+    .contact-info a:hover {
+      color: #FFFFFF;
+    }
+
+    .contact {
+      display: none;
+    }
+
+    .hover-link {
+      color: #da291c;
+      text-decoration: none;
+      transition: color 0.1s ease;
+    }
+
+    .hover-link:hover {
+      color: #FFFFFF;
+    }
+
+    .intro a[href^="mailto:"] {
+      color: #da291c !important;
+      text-decoration: none;
+    }
+
+    .intro a[href^="mailto:"]:hover {
+      color: #FFFFFF !important;
+      text-decoration: none;
+    }
+
+    .contact-text {
+      color: #da291c;
+      text-decoration: none !important;
+    }
+
+    .intro .contact-text {
+      text-decoration: none !important;
+    }
+
+    .intro span.contact-text {
+      text-decoration: none !important;
+    }
+
+    .contact-section {
+      height: 288px;
+      width: 100%;
+      background: #ffb511;
+      position: relative;
+      padding: 24px;
+      margin: 0;
+    }
+
+    .contact-content {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      color: #da291c;
+      line-height: 1.2em;
+    }
+
+    .contact-content a {
+      color: #da291c;
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.1em;
+      transition: color 0.1s ease;
+    }
+
+    .contact-content a:hover {
+      color: #FFFFFF;
+    }
+
+    .email-links {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      text-align: right;
+      line-height: 1.2em;
+    }
+
+
+
+    .footer {
+      height: 288px;
+      padding: 24px;
+      margin: 0;
+      position: relative;
+    }
+
+    .collection {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  max-width: 60%;
+  color: #da291c;
+  line-height: 1.2em;
+}
+
+.collection a {
+  color: #da291c;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.1em;
+  transition: color 0.1s ease;
+}
+
+.collection a:hover {
+  color: #FFFFFF;
+}
+
+.menu {
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  text-align: right;
+  line-height: 1.2em;
+}
+
+.menu a {
+  color: #da291c;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.1em;
+  transition: color 0.1s ease;
+}
+
+.menu a:hover {
+  color: #FFFFFF;
+}
+
+
+
+
+@media (max-width: 600px) {
+
+body {
+  background: #ffb511;
+  color: #da291c;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+.image-grid {
+  row-gap: 72px;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+.image-container,
+.video-container,
+.video-wrapper {
+  background: #ffb511;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.responsive-image,
+.responsive-video {
+  width: 100vw !important;
+  max-width: 100vw;
+  background: #ffb511;
+}
+
+.responsive-video {
+  width: 90%;
+  height: 90%;
+}
+
+.caption {
+  margin: 0;
+  padding: 4px;
+  color: #da291c;
+  font-size: 10px;
+  background: #ffb511;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+
+.header {
+  height: 288px;
+  padding: 12px;
+  margin: 0;
+}
+
+.intro {
+  max-width: 100%;
+  font-size: 15px;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.intro a[href^="mailto:"] {
+  color: #da291c !important;
+  text-decoration: underline !important;
+  text-underline-offset: 0.1em;
+}
+
+.intro a[href^="mailto:"]:hover {
+  color: #FFFFFF !important;
+}
+
+.intro span,
+.section-title,
+.contact-text,
+.intro .contact-text,
+.intro span.contact-text {
+  color: #da291c;
+  text-decoration: none !important;
+}
+
+.contact-info {
+  color: #da291c;
+  margin-top: -0.8em;
+}
+
+.contact-info a {
+  color: #da291c;
+  text-decoration: underline;
+  text-underline-offset: 0.1em;
+}
+
+.contact-info a:hover,
+.contact-info a:active {
+  color: #FFFFFF;
+}
+
+.email-links {
+  position: static;
+  text-align: right;
+  margin-top: 1em;
+  line-height: 1.2;
+}
+
+.email-links a {
+  display: inline;
+  text-align: left;
+}
+
+.email-links a:first-child::after {
+  content: "";
+}
+
+.hide-on-mobile {
+  display: none;
+}
+
+.hover-link {
+  color: #da291c;
+  text-decoration: underline;
+}
+
+.hover-link:hover {
+  color: #FFFFFF;
+}
+
+.contact-section {
+  padding: 12px;
+}
+
+.contact-content {
+  bottom: 12px;
+  left: 12px;
+}
+
+.footer {
+  background: #ffb511;
+  margin: 0;
+  height: 288px;
+  padding: 12px;
+}
+
+.collection {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  color: #da291c;
+}
+
+.collection a {
+  color: #da291c;
+  text-decoration: underline;
+}
+
+.collection a:hover {
+  color: #FFFFFF;
+}
+
+.menu {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  color: #da291c;
+}
+}
+
+
+
+
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const images = document.querySelectorAll('.responsive-image');
+      
+      const loadImage = (img) => {
+        const src = img.getAttribute('src');
+        if (!src) return;
+        
+        const tempImg = new Image();
+        tempImg.onload = () => {
+          img.classList.add('loaded');
+        };
+        tempImg.onerror = () => {
+          console.error('Failed to load image:', src);
+        };
+        tempImg.src = src;
+      };
+
+      // Load all images
+      images.forEach(loadImage);
+
+      // Handle lazy loading
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            loadImage(entry.target);
+            observer.unobserve(entry.target);
+          }
+        });
+      });
+
+      images.forEach(img => observer.observe(img));
+    });
+  </script>
+</head>
+<body>
+  <div class="header">
+    <div class="intro">
+      <span class="name">jean-baptiste tatsumi taëron</span><br>
+      <span>identities</span>
+    </div>
+    <div class="email-links">
+      <a href="mailto:jeanbaptistetaeron@gmail.com" class="hover-link" target="_blank">jeanbaptistetaeron(at)gmail.com</a><br>
+      <a href="mailto:tatsumitaeron@gmail.com" class="hover-link" target="_blank">tatsumitaeron(at)gmail.com</a>
+    </div>
+  </div>
+
+  <div class="image-grid">
+
+    <div class="image-container">
+      <img src="/logo/image/tumblr_n85iwbwalk1r70t2xo1_1280 2.jpeg" style="width: 40vw;" class="responsive-image" alt="Cy Twombly Drawing" loading="lazy">
+      <div class="caption">Cy Twombly<br></div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/Photo by Telerama on January 26, 2017.jpg" style="width: 40vw;" class="responsive-image" alt="Unknown Artwork" loading="lazy">
+      <div class="caption">Unknown<br></div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/hatonomori_art_130926983_1347238178948715_4231538755246043151_n_bw.jpg" style="width: 20vw;" class="responsive-image" alt="Philippe Weisbecker Artwork" loading="lazy">
+      <div class="caption">Philippe Weisbecker<br></div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/tumblr_pgd44cLmuo1uag3nfo1_1280_bw.jpg" style="width: 30vw;" class="responsive-image" alt="Unknown Artwork" loading="lazy">
+      <div class="caption">Unknown<br></div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/roland-topor.jpg" style="width: 40vw;" class="responsive-image" alt="Roland Topor Artwork" loading="lazy">
+      <div class="caption">Roland Topor<br></div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/keith-haring.jpg" style="width: 10vw;" class="responsive-image" alt="Keith Haring Artwork" loading="lazy">
+      <div class="caption">Keith Haring<br></div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/679800034069528576.jpg" style="width: 20vw;" class="responsive-image" alt="Unknown Artwork" loading="lazy">
+      <div class="caption">Unknown<br></div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/jason-polan.jpg" style="width: 40vw;" class="responsive-image" alt="Jason Polan Artwork" loading="lazy">
+      <div class="caption">Jason Polan<br></div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/alexander-girard-love.jpg" style="width: 10vw;" class="responsive-image" alt="Alexander Girard Love" loading="lazy">
+      <div class="caption">Alexander Girard</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/de-beet-van-cobra.jpg" style="width: 30vw;" class="responsive-image" alt="De beet van cobra" loading="lazy">
+      <div class="caption">Unknown</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/nina.jpg" style="width: 20vw;" class="responsive-image" alt="Nina" loading="lazy">
+      <div class="caption">Unknown</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/jan-yoors-1958.jpg" style="width: 40vw;" class="responsive-image" alt="Jan Yoors" loading="lazy">
+      <div class="caption">Jan Yoors</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/adrian_frutiger_univers-1957.jpg" style="width: 10vw;" class="responsive-image" alt="Adrian Frutiger" loading="lazy">
+      <div class="caption">Adrian Frutiger</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/robert-brownjohn-1960ne.jpg" style="width: 70vw;" class="responsive-image" alt="Robert Brownjohn" loading="lazy">
+      <div class="caption">Robert Brownjohn</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/unimark-massimo-vignelli-bob-noorda.jpg" style="width: 20vw;" class="responsive-image" alt="Unimark" loading="lazy">
+      <div class="caption">Massimo Vignelli and Bob Noorda</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/robert-brownjohn-irwin-1964.jpg" style="width: 20vw;" class="responsive-image" alt="Robert Brownjohn" loading="lazy">
+      <div class="caption">Robert Brownjohn</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/celestino-piatti-deutscher-taschenbuch-verlag.jpg" style="width: 40vw;" class="responsive-image" alt="Celestino Piatti Deutscher Taschenbuch Verlag" loading="lazy">
+      <div class="caption">Celestino Piatti</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/107267248418.jpg" style="width: 40vw;" class="responsive-image" alt="Celestino Piatti Deutscher Taschenbuch Verlag" loading="lazy">
+      <div class="caption">Unknown</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/unimark-international-ny-city-subway-1970.jpg" style="width: 40vw;" class="responsive-image" alt="Unimark NY City Subway" loading="lazy">
+      <div class="caption">Massimo Vignelli and Bob Noorda</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/mm-paris-no-ghost-just-a-shell-2000.jpg" style="width: 20vw;" class="responsive-image" alt="M/M Paris No ghost just a shell" loading="lazy">
+      <div class="caption">M/M Paris</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/japan-1870.jpg" style="width: 40vw;" class="responsive-image" alt="Japan 1870" loading="lazy">
+      <div class="caption">Unknownn</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/allan-fleming-canadian-national-railways-1959.jpg" style="width: 40vw;" class="responsive-image" alt="Allan Fleming Canadian National Railways" loading="lazy">
+      <div class="caption">Allan Fleming</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/antoine-de-saint-exupery-le-petit-prince-1943.jpg" style="width: 20vw;" class="responsive-image" alt="Le Petit Prince" loading="lazy">
+      <div class="caption">Antoine de Saint-Exupéry</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/fhk-henrion-studio-national-theater-1971.jpg" style="width: 40vw;" class="responsive-image" alt="National Theater 1971" loading="lazy">
+      <div class="caption">Ian Dennis</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/visuel-design-centre-georges-pompidou-1977.jpg" style="width: 10vw;" class="responsive-image" alt="Centre Georges Pompidou 1977" loading="lazy">
+      <div class="caption">Jean Widmer</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/studio-boggeri-gamma-film-1969.jpg" style="width: 10vw;" class="responsive-image" alt="Gamma Film 1969" loading="lazy">
+      <div class="caption">Bruno Monguzzi</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/yusaku-kamekura-the-graphic-design-of-yusaku-kamekura-1973.jpg" style="width: 20vw;" class="responsive-image" alt="The Graphic Design of Yusaku Kamekura" loading="lazy">
+      <div class="caption">Yusaku Kamekura</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/robert-indiana-love-1966.jpg" style="width: 50vw;" class="responsive-image" alt="Robert Indiana Love" loading="lazy">
+      <div class="caption">Robert Indiana</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/yusaku-kamekura-taiyo-machine-industry-co.png" style="width: 10vw;" class="responsive-image" alt="Taiyo Machine Industry Co" loading="lazy">
+      <div class="caption">Yusaku Kamekura</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/otl-aicher-olympic-game-munchen-1972.gif" style="width: 20vw;" class="responsive-image" alt="Otl Aicher Olympic Game Munchen" loading="lazy">
+      <div class="caption">Otl Aicher</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/ronan-erwan-bouroullec-nuages-2002.jpg" style="width: 30vw;" class="responsive-image" alt="Nuages 2002" loading="lazy">
+      <div class="caption">Ronan and Erwan Bouroullec</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/visuel-design-institut-du-monde-arabe-1987.jpg" style="width: 30vw;" class="responsive-image" alt="Institut du Monde Arabe 1987" loading="lazy">
+      <div class="caption">Jean Widmer</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/emil-ruder-typography-1967.jpg" style="width: 10vw;" class="responsive-image" alt="Emil Ruder Typography 1967" loading="lazy">
+      <div class="caption">Emil Ruder</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/jagda-5th-yusaku-kamekura-design-award-masayoshi-nakajo.jpg" style="width: 30vw;" class="responsive-image" alt="JAGDA 5th Yusaku Kamekura Design Award" loading="lazy">
+      <div class="caption">Masayoshi Nakajo</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/studio-dempsey-english-national-opera-1991.jpg" style="width: 20vw;" class="responsive-image" alt="English National Opera 1991" loading="lazy">
+      <div class="caption">Studio Dempsey</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/dick-bruna.jpg" style="width: 10vw;" class="responsive-image" alt="Dick Bruna" loading="lazy">
+      <div class="caption">Dick Bruna<br></div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/alexander-girard-herman-miller-1971.jpg" style="width: 50vw;" class="responsive-image" alt="Alexander Girard Herman Miller" loading="lazy">
+      <div class="caption">Alexander Girard</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/atelier-populaire-de-mai-68-1968.jpg" style="width: 20vw;" class="responsive-image" alt="Atelier populaire Mai 68 1968" loading="lazy">
+      <div class="caption">Atelier Populaire</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/emil-ruder-typographie-1967.jpg" style="width: 40vw;" class="responsive-image" alt="Emil Ruder Typographie 1967" loading="lazy">
+      <div class="caption">Emil Ruder</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/adrian-frutiger-lhomme-et-ses-signes-precuseur-neolithique-du-blason-bc.jpg" style="width: 30vw;" class="responsive-image" alt="Adrian Frutiger L'homme et ses signes" loading="lazy">
+      <div class="caption">Adrian Frutiger</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/robert-longo-men-in-the-cities-untitled-1981.jpg" style="width: 20vw;" class="responsive-image" alt="Robert Longo Men in the Cities" loading="lazy">
+      <div class="caption">Robert Longo</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/rosetta-stone-196bc.jpg" style="width: 30vw;" class="responsive-image" alt="Rosetta Stone" loading="lazy">
+      <div class="caption">Unknown</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/total-design-de-doelen-1965.jpg" style="width: 20vw;" class="responsive-image" alt="De Doelen 1965" loading="lazy">
+      <div class="caption">Benno Wissing</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/paul-rand-tipton-lakes-1980.jpg" style="width: 40vw;" class="responsive-image" alt="Paul Rand Tipton Lakes 1980" loading="lazy">
+      <div class="caption">Paul Rand</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/armin-hoffman-graphic-design-manual-1965.jpg" style="width: 20vw;" class="responsive-image" alt="Armin Hoffman Graphic Design Manual 1965" loading="lazy">
+      <div class="caption">Armin Hoffman</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/martin-altenburger-adrian-frutiger-ptt-1982.jpg" style="width: 20vw;" class="responsive-image" alt="PTT 1982" loading="lazy">
+      <div class="caption">Adrian Frutiger</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/franco-grignani-woolmark-1963.jpg" style="width: 30vw;" class="responsive-image" alt="Franco Grignani Woolmark 1963" loading="lazy">
+      <div class="caption">Franco Grignani</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/pablo-picasso-vallauris-exposition-1951.jpg" style="width: 10vw;" class="responsive-image" alt="Pablo Picasso Vallauris Exposition 1951" loading="lazy">
+      <div class="caption">Pablo Picasso</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/bruno-munari-from-afar-it-is-an-island-1972.jpg" style="width: 30vw;" class="responsive-image" alt="Bruno Munari From afar it is an island 1972" loading="lazy">
+      <div class="caption">Bruno Munari</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/saul-steinberg.jpg" style="width: 20vw;" class="responsive-image" alt="Saul Steinberg" loading="lazy">
+      <div class="caption">Saul Steinberg<br></div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/olle-eksell-mazetti-1955.jpg" style="width: 50vw;" class="responsive-image" alt="Olle Eksell Mazetti 1955" loading="lazy">
+      <div class="caption">Olle Eksell</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/shigeo-fukuda.jpg" style="width: 20vw;" class="responsive-image" alt="Shigeo Fukuda" loading="lazy">
+      <div class="caption">Shigeo Fukuda<br></div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/peter-saville-unknown-pleasures-1979.jpg" style="width: 30vw;" class="responsive-image" alt="Peter Saville Unknown Pleasures 1979" loading="lazy">
+      <div class="caption">Peter Saville</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/guillaume-apollinaire-il-pleut-1918.jpg" style="width: 20vw;" class="responsive-image" alt="Guillaume Apollinaire Il pleut 1918" loading="lazy">
+      <div class="caption">Guillaume Apollinaire</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/shigeo-fukuda-untitled-1986.jpg" style="width: 20vw;" class="responsive-image" alt="Shigeo Fukuda Untitled 1986" loading="lazy">
+      <div class="caption">Shigeo Fukuda</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/vitra-bouroullec-algues-2004.jpg" style="width: 20vw;" class="responsive-image" alt="Vitra Bouroullec Algues 2004" loading="lazy">
+      <div class="caption">Ronan and Erwan Bouroullec</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/atelier-des-beaux-arts-affiche-de-mai-68.jpg" style="width: 30vw;" class="responsive-image" alt="Atelier des Beaux-Arts Affiche de Mai 68" loading="lazy">
+      <div class="caption">Atelier des Beaux-Arts</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/pablo-picasso-tete-de-taureau-1942.jpg" style="width: 30vw;" class="responsive-image" alt="Pablo Picasso Tête de taureau 1942" loading="lazy">
+      <div class="caption">Pablo Picasso</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/herb-lubalin-delpire-cie.png" style="width: 20vw;" class="responsive-image" alt="Herb Lubalin Delpire & Cie" loading="lazy">
+      <div class="caption">Herb Lubalin</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/vitra-bouroullec-vegetal-chair-2008.jpg" style="width: 30vw;" class="responsive-image" alt="Vitra Bouroullec Vegetal chair 2008" loading="lazy">
+      <div class="caption">Ronan and Erwan Bouroullec</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/edward-young-jan-tschichold-penguin-book.jpg" style="width: 20vw;" class="responsive-image" alt="Edward Young Jan Tschichold Angus Hyland Penguin Book" loading="lazy">
+      <div class="caption">Edward Young, Jan Tschichold and Angus Hyland</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/olle-eksell-ogon-cacao-1956.jpg" style="width: 30vw;" class="responsive-image" alt="Olle Eksell Ögon Cacao 1956" loading="lazy">
+      <div class="caption">Olle Eksell</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/etienne-robial-canalplus-1984.jpg" style="width: 40vw;" class="responsive-image" alt="Etienne Robial CANAL+ 1984" loading="lazy">
+      <div class="caption">Etienne Robial</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/a-m-cassandre-pour-ysl-amicalement-amc-1962.jpg" style="width: 20vw;" class="responsive-image" alt="A.M. Cassandre Pour Y.S.L. Amicalement A.M.C. 1962" loading="lazy">
+      <div class="caption">Cassandre</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/etienne-robial-cnc-1996.jpg" style="width: 50vw;" class="responsive-image" alt="Etienne Robial CNC 1996" loading="lazy">
+      <div class="caption">Etienne Robial</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/paul-rand-westinghouse-1960.jpg" style="width: 30vw;" class="responsive-image" alt="Paul Rand Westinghouse 1960" loading="lazy">
+      <div class="caption">Paul Rand</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/rubber-soul-1965.jpg" style="width: 30vw;" class="responsive-image" alt="Rubber Soul 1965" loading="lazy">
+      <div class="caption">Unknown</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/shigeo-fukuda-f.jpg" style="width: 50vw;" class="responsive-image" alt="Shigeo Fukuda F" loading="lazy">
+      <div class="caption">Shigeo Fukuda</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/paul-rand-abc-1962.jpg" style="width: 30vw;" class="responsive-image" alt="Paul Rand abc 1962" loading="lazy">
+      <div class="caption">Paul Rand</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/snake.jpg" style="width: 30vw;" class="responsive-image" alt="Snake" loading="lazy">
+      <div class="caption">Unknown</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/live-by-paula-scher.jpg" style="width: 20vw;" class="responsive-image" alt="Live by Paula Scher" loading="lazy">
+      <div class="caption">Paula Scher</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/a-m-cassandre-manometre.jpg" style="width: 20vw;" class="responsive-image" alt="A.M. Cassandre Manomètre" loading="lazy">
+      <div class="caption">Cassandre</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/robert-massin-peter-knapp-nouvelle-revue-francaise.jpg" style="width: 10vw;" class="responsive-image" alt="Robert Massin Peter Knapp Nouvelle Revue Française" loading="lazy">
+      <div class="caption">Peter Knapp</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/atelier-loupot-st-raphael-1945.jpg" style="width: 30vw;" class="responsive-image" alt="Atelier Loupot St Raphaël 1945" loading="lazy">
+      <div class="caption">Charles Loupot and Werner Häschler</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/bruno-monguzzi-jean-widmer-musee-dorsay-1983-1987.jpg" style="width: 30vw;" class="responsive-image" alt="Bruno Monguzzi Jean Widmer Musée d'Orsay 1983–1987" loading="lazy">
+      <div class="caption">Bruno Monguzzi</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/toto.jpg" style="width: 40vw;" class="responsive-image" alt="Toto" loading="lazy">
+      <div class="caption">Unknown</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/gerrit-noordzij-the-stroke-theory-of-writing.jpg" style="width: 20vw;" class="responsive-image" alt="Gerrit Noordzij The stroke theory of writing" loading="lazy">
+      <div class="caption">Gerrit Noordzij</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/muriel-cooper-mit-press-1963.jpg" style="width: 10vw;" class="responsive-image" alt="Muriel Cooper MIT Press 1963" loading="lazy">
+      <div class="caption">Muriel Cooper</div>
+    </div>
+    <div class="image-container">
+      <img src="/logo/image/push-pin-studio-seymour-chwast-artone-1964.jpg" style="width: 50vw;" class="responsive-image" alt="Seymour Chwast Artone 1964" loading="lazy">
+      <div class="caption">Seymour Chwast</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="collection">
+      <span style="white-space:nowrap;">collecting
+      <a href="/logo/">logos</a>,
+      <a href="/grid/">grids</a>,
+      <a href="/construction/">constructions</a>,</span><br>
+      <a href="/love-letter/">love letters</a>,
+      <a href="/wonderwall/">systems</a>, and
+      <a href="https://tatsumi-taeron-idea-collection.tumblr.com" target="_blank">ideas</a>
+    </div>
+  </div>
+    <div class="menu">
+      <div class="menu-content">
+        <a href="https://tatsumitaeron.com" target="_blank">work</a><br>
+        <a href="#" style="pointer-events: none; color: #da291c; text-decoration: line-through; cursor: not-allowed;">about</a>
+    </div>
+  </div>
+</body>
+</html>
