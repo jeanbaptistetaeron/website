@@ -1,0 +1,13 @@
+[submodule "website/website/website"]
+  path = website/website/website
+  url = ...
+
+git config --remove-section submodule.website/website/website
+
+git rm --cached website/website/website
+
+rm -rf website/website/website
+
+git add .gitmodules
+git commit -m "Remove submodule website/website/website"
+
