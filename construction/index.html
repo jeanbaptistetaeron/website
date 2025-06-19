@@ -300,8 +300,12 @@
   color: #FFFFFF;
 }
 
-
-
+.image-container .caption {
+  display: none;
+}
+.image-container img.image-loaded + .caption {
+  display: block;
+}
 
 @media (max-width: 600px) {
 
@@ -693,7 +697,6 @@ body {
       <img src="/construction/image/atelier-loupot-st-raphael-car.jpg" style="width: 20vw;" class="responsive-image" alt="Atelier Loupot — St Raphael" loading="lazy">
       <div class="caption">Atelier Loupot</div>
     </div>    
-    
   </div>
 
   <div class="footer">
@@ -715,3 +718,19 @@ body {
     </div>
   </body>
   </html>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.image-container').forEach(container => {
+      const img = container.querySelector('img');
+      function showCaption() {
+        img.classList.add('image-loaded');
+      }
+      if (img.complete && img.naturalWidth !== 0) {
+        showCaption();
+      } else {
+        img.addEventListener('load', showCaption, { once: true });
+      }
+    });
+  });
+</script>
