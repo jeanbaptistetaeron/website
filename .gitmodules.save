@@ -1,0 +1,7 @@
+[submodule "website/website/website"]
+  path = website/website/website
+  url = https://github.com/your-user/your-submodule-repo.git
+
+nano .gitmodules
+
+
