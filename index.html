@@ -6,12 +6,12 @@
   <meta name="description" content="Jean-Baptiste Tatsumi Taeron - Portfolio and Works" />
   <meta name="keywords" content="Jean-Baptiste Tatsumi Taeron, Portfolio, Art, Design, minimalist, typography, branding, identity, construction, grid, system, light, space, architecture, signage, editorial, packaging, Japanese, French, New York, Paris" />
   <meta property="og:title" content="Jean-Baptiste Tatsumi Taeron" />
-  <meta property="og:description" content="Portfolio and Works - Minimalist design, typography, and branding with a focus on construction, grid systems, and spatial relationships. French-Japanese designer." />
+  <meta property="og:description" content="Portfolio and Works - Minimalist design, typography, and branding with a focus on construction, grid systems, and spatial relationships. Japanese-French designer." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://tatsumitaeron.com" />
   <meta name="twitter:card" content="summary_large_image" />
   
-  <link rel="icon" type="image/x-icon" href="work/image/favicon.ico">
+  <link rel="icon" type="image/x-icon" href="/work/image/favicon.ico">
   
   <title>Jean-Baptiste Tatsumi Taeron</title>
   <style>
@@ -139,15 +139,16 @@
       margin: 0;
     }
 
-    .footer-content {
+    .collection {
       position: absolute;
       bottom: 24px;
       left: 24px;
+      max-width: 60%;
       color: #666666;
       line-height: 1.2em;
     }
 
-    .footer-content a {
+    .collection a {
       color: #666666;
       text-decoration: underline;
       text-decoration-thickness: 1px;
@@ -155,7 +156,27 @@
       transition: color 0.1s ease;
     }
 
-    .footer-content a:hover {
+    .collection a:hover {
+      color: #FFFFFF;
+    }
+
+    .menu {
+      position: absolute;
+      bottom: 24px;
+      right: 24px;
+      text-align: right;
+      line-height: 1.2em;
+    }
+
+    .menu-content a {
+      color: #666666;
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.1em;
+      transition: color 0.1s ease;
+    }
+
+    .menu-content a:hover {
       color: #FFFFFF;
     }
 
@@ -276,26 +297,6 @@
       right: 24px;
       text-align: right;
       line-height: 1.2em;
-    }
-
-    .menu {
-      position: absolute;
-      bottom: 24px;
-      right: 24px;
-      text-align: right;
-      line-height: 1.2em;
-    }
-
-    .menu-content a {
-      color: #666666;
-      text-decoration: underline;
-      text-decoration-thickness: 1px;
-      text-underline-offset: 0.1em;
-      transition: color 0.1s ease;
-    }
-
-    .menu-content a:hover {
-      color: #FFFFFF;
     }
 
     @media (max-width: 600px) {
@@ -493,6 +494,19 @@
       }
     }
   </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const images = document.querySelectorAll('.responsive-image');
+      images.forEach(img => {
+        img.onload = function() {
+          img.classList.add('loaded');
+        };
+        if (img.complete) {
+          img.classList.add('loaded');
+        }
+      });
+    });
+  </script>
 </head>
 <body>
   <div class="header">
