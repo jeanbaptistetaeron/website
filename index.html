@@ -226,9 +226,14 @@
     }
 
     .portrait-wrapper {
-      position: static;
       padding: 0;
       box-sizing: border-box;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .responsive-video {
@@ -533,17 +538,13 @@
     }
 
     .portrait-video {
-      position: absolute !important;
-      top: 18px;
-      bottom: 18px;
-      left: 0;
-      right: 0;
-      margin: auto;
       width: auto !important;
       height: auto !important;
       max-height: calc(100% - 36px) !important;
       max-width: 100% !important;
       object-fit: contain;
+      margin: 18px 0 !important;
+      position: static !important;
       display: block;
       background: #000;
     }
