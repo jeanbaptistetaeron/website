@@ -221,8 +221,12 @@
       justify-content: center;
       position: relative;
       margin: 0;
-      padding: 0;
       flex-shrink: 0;
+    }
+
+    .portrait-wrapper {
+      padding: 5%;
+      box-sizing: border-box;
     }
 
     .responsive-video {
@@ -568,7 +572,7 @@
     </figure>
 
     <figure class="video-container" style="width: 30vw;">
-      <div class="video-wrapper">
+      <div class="video-wrapper portrait-wrapper">
         <video class="responsive-video portrait-video" autoplay loop muted playsinline preload="auto">
           <source src="/work/video/tatsumi_taeron_lightning_studio_website_portrait_compressed.mp4" type="video/mp4">
         </video>
