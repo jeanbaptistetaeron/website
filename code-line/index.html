@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Figure Element Explanation</title>
+<style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    background: #fff;
+    color: #222;
+    margin: 2rem;
+    line-height: 1.5;
+  }
+  .container {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  h2 {
+    color: #000;
+    margin-bottom: 1rem;
+  }
+
+  .code-wrapper {
+    position: relative;
+    width: 100%;
+    display: inline-block;
+    background: #f7f7f8;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgb(0 0 0 / 0.05);
+    /* Removed max-height and overflow */
+  }
+
+  pre {
+    margin: 0;
+    padding: 1.2rem 1.5rem;
+    font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+    font-size: 0.95rem;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    color: #1a1a1a;
+  }
+  /* Colors tuned closer to Cursor */
+  .tag {
+    color: #008000; /* darker green */
+  }
+  .attr-name {
+    color: #b3302f; /* rich red */
+  }
+  .attr-value {
+    color: #a67c00; /* warm golden */
+  }
+  .punctuation {
+    color: #1a1a1a; /* dark charcoal */
+  }
+  .explanation {
+    font-size: 1rem;
+    background: #fafafa;
+    padding: 1rem 1.2rem;
+    border-radius: 6px;
+    color: #333;
+    margin-top: 1.5rem;
+    border-left: none;
+  }
+  .explanation p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+  .highlight {
+    font-weight: 600;
+  }
+  /* Copy button styles like ChatGPT but no border or background */
+  .copy-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: transparent;
+    border: none;
+    color: #6e6e6e;
+    padding: 4px 10px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.2s ease;
+    z-index: 10;
+  }
+  .copy-btn:hover {
+    color: #111;
+  }
+</style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Grid Layout for Projects</h2>
+    <div class="code-wrapper">
+      <button class="copy-btn" aria-label="Copy code" onclick="copyCode()">Copy</button>
+      <pre id="code-block"><code>
+<span class="punctuation">&lt;</span><span class="tag">section</span> <span class="attr-name">class</span><span class="punctuation">=</span><span class="attr-value">"projects-grid"</span><span class="punctuation">&gt;</span>
+  <span class="punctuation">&lt;</span><span class="tag">article</span> <span class="attr-name">class</span><span class="punctuation">=</span><span class="attr-value">"project-item"</span><span class="punctuation">&gt;</span>
+    <span class="punctuation">&lt;</span><span class="tag">h3</span><span class="punctuation">&gt;</span>Project Title 1<span class="punctuation">&lt;/</span><span class="tag">h3</span><span class="punctuation">&gt;</span>
+    <span class="punctuation">&lt;</span><span class="tag">p</span><span class="punctuation">&gt;</span>Short description of the project.<span class="punctuation">&lt;/</span><span class="tag">p</span><span class="punctuation">&gt;</span>
+  <span class="punctuation">&lt;/</span><span class="tag">article</span><span class="punctuation">&gt;</span>
+
+  <span class="punctuation">&lt;</span><span class="tag">article</span> <span class="attr-name">class</span><span class="punctuation">=</span><span class="attr-value">"project-item"</span><span class="punctuation">&gt;</span>
+    <span class="punctuation">&lt;</span><span class="tag">h3</span><span class="punctuation">&gt;</span>Project Title 2<span class="punctuation">&lt;/</span><span class="tag">h3</span><span class="punctuation">&gt;</span>
+    <span class="punctuation">&lt;</span><span class="tag">p</span><span class="punctuation">&gt;</span>Short description of the project.<span class="punctuation">&lt;/</span><span class="tag">p</span><span class="punctuation">&gt;</span>
+  <span class="punctuation">&lt;/</span><span class="tag">article</span><span class="punctuation">&gt;</span>
+
+  <span class="punctuation">&lt;</span><span class="tag">article</span> <span class="attr-name">class</span><span class="punctuation">=</span><span class="attr-value">"project-item"</span><span class="punctuation">&gt;</span>
+    <span class="punctuation">&lt;</span><span class="tag">h3</span><span class="punctuation">&gt;</span>Project Title 3<span class="punctuation">&lt;/</span><span class="tag">h3</span><span class="punctuation">&gt;</span>
+    <span class="punctuation">&lt;</span><span class="tag">p</span><span class="punctuation">&gt;</span>Short description of the project.<span class="punctuation">&lt;/</span><span class="tag">p</span><span class="punctuation">&gt;</span>
+  <span class="punctuation">&lt;/</span><span class="tag">article</span><span class="punctuation">&gt;</span>
+<span class="punctuation">&lt;/</span><span class="tag">section</span><span class="punctuation">&gt;</span>
+      </code></pre>
+    </div>
+    <div class="explanation">
+      <p>The <span class="highlight">&lt;section&gt;</span> element groups related content, here the projects.</p>
+      <p>The class <code>projects-grid</code> is used to apply CSS grid or flexbox for layout.</p>
+      <p>Each project is an <span class="highlight">&lt;article&gt;</span> with a title and a short description.</p>
+      <p>This semantic grouping helps both accessibility and SEO.</p>
+      <p>CSS will handle the grid layout to create responsive columns or rows.</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2>Image Grid Section</h2>
+    <div class="code-wrapper">
+      <button class="copy-btn" aria-label="Copy code" onclick="copyCode()">Copy</button>
+      <pre id="code-block"><code>
+      <span class="punctuation">&lt;</span><span class="tag">div</span> <span class="attr-name">class</span><span class="punctuation">=</span><span class="attr-value">"grid"</span><span class="punctuation">&gt;</span>
+        <span class="punctuation">&lt;</span><span class="tag">a</span> <span class="attr-name">href</span><span class="punctuation">=</span><span class="attr-value">"#wonderwall"</span> <span class="attr-name">class</span><span class="punctuation">=</span><span class="attr-value">"grid-item"</span><span class="punctuation">&gt;</span>
+          <span class="punctuation">&lt;</span><span class="tag">img</span> <span class="attr-name">src</span><span class="punctuation">=</span><span class="attr-value">"img/wonderwall.webp"</span> <span class="attr-name">alt</span><span class="punctuation">=</span><span class="attr-value">"Wonderwall project preview"</span> <span class="attr-name">loading</span><span class="punctuation">=</span><span class="attr-value">"lazy"</span><span class="punctuation">&gt;</span>
+        <span class="punctuation">&lt;/</span><span class="tag">a</span><span class="punctuation">&gt;</span>
+        <span class="punctuation">&lt;</span><span class="tag">a</span> <span class="attr-name">href</span><span class="punctuation">=</span><span class="attr-value">"#video"</span> <span class="attr-name">class</span><span class="punctuation">=</span><span class="attr-value">"grid-item"</span><span class="punctuation">&gt;</span>
+          <span class="punctuation">&lt;</span><span class="tag">img</span> <span class="attr-name">src</span><span class="punctuation">=</span><span class="attr-value">"img/video-thumbnail.webp"</span> <span class="attr-name">alt</span><span class="punctuation">=</span><span class="attr-value">"Video project preview"</span> <span class="attr-name">loading</span><span class="punctuation">=</span><span class="attr-value">"lazy"</span><span class="punctuation">&gt;</span>
+        <span class="punctuation">&lt;/</span><span class="tag">a</span><span class="punctuation">&gt;</span>
+        <!-- Add more grid items similarly -->
+      <span class="punctuation">&lt;/</span><span class="tag">div</span><span class="punctuation">&gt;</span>
+      </code></pre>
+    </div>
+    <div class="explanation">
+      <p>The <span class="highlight">&lt;div class="grid"&gt;</span> acts as a container for a responsive grid layout of linked images.</p>
+      <p>Each <span class="highlight">&lt;a&gt;</span> element represents a clickable grid item linking to a section or project anchor.</p>
+      <p>Inside each <code>&lt;a&gt;</code> is an <span class="highlight">&lt;img&gt;</span> tag with a thumbnail image. The <code>loading="lazy"</code> attribute defers image loading until near viewport, improving page speed.</p>
+      <p>This approach creates a clean, navigable image gallery with semantic HTML and easy styling via CSS grid or flexbox.</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2>Video Container Section</h2>
+    <div class="code-wrapper">
+      <button class="copy-btn" aria-label="Copy code" onclick="copyCode()">Copy</button>
+      <pre id="code-block"><code>
+<span class="punctuation">&lt;</span><span class="tag">div</span> <span class="attr-name">class</span><span class="punctuation">=</span><span class="attr-value">"video-container"</span><span class="punctuation">&gt;</span>
+  <span class="punctuation">&lt;</span><span class="tag">video</span> <span class="attr-name">autoplay</span> <span class="attr-name">muted</span> <span class="attr-name">loop</span> <span class="attr-name">playsinline</span> <span class="attr-name">preload</span><span class="punctuation">=</span><span class="attr-value">"metadata"</span><span class="punctuation">&gt;</span>
+    <span class="punctuation">&lt;</span><span class="tag">source</span> <span class="attr-name">src</span><span class="punctuation">=</span><span class="attr-value">"video/project-preview.webm"</span> <span class="attr-name">type</span><span class="punctuation">=</span><span class="attr-value">"video/webm"</span><span class="punctuation">&gt;</span>
+    <span class="punctuation">&lt;</span><span class="tag">source</span> <span class="attr-name">src</span><span class="punctuation">=</span><span class="attr-value">"video/project-preview.mp4"</span> <span class="attr-name">type</span><span class="punctuation">=</span><span class="attr-value">"video/mp4"</span><span class="punctuation">&gt;</span>
+    Your browser does not support the video tag.
+  <span class="punctuation">&lt;/</span><span class="tag">video</span><span class="punctuation">&gt;</span>
+<span class="punctuation">&lt;/</span><span class="tag">div</span><span class="punctuation">&gt;</span>
+      </code></pre>
+    </div>
+    <div class="explanation">
+      <p>The <span class="highlight">&lt;div class="video-container"&gt;</span> acts as a wrapper to style and position the video element.</p>
+      <p>The <span class="highlight">&lt;video&gt;</span> tag embeds the video directly into the page. It uses these attributes:</p>
+      <ul>
+        <li><code>autoplay</code>: starts playing automatically.</li>
+        <li><code>muted</code>: silent playback (required by many browsers for autoplay).</li>
+        <li><code>loop</code>: repeats the video indefinitely.</li>
+        <li><code>playsinline</code>: allows inline playback on mobile devices.</li>
+        <li><code>preload="metadata"</code>: loads only metadata initially to improve performance.</li>
+      </ul>
+      <p>Multiple <span class="highlight">&lt;source&gt;</span> elements provide fallback video formats for better browser support.</p>
+      <p>The fallback text inside <code>&lt;video&gt;</code> tags informs users with unsupported browsers.</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2>Header Intro Block</h2>
+    <div class="code-wrapper">
+      <button class="copy-btn" aria-label="Copy code" onclick="copyCode()">Copy</button>
+      <pre id="code-block"><code>
+    <span class="punctuation">&lt;</span><span class="tag">div</span> <span class="attr-name">class</span><span class="punctuation">=</span><span class="attr-value">"header"</span><span class="punctuation">&gt;</span>
+      <span class="punctuation">&lt;</span><span class="tag">div</span> <span class="attr-name">class</span><span class="punctuation">=</span><span class="attr-value">"intro"</span><span class="punctuation">&gt;</span>
+        <span class="punctuation">&lt;</span><span class="tag">span</span> <span class="attr-name">class</span><span class="punctuation">=</span><span class="attr-value">"name"</span><span class="punctuation">&gt;</span>jean-baptiste tatsumi taëron<span class="punctuation">&lt;/</span><span class="tag">span</span><span class="punctuation">&gt;</span><span class="punctuation">&lt;br&gt;</span>
+        <span class="punctuation">&lt;</span><span class="tag">span</span><span class="punctuation">&gt;</span>identities<span class="punctuation">&lt;/</span><span class="tag">span</span><span class="punctuation">&gt;</span>
+      <span class="punctuation">&lt;/</span><span class="tag">div</span><span class="punctuation">&gt;</span>
+      <span class="punctuation">&lt;</span><span class="tag">div</span> <span class="attr-name">class</span><span class="punctuation">=</span><span class="attr-value">"email-links"</span><span class="punctuation">&gt;</span>
+        <span class="punctuation">&lt;</span><span class="tag">a</span> <span class="attr-name">href</span><span class="punctuation">=</span><span class="attr-value">"mailto:jeanbaptistetaeron@gmail.com"</span> <span class="attr-name">class</span><span class="punctuation">=</span><span class="attr-value">"hover-link"</span> <span class="attr-name">target</span><span class="punctuation">=</span><span class="attr-value">"_blank"</span><span class="punctuation">&gt;</span>jeanbaptistetaeron(at)gmail.com<span class="punctuation">&lt;/</span><span class="tag">a</span><span class="punctuation">&gt;</span><span class="punctuation">&lt;br&gt;</span>
+        <span class="punctuation">&lt;</span><span class="tag">a</span> <span class="attr-name">href</span><span class="punctuation">=</span><span class="attr-value">"mailto:tatsumitaeron@gmail.com"</span> <span class="attr-name">class</span><span class="punctuation">=</span><span class="attr-value">"hover-link"</span> <span class="attr-name">target</span><span class="punctuation">=</span><span class="attr-value">"_blank"</span><span class="punctuation">&gt;</span>tatsumitaeron(at)gmail.com<span class="punctuation">&lt;/</span><span class="tag">a</span><span class="punctuation">&gt;</span>
+      <span class="punctuation">&lt;/</span><span class="tag">div</span><span class="punctuation">&gt;</span>
+    <span class="punctuation">&lt;/</span><span class="tag">div</span><span class="punctuation">&gt;</span>
+      </code></pre>
+    </div>
+    <div class="explanation">
+      <p>The <span class="highlight">&lt;div class="header"&gt;</span> groups the site's top area containing your name and contact information.</p>
+      <p><span class="highlight">&lt;div class="intro"&gt;</span> holds your full name inside a <code>&lt;span class="name"&gt;</code> for styling, followed by a line break, then a subtitle "identities".</p>
+      <p><span class="highlight">&lt;div class="email-links"&gt;</span> contains clickable email addresses using <code>&lt;a href="mailto:"&gt;</code> links, styled with <code>class="hover-link"</code> to add hover effects. The <code>target="_blank"</code> ensures links open in a new tab.</p>
+      <p>This structure is simple and semantic, making it easy to style and accessible.</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2>Image with Caption / Responsive Width</h2>
+    <div class="code-wrapper">
+      <button class="copy-btn" aria-label="Copy code" onclick="copyCode()">Copy</button>
+      <pre id="code-block"><code>
+        <span class="punctuation">&lt;</span><span class="tag">figure</span> <span class="attr-name">class</span><span class="punctuation">=</span><span class="attr-value">"image-container"</span> <span class="attr-name">style</span><span class="punctuation">=</span><span class="attr-value">"width: 50vw;"</span><span class="punctuation">&gt;</span>
+          <span class="punctuation">&lt;</span><span class="tag">img</span> <span class="attr-name">src</span><span class="punctuation">=</span><span class="attr-value">"img/path-to-image.webp"</span> 
+            <span class="attr-name">alt</span><span class="punctuation">=</span><span class="attr-value">"Short but descriptive alt text"</span> 
+            <span class="attr-name">class</span><span class="punctuation">=</span><span class="attr-value">"responsive-image"</span> 
+            <span class="attr-name">loading</span><span class="punctuation">=</span><span class="attr-value">"lazy"</span><span class="punctuation">&gt;</span>
+          <span class="punctuation">&lt;</span><span class="tag">figcaption</span> <span class="attr-name">class</span><span class="punctuation">=</span><span class="attr-value">"caption"</span><span class="punctuation">&gt;</span>
+            Project title, Location<span class="punctuation">&lt;br&gt;</span>
+            Description
+          <span class="punctuation">&lt;/</span><span class="tag">figcaption</span><span class="punctuation">&gt;</span>
+        <span class="punctuation">&lt;/</span><span class="tag">figure</span><span class="punctuation">&gt;</span>
+      </code></pre>
+    </div>
+    <div class="explanation">
+      <p><span class="highlight">&lt;figure&gt;</span> creates a semantic container that groups an image and its caption. The <code>class="image-container"</code> allows styling with CSS, and the inline style <code>width: 50vw;</code> sets its width to 50% of the viewport width, making it responsive.</p>
+      <p>The <span class="highlight">&lt;img&gt;</span> tag displays the image. The <code>src</code> attribute should point to your actual image path. The <code>alt</code> attribute provides a short but descriptive alternative text important for accessibility and SEO. The <code>class="responsive-image"</code> is for styling, and <code>loading="lazy"</code> defers loading the image until it's near the viewport to improve performance.</p>
+      <p>The <span class="highlight">&lt;figcaption&gt;</span> tag contains the caption linked semantically to the image. The <code>class="caption"</code> is for styling the caption text. The <code>&lt;br&gt;</code> creates a line break between the project title and the description.</p>
+      <p>The <span class="highlight">&lt;/figure&gt;</span> closes the container.</p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function copyCode() {
+  const codeBlock = document.getElementById('code-block');
+  const tempDiv = document.createElement('div');
+  tempDiv.innerHTML = codeBlock.innerHTML;
+  const textToCopy = tempDiv.textContent || tempDiv.innerText || '';
+  navigator.clipboard.writeText(textToCopy.trim()).then(() => {
+    const btn = document.querySelector('.copy-btn');
+    const originalText = btn.textContent;
+    btn.textContent = 'Copied!';
+    setTimeout(() => { btn.textContent = originalText; }, 1500);
+  });
+}
+</script>
+</body>
+</html>
