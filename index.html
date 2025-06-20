@@ -227,6 +227,11 @@
     .portrait-wrapper {
       padding: 18px 0 !important;
       box-sizing: border-box !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      width: 100%;
     }
 
     .responsive-video {
@@ -533,11 +538,11 @@
     .portrait-video {
       width: auto !important;
       height: 100% !important;
+      max-height: calc(100% - 36px) !important;
       object-fit: contain;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      position: static !important;
+      margin: 0 auto;
+      display: block;
     }
   </style>
   <script>
