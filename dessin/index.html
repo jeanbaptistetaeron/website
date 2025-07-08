@@ -38,10 +38,6 @@
       padding: 24px;
       margin: 0;
       position: relative;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: flex-start;
     }
     .intro {
       max-width: 60%;
@@ -171,8 +167,6 @@
         height: 288px;
         padding: 12px;
         margin: 0;
-        flex-direction: column;
-        align-items: flex-start;
       }
       .intro {
         max-width: 100%;
@@ -182,13 +176,14 @@
       }
       .email-links {
         position: static;
-        text-align: right;
+        text-align: left;
         margin-top: 1em;
         line-height: 1.2;
       }
       .email-links a {
         display: inline;
         text-align: left;
+        text-decoration: none !important;
       }
       .responsive-image {
         width: 100vw !important;
@@ -242,6 +237,44 @@
       }
     }
   </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const images = document.querySelectorAll('.responsive-image');
+      const loadImage = (img) => {
+        const src = img.getAttribute('src');
+        if (!src) return;
+        const tempImg = new Image();
+        tempImg.onload = () => {
+          img.classList.add('loaded');
+        };
+        tempImg.onerror = () => {
+          console.error('Failed to load image:', src);
+        };
+        tempImg.src = src;
+      };
+      images.forEach(loadImage);
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            loadImage(entry.target);
+            observer.unobserve(entry.target);
+          }
+        });
+      });
+      images.forEach(img => observer.observe(img));
+      document.querySelectorAll('.image-container').forEach(container => {
+        const img = container.querySelector('img');
+        function showCaption() {
+          img.classList.add('image-loaded');
+        }
+        if (img.complete && img.naturalWidth !== 0) {
+          showCaption();
+        } else {
+          img.addEventListener('load', showCaption, { once: true });
+        }
+      });
+    });
+  </script>
 </head>
 <body>
   <div class="header">
@@ -347,43 +380,5 @@
       <a href="#" style="pointer-events: none; color: #7f7f7f; text-decoration: line-through; cursor: not-allowed;">about</a>
     </div>
   </div>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const images = document.querySelectorAll('.responsive-image');
-      const loadImage = (img) => {
-        const src = img.getAttribute('src');
-        if (!src) return;
-        const tempImg = new Image();
-        tempImg.onload = () => {
-          img.classList.add('loaded');
-        };
-        tempImg.onerror = () => {
-          console.error('Failed to load image:', src);
-        };
-        tempImg.src = src;
-      };
-      images.forEach(loadImage);
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            loadImage(entry.target);
-            observer.unobserve(entry.target);
-          }
-        });
-      });
-      images.forEach(img => observer.observe(img));
-      document.querySelectorAll('.image-container').forEach(container => {
-        const img = container.querySelector('img');
-        function showCaption() {
-          img.classList.add('image-loaded');
-        }
-        if (img.complete && img.naturalWidth !== 0) {
-          showCaption();
-        } else {
-          img.addEventListener('load', showCaption, { once: true });
-        }
-      });
-    });
-  </script>
 </body>
 </html>
