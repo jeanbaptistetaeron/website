@@ -1,0 +1,79 @@
+
+
+
+cd "/Users/tatsumitaeron/Library/Mobile Documents/com~apple~CloudDocs/_pro/T_work/tatsumi_taeron_website"
+
+
+
+Index
+
+git add index.html
+git commit -m "Update index file"
+git push
+
+Logos
+
+git add logo/index.html
+git commit -m "Update logo index file"
+git push
+
+Grids
+
+git add grid/index.html
+git commit -m "Update grid index file"
+git push
+
+Surfaces
+
+git add construction/index.html
+git commit -m "Update construction index file"
+git push
+
+Love Letters
+
+git add love-letter/index.html
+git commit -m "Update love-letter index file"
+git push
+
+Wonderwall
+
+git add wonderwall/index.html
+git commit -m "Update wonderwall index file"
+git push
+
+Dessins
+
+git add dessin/index.html
+git commit -m "Update dessin index file"
+git push
+
+
+
+
+
+
+
+
+
+
+
+EVERYTHING NEW
+
+git add .
+git commit -m "Update with latest changes"
+git push
+
+IMAGE
+
+git add dessin/
+git commit -m "Update dessin folder with HTML and images"
+git push
+
+VIDEO
+
+git add work/video/
+git commit -m "Update videos in work/video folder"
+git push
+
+
+
