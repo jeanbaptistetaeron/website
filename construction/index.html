@@ -457,9 +457,12 @@ body {
 .collection {
   position: fixed;
   bottom: 12px;
-  left: 12px;
+  left: 50%;
+  transform: translateX(-50%);
   color: #7f7f7f;
   z-index: 100;
+  text-align: center;
+  white-space: nowrap;
 }
 
 .collection a {
@@ -713,15 +716,22 @@ body {
   collection.style.transition = 'opacity 0.3s ease';
   collection.style.pointerEvents = 'none';
 
+  let lastScrollY = window.scrollY;
+
   window.addEventListener('scroll', function () {
-    const headerBottom = header.getBoundingClientRect().bottom;
-    if (headerBottom <= -1000) {
+    const currentScrollY = window.scrollY;
+    const scrollingUp = currentScrollY < lastScrollY;
+    const atBottom = window.innerHeight + currentScrollY >= document.body.scrollHeight - 50;
+
+    if (scrollingUp || atBottom) {
       collection.style.opacity = '1';
       collection.style.pointerEvents = 'auto';
     } else {
       collection.style.opacity = '0';
       collection.style.pointerEvents = 'none';
     }
+
+    lastScrollY = currentScrollY;
   });
 </script>
 
