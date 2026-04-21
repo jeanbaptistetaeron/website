@@ -728,8 +728,9 @@
     const currentScrollY = window.scrollY;
     const headerBottom = header.getBoundingClientRect().bottom;
     const scrollingUp = currentScrollY < lastScrollY;
+    const atBottom = window.innerHeight + currentScrollY >= document.body.scrollHeight - 50;
 
-    if (scrollingUp && headerBottom <= -1000) {
+    if ((scrollingUp && headerBottom <= -1000) || atBottom) {
       collection.style.opacity = '1';
       collection.style.pointerEvents = 'auto';
     } else {
