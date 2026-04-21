@@ -719,18 +719,15 @@
   const header = document.querySelector('.header');
 
   collection.style.opacity = '0';
-  collection.style.transition = 'opacity 0.3s ease';
   collection.style.pointerEvents = 'none';
 
   let lastScrollY = window.scrollY;
 
   window.addEventListener('scroll', function () {
     const currentScrollY = window.scrollY;
-    const headerBottom = header.getBoundingClientRect().bottom;
-    const scrollingUp = currentScrollY < lastScrollY;
     const atBottom = window.innerHeight + currentScrollY >= document.body.scrollHeight - 50;
 
-    if ((scrollingUp && headerBottom <= -1000) || atBottom) {
+    if (atBottom) {
       collection.style.opacity = '1';
       collection.style.pointerEvents = 'auto';
     } else {
