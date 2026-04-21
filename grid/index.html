@@ -142,12 +142,10 @@
     .collection {
       position: fixed;
       bottom: 24px;
-      left: 50%;
-      transform: translateX(-50%);
+      left: 24px;
       color: #ffb511;
       line-height: 1.2em;
       z-index: 100;
-      text-align: center;
     }
 
     .collection a {
@@ -724,15 +722,22 @@
   collection.style.transition = 'opacity 0.3s ease';
   collection.style.pointerEvents = 'none';
 
+  let lastScrollY = window.scrollY;
+
   window.addEventListener('scroll', function () {
+    const currentScrollY = window.scrollY;
     const headerBottom = header.getBoundingClientRect().bottom;
-    if (headerBottom <= -1000) {
+    const scrollingUp = currentScrollY < lastScrollY;
+
+    if (scrollingUp && headerBottom <= -1000) {
       collection.style.opacity = '1';
       collection.style.pointerEvents = 'auto';
     } else {
       collection.style.opacity = '0';
       collection.style.pointerEvents = 'none';
     }
+
+    lastScrollY = currentScrollY;
   });
 </script>
 </body>
