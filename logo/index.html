@@ -909,12 +909,12 @@ body {
   const header = document.querySelector('.header');
 
   collection.style.opacity = '0';
-  collection.style.transition = 'opacity 0.3s ease';
   collection.style.pointerEvents = 'none';
 
   window.addEventListener('scroll', function () {
-    const headerBottom = header.getBoundingClientRect().bottom;
-    if (headerBottom <= -1000) {
+    const atBottom = window.innerHeight + window.scrollY >= document.body.scrollHeight - 50;
+
+    if (atBottom) {
       collection.style.opacity = '1';
       collection.style.pointerEvents = 'auto';
     } else {
