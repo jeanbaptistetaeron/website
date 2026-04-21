@@ -256,11 +256,12 @@
     }
 
     .collection {
-      position: absolute;
+      position: fixed;
       bottom: 24px;
       left: 24px;
       color: #7f7f7f;
       line-height: 1.2em;
+      z-index: 100;
     }
 
     .collection a {
@@ -453,9 +454,10 @@ body {
 }
 
 .collection {
-  position: absolute;
+  position: fixed;
   bottom: 12px;
   left: 12px;
+  z-index: 100;
 }
 
 .collection a {
@@ -823,5 +825,24 @@ body {
     </div>
   </div>
 
+<script>
+  const collection = document.querySelector('.collection');
+  const header = document.querySelector('.header');
+
+  collection.style.opacity = '0';
+  collection.style.transition = 'opacity 0.3s ease';
+  collection.style.pointerEvents = 'none';
+
+  window.addEventListener('scroll', function () {
+    const headerBottom = header.getBoundingClientRect().bottom;
+    if (headerBottom <= -1000) {
+      collection.style.opacity = '1';
+      collection.style.pointerEvents = 'auto';
+    } else {
+      collection.style.opacity = '0';
+      collection.style.pointerEvents = 'none';
+    }
+  });
+</script>
 </body>
 </html>
