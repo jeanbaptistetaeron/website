@@ -913,11 +913,10 @@ body {
 
   let lastScrollY = window.scrollY;
 
-  window.addEventListener('scroll', function () {
+  function updateCollection() {
     const currentScrollY = window.scrollY;
-    const atTop = currentScrollY === 0;
+    const atTop = currentScrollY <= 10;
     const atBottom = window.innerHeight + currentScrollY >= document.body.scrollHeight - 50;
-    const scrollingUp = currentScrollY < lastScrollY;
 
     if (atTop || atBottom) {
       collection.style.opacity = '1';
@@ -928,7 +927,10 @@ body {
     }
 
     lastScrollY = currentScrollY;
-  });
+  }
+
+  window.addEventListener('scroll', updateCollection);
+  window.addEventListener('load', updateCollection);
 </script>
 </body>
 </html>
