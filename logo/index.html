@@ -911,16 +911,23 @@ body {
   collection.style.opacity = '0';
   collection.style.pointerEvents = 'none';
 
-  window.addEventListener('scroll', function () {
-    const atBottom = window.innerHeight + window.scrollY >= document.body.scrollHeight - 50;
+  let lastScrollY = window.scrollY;
 
-    if (atBottom) {
+  window.addEventListener('scroll', function () {
+    const currentScrollY = window.scrollY;
+    const atTop = currentScrollY === 0;
+    const atBottom = window.innerHeight + currentScrollY >= document.body.scrollHeight - 50;
+    const scrollingUp = currentScrollY < lastScrollY;
+
+    if (atTop || atBottom) {
       collection.style.opacity = '1';
       collection.style.pointerEvents = 'auto';
     } else {
       collection.style.opacity = '0';
       collection.style.pointerEvents = 'none';
     }
+
+    lastScrollY = currentScrollY;
   });
 </script>
 </body>
