@@ -914,7 +914,7 @@ body {
 
   window.addEventListener('scroll', function () {
     const headerBottom = header.getBoundingClientRect().bottom;
-    if (headerBottom <= 0) {
+    if (headerBottom <= -1000) {
       collection.style.opacity = '1';
       collection.style.pointerEvents = 'auto';
     } else {
