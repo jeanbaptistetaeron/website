@@ -860,19 +860,14 @@ body {
   }
 
   let lastScrollY = window.scrollY;
-  let hasScrolledDown = false;
 
   window.addEventListener('scroll', function () {
     const currentScrollY = window.scrollY;
     const scrollingUp = currentScrollY < lastScrollY;
     const atBottom = window.innerHeight + currentScrollY >= document.body.scrollHeight - 50;
-    const atTop = currentScrollY === 0;
+    const headerVisible = header.getBoundingClientRect().bottom > 0;
 
-    if (currentScrollY > 50) hasScrolledDown = true;
-
-    const nearTop = currentScrollY < 300;
-
-    if ((scrollingUp || atBottom) && !nearTop) {
+    if ((scrollingUp || atBottom) && !headerVisible) {
       collection.style.opacity = '1';
       collection.style.pointerEvents = 'auto';
       if (mobileTitle) mobileTitle.style.opacity = '1';
