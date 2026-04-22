@@ -44,7 +44,7 @@
       position: relative;
     }
 
-    .page-title {
+    .mobile-title {
       display: block;
       position: fixed;
       top: 24px;
@@ -326,7 +326,7 @@
         margin: 0;
       }
 
-      .page-title {
+      .mobile-title {
         font-size: 20px;
       }
 
@@ -573,7 +573,7 @@
       <a href="mailto:tatsumitaeron@gmail.com" class="hover-link" target="_blank">tatsumitaeron(at)gmail.com</a>
     </div>
   </div>
-  <div class="page-title">structures</div>
+  <div class="mobile-title">structures</div>
 
 <div class="image-grid">
 
@@ -738,15 +738,15 @@
 <script>
   const collection = document.querySelector('.collection');
   const header = document.querySelector('.header');
-  const pageTitle = document.querySelector('.page-title');
 
   collection.style.opacity = '0';
   collection.style.transition = 'opacity 0.3s ease';
   collection.style.pointerEvents = 'none';
 
-  if (pageTitle) {
-    pageTitle.style.opacity = '0';
-    pageTitle.style.transition = 'opacity 0.3s ease';
+  const mobileTitle = document.querySelector('.mobile-title');
+  if (mobileTitle) {
+    mobileTitle.style.opacity = '0';
+    mobileTitle.style.transition = 'opacity 0.3s ease';
   }
 
   let lastScrollY = window.scrollY;
@@ -760,11 +760,11 @@
     if ((scrollingUp || atBottom) && !headerVisible) {
       collection.style.opacity = '1';
       collection.style.pointerEvents = 'auto';
-      if (pageTitle) pageTitle.style.opacity = '1';
+      if (mobileTitle) mobileTitle.style.opacity = '1';
     } else {
       collection.style.opacity = '0';
       collection.style.pointerEvents = 'none';
-      if (pageTitle) pageTitle.style.opacity = '0';
+      if (mobileTitle) mobileTitle.style.opacity = '0';
     }
 
     lastScrollY = currentScrollY;
