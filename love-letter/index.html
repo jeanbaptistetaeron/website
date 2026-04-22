@@ -848,6 +848,7 @@ body {
 <script>
   const collection = document.querySelector('.collection');
   const mobileTitle = document.querySelector('.mobile-title');
+  const header = document.querySelector('.header');
 
   collection.style.opacity = '0';
   collection.style.transition = 'opacity 0.3s ease';
@@ -865,14 +866,21 @@ body {
     const currentScrollY = window.scrollY;
     const scrollingUp = currentScrollY < lastScrollY;
     const atBottom = window.innerHeight + currentScrollY >= document.body.scrollHeight - 50;
+    const atTop = currentScrollY === 0;
 
-    if (currentScrollY > 100) hasScrolledDown = true;
+    if (currentScrollY > 50) hasScrolledDown = true;
 
-    const show = hasScrolledDown && (scrollingUp || atBottom);
+    const nearTop = currentScrollY < 300;
 
-    collection.style.opacity = show ? '1' : '0';
-    collection.style.pointerEvents = show ? 'auto' : 'none';
-    if (mobileTitle) mobileTitle.style.opacity = show ? '1' : '0';
+    if ((scrollingUp || atBottom) && !nearTop) {
+      collection.style.opacity = '1';
+      collection.style.pointerEvents = 'auto';
+      if (mobileTitle) mobileTitle.style.opacity = '1';
+    } else {
+      collection.style.opacity = '0';
+      collection.style.pointerEvents = 'none';
+      if (mobileTitle) mobileTitle.style.opacity = '0';
+    }
 
     lastScrollY = currentScrollY;
   });
