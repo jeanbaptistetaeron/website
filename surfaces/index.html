@@ -502,6 +502,18 @@ body {
 
 
 
+      .mobile-title {
+      display: block;
+      position: fixed;
+      top: 24px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-size: 15px;
+      line-height: 1.2em;
+      color: #ffb511;
+      z-index: 100;
+    }
   </style>
 </head>
 <body>
@@ -517,6 +529,8 @@ body {
       <a href="mailto:tatsumitaeron@gmail.com" class="hover-link" target="_blank">tatsumitaeron(at)gmail.com</a>
     </div>
   </div>
+
+  <div class="mobile-title">surfaces</div>
 
   <div class="image-grid">
 
@@ -712,6 +726,12 @@ body {
   </html>
 
 <script>
+  const mobileTitle = document.querySelector('.mobile-title');
+  if (mobileTitle) {
+    mobileTitle.style.opacity = '0';
+    mobileTitle.style.transition = 'opacity 0.3s ease';
+  }
+
   const collection = document.querySelector('.collection');
   const header = document.querySelector('.header');
 
@@ -729,8 +749,12 @@ body {
     if (scrollingUp || atBottom) {
       collection.style.opacity = '1';
       collection.style.pointerEvents = 'auto';
+      if (mobileTitle) mobileTitle.style.opacity = '1';
+      collection.style.pointerEvents = 'auto';
     } else {
       collection.style.opacity = '0';
+      collection.style.pointerEvents = 'none';
+      if (mobileTitle) mobileTitle.style.opacity = '0';
       collection.style.pointerEvents = 'none';
     }
 
