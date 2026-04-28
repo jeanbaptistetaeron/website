@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Jean-Baptiste Tatsumi Taeron - Portfolio and Works" />
+  <meta name="keywords" content="Jean-Baptiste Tatsumi Taeron, Portfolio, Art, Design, minimalist, typography, branding, identity, construction, grid, system, light, space, architecture, signage, editorial, packaging, Japanese, French, New York, Paris" />
+  <meta property="og:title" content="Jean-Baptiste Tatsumi Taeron" />
+  <meta property="og:description" content="Portfolio and Works - Minimalist design, typography, and branding with a focus on construction, grid systems, and spatial relationships. Japanese-French designer." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://tatsumitaeron.com" />
+  <meta name="twitter:card" content="summary_large_image" />
+  
+  <link rel="icon" type="image/x-icon" href="/work/image/favicon.ico">
+  
+  <title>Jean-Baptiste Tatsumi Taeron</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #0D0D0D;
+      color: #666666;
+      font-family: "Times New Roman", Times, serif;
+      font-weight: normal;
+      font-size: 15px;
+      line-height: 1em;
+      letter-spacing: 0.01em;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+      width: 100%;
+      position: relative;
+    }
+
+    html {
+      overflow-x: hidden;
+      width: 100%;
+    }
+
+    .header {
+      height: 288px;
+      padding: 24px;
+      margin: 0;
+      position: relative;
+    }
+
+    .intro {
+      max-width: 60%;
+      line-height: 1.2em;
+    }
+
+    .name, .tagline, .contact-text {
+      color: #666666;
+    }
+
+    .tagline {
+      font-style: italic;
+    }
+
+    .contact-info {
+      margin-top: 1em;
+      color: #666666;
+    }
+
+    .contact-info a {
+      color: #666666;
+      text-decoration: none;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 0.1em;
+      transition: color 0.1s ease;  
+    }
+
+    .contact-info a:hover {
+      color: #FFFFFF;
+    }
+
+    .contact {
+      display: none;
+    }
+
+    .hover-link {
+      color: #666666;
+      text-decoration: none;
+      transition: color 0.1s ease;
+    }
+
+    .hover-link:hover {
+      color: #FFFFFF;
+    }
+
+    .intro a[href^="mailto:"] {
+      color: #666666 !important;
+      text-decoration: none;
+    }
+
+    .intro a[href^="mailto:"]:hover {
+      color: #FFFFFF !important;
+      text-decoration: none;
+    }
+
+    .image-grid {
+      display: flex;
+      flex-wrap: wrap;
+      column-gap: 12px;
+      row-gap: 12px;
+      justify-content: center;
+      align-items: flex-end;
+      padding: 0;
+    }
+
+    .image-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      height: fit-content;
+      justify-content: flex-end;
+      position: relative;
+      background: #0D0D0D;
+      padding: 0;
+      margin: 0;
+    }
+
+    .responsive-image {
+      opacity: 0;
+      transition: opacity 0.3s ease-in;
+      background: #0D0D0D;
+    }
+
+    .responsive-image.loaded {
+      opacity: 1;
+    }
+
+    .footer {
+      height: 288px;
+      width: 100%;
+      background: #0D0D0D;
+      position: relative;
+      padding: 24px;
+      margin: 0;
+    }
+
+    .collection {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      max-width: 60%;
+      color: #666666;
+      line-height: 1.2em;
+    }
+
+    .collection a {
+      color: #666666;
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.1em;
+      transition: color 0.1s ease;
+    }
+
+    .collection a:hover {
+      color: #FFFFFF;
+    }
+
+    .menu {
+      position: absolute;
+      bottom: 24px;
+      right: 24px;
+      text-align: right;
+      line-height: 1.2em;
+    }
+
+    .menu-content a {
+      color: #666666;
+      text-decoration: none;
+    }
+
+    .menu-content a:hover {
+      color: #FFFFFF;
+    }
+
+    .caption {
+      font-size: 10px;
+      line-height: 1.2;
+      margin: 0 0 0 0;
+      padding: 4px 0;
+      text-align: left;
+      color: #666666;
+      height: 36px;
+      background: #0D0D0D;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .caption br + *,
+    .caption br::after {
+      font-style: normal;
+    }
+
+    .video-container {
+      width: 30vw;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      height: fit-content;
+      justify-content: flex-end;
+      position: relative;
+      margin: 0;
+      padding: 0;
+      flex-shrink: 0;
+      background: #000000;
+    }
+
+    .video-wrapper {
+      width: 100%;
+      aspect-ratio: 4/5;
+      background: #000000;
+      position: relative;
+      margin: 0;
+      flex-shrink: 0;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .portrait-wrapper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .responsive-video {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      margin: 0;
+      padding: 0;
+      flex-shrink: 0;
+      background: #000000;
+    }
+
+    .section-title {
+      color: #666666;
+      font-size: 15px;
+      line-height: 1.2em;
+      margin-bottom: 24px;
+      width: 100%;
+      padding-left: 24px;
+      text-align: left;
+    }
+
+    .contact-text {
+      color: #666666;
+      text-decoration: none !important;
+    }
+
+    .intro .contact-text {
+      text-decoration: none !important;
+    }
+
+    .intro span.contact-text {
+      text-decoration: none !important;
+    }
+
+    .contact-section {
+      height: 288px;
+      width: 100%;
+      background: #0D0D0D;
+      position: relative;
+      padding: 24px;
+      margin: 0;
+    }
+
+    .contact-content {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      color: #666666;
+      line-height: 1.2em;
+    }
+
+    .contact-content a {
+      color: #666666;
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.1em;
+      transition: color 0.1s ease;
+    }
+
+    .contact-content a:hover {
+      color: #FFFFFF;
+    }
+
+    .email-links {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      text-align: right;
+      line-height: 1.2em;
+    }
+
+    .image-container .caption {
+      display: none;
+    }
+    .image-container img.image-loaded + .caption {
+      display: block;
+    }
+
+    @media (max-width: 600px) {
+      .header {
+        height: 288px;
+        padding: 12px;
+        margin: 0;
+      }
+
+      .intro {
+        max-width: 100%;
+        font-size: 15px;
+        line-height: 1.2;
+        margin: 0;
+      }
+
+      .email-links {
+        position: static;
+        text-align: left;
+        margin-top: 0;
+        line-height: 1.2;
+      }
+
+      .email-links a {
+        display: inline;
+        text-align: left;
+      }
+
+      .email-links a:first-child::after {
+        content: "";
+      }
+
+      .responsive-image, .responsive-video {
+        width: 100vw !important;
+        max-width: 100vw;
+        background: #0D0D0D;
+      }
+
+      .image-container {
+        background: #0D0D0D;
+        width: 100vw;
+      }
+
+      body {
+        background: #0D0D0D;
+        color: #666666;
+        margin: 0;
+        padding: 0;
+        width: 100vw;
+        overflow-x: hidden;
+      }
+
+      .image-grid {
+        row-gap: 72px;
+        width: 100vw;
+        overflow-x: hidden;
+      }
+
+      .contact-info {
+        color: #666666;
+        margin-top: -0.8em;
+      }
+
+      .contact-info a {
+        color: #666666;
+        text-decoration: none;
+        text-underline-offset: 0.1em;
+      }
+
+      .contact-info a:hover,
+      .contact-info a:active {
+        color: #FFFFFF;
+      }
+
+      .video-container {
+        width: 100vw;
+        margin: 0;
+        padding: 0;
+        flex-shrink: 0;
+        background: #000000;
+      }
+
+      .video-wrapper {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        flex-shrink: 0;
+        background: #000000;
+      }
+
+      .responsive-video {
+        width: 90%;
+        height: 90%;
+        margin: 0;
+        padding: 0;
+        flex-shrink: 0;
+        background: #000000;
+      }
+
+      .footer {
+        background: #0D0D0D;
+        margin: 0;
+        height: 288px;
+        padding: 12px;
+      }
+
+      .footer-content {
+        position: absolute;
+        bottom: 12px;
+        left: 12px;
+        color: #666666;
+      }
+
+      .caption {
+        margin: 0 0 0 0;
+        padding: 4px;
+        color: #666666;
+        font-size: 10px;
+        background: #0D0D0D;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      .hide-on-mobile {
+        display: none;
+      }
+
+      .hover-link {
+        color: #666666;
+      }
+
+      .hover-link:hover {
+        color: #FFFFFF;
+      }
+
+      .intro a[href^="mailto:"] {
+        color: #666666 !important;
+      }
+
+      .intro a[href^="mailto:"]:hover {
+        color: #FFFFFF !important;
+      }
+
+      .intro span {
+        color: #666666;
+      }
+
+      .footer-content {
+        color: #666666;
+      }
+
+      .footer-content a {
+        color: #666666;
+      }
+
+      .footer-content a:hover {
+        color: #FFFFFF;
+      }
+
+      .section-title {
+        color: #666666;
+      }
+
+      .contact-text {
+        color: #666666;
+        text-decoration: none !important;
+      }
+
+      .intro .contact-text {
+        text-decoration: none !important;
+      }
+
+      .intro span.contact-text {
+        text-decoration: none !important;
+      }
+
+      .contact-section {
+        padding: 12px;
+      }
+
+      .contact-content {
+        bottom: 12px;
+        left: 12px;
+      }
+
+      .email-links {
+        position: static;
+        text-align: right;
+        margin-top: 1em;
+      }
+
+      .menu {
+        bottom: 12px;
+        right: 12px;
+      }
+
+      .collection {
+        position: absolute;
+        bottom: 12px;
+        left: 12px;
+        color: #666666;
+      }
+
+      .image-container,
+      .video-container {
+        width: 100vw !important;
+        max-width: 100vw !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+      .image-container[style],
+      .video-container[style] {
+        width: 100vw !important;
+        max-width: 100vw !important;
+      }
+
+      .portrait-wrapper {
+        padding: 18px 0 !important;
+        box-sizing: border-box !important;
+      }
+    }
+
+    .portrait-video {
+      width: auto !important;
+      height: auto !important;
+      max-height: calc(100% - 36px) !important;
+      max-width: 100% !important;
+      object-fit: contain;
+      display: block;
+      background: #000;
+    }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const images = document.querySelectorAll('.responsive-image');
+      images.forEach(img => {
+        img.onload = function() {
+          img.classList.add('loaded');
+        };
+        if (img.complete) {
+          img.classList.add('loaded');
+        }
+      });
+
+      document.querySelectorAll('.image-container').forEach(container => {
+        const img = container.querySelector('img');
+        function showCaption() {
+          img.classList.add('image-loaded');
+        }
+        if (img.complete && img.naturalWidth !== 0) {
+          showCaption();
+        } else {
+          img.addEventListener('load', showCaption, { once: true });
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+  <div class="header">
+    <div class="intro">
+      <span class="name">jean-baptiste tatsumi taëron</span><br>
+      <span>identities</span>
+    </div>
+    <div class="email-links">
+      <a href="mailto:jeanbaptistetaeron@gmail.com" class="hover-link" target="_blank">jeanbaptistetaeron(at)gmail.com</a><br>
+      <a href="mailto:tatsumitaeron@gmail.com" class="hover-link" target="_blank">tatsumitaeron(at)gmail.com</a>
+    </div>
+  </div>
+
+  <div class="image-grid">
+    <figure class="image-container" style="width: 45vw;">
+      <img src="/work/image/tatsumi-taeron-american-express-centurion-new-york-1-desktop@2x.webp" style="width: 45vw;" class="responsive-image" alt="American Express Centurion New York" loading="lazy">
+      <figcaption class="caption">Centurion, New York<br>brand strategy</figcaption>
+    </figure>
+    <figure class="image-container" style="width: 45vw;">
+      <img src="/work/image/tatsumi-taeron-american-express-centurion-new-york-2.webp" style="width: 45vw;" class="responsive-image" alt="American Express Centurion New York" loading="lazy">
+      <figcaption class="caption">Centurion, New York<br>in collaboration with Yabu Pushelberg</figcaption>
+    </figure>
+    <figure class="video-container" style="width: 30vw;">
+      <div class="video-wrapper portrait-wrapper">
+        <video class="responsive-video portrait-video" autoplay loop muted playsinline preload="auto">
+          <source src="/work/video/tatsumi_taeron_lightning_studio_website_portrait.mp4" type="video/mp4">
+        </video>s
+      </div>
+      <figcaption class="caption">Lightning Studio, New York<br>website</figcaption>
+    </figure>
+    <figure class="image-container" style="width: 60vw;">
+      <img src="/work/image/tatsumi-taeron-lightning-studio-address.webp" style="width: 60vw;" class="responsive-image" alt="Lightning Studio Address" loading="lazy">
+      <figcaption class="caption">Lightning Studio, New York<br>address</figcaption>
+    </figure>
+    <figure class="image-container" style="width: 60vw;">
+      <img src="/work/image/tatsumi-taeron-yabu-pushelberg-logo-grid-desktop@2x.webp" style="width: 60vw;" class="responsive-image" alt="Yabu Pushelberg Logo Grid" loading="lazy">
+      <figcaption class="caption">Yabu Pushelberg, designer<br>construction plan</figcaption>
+    </figure>
+    <figure class="video-container" style="width: 30vw;">
+      <div class="video-wrapper">
+        <video class="responsive-video" autoplay loop muted playsinline preload="auto">
+          <source src="/work/video/tatsumi_taeron_yabu_pushelberg_website_2_laptop.mp4" type="video/mp4">
+        </video>
+      </div>
+      <figcaption class="caption">Yabu Pushelberg, designer<br>new website</figcaption>
+    </figure>
+    <figure class="image-container" style="width: 40vw;">
+      <img src="/work/image/tatsumi-taeron-yabu-pushelberg-signage-front.webp" style="width: 40vw;" class="responsive-image" alt="Yabu Pushelberg Signage Front" loading="lazy">
+      <figcaption class="caption">Yabu Pushelberg, designer<br>signage for the New York studio</figcaption>
+    </figure>
+    <figure class="image-container hide-on-mobile" style="width: 40vw;">
+      <img src="/work/image/tatsumi-taeron-yabu-pushelberg-signage-side.webp" style="width: 40vw;" class="responsive-image" alt="Yabu Pushelberg Signage Side" loading="lazy">
+      <figcaption class="caption">Yabu Pushelberg, designer<br>signage, again</figcaption>
+    </figure>
+    <figure class="image-container" style="width: 40vw;">
+      <img src="/work/image/tatsumi-taeron-metrolinx-train.webp" style="width: 40vw;" class="responsive-image" alt="Metrolinx Train" loading="lazy">
+      <figcaption class="caption">Metrolinx, Toronto public transportion<br>the first and last letter can be overlapped</figcaption>
+    </figure>
+    <figure class="image-container" style="width: 50vw;">
+      <img src="/work/image/tatsumi-taeron-metrolinx-forest.webp" style="width: 50vw;" class="responsive-image" alt="Metrolinx Forest" loading="lazy">
+      <figcaption class="caption">Metrolinx, Toronto public transportion<br>the logo on the train</figcaption>
+    </figure>
+    <figure class="image-container" style="width: 30vw;">
+      <img src="/work/image/tatsumi-taeron-asics-tiger-packaging.webp" style="width: 30vw;" class="responsive-image" alt="Asics Tiger Packaging" loading="lazy">
+      <figcaption class="caption">Asics Tiger, Japanese footwear<br>deconstructing the 1977 ASICS logo<br>by Herb Lubalin and Alan Peckolick</figcaption>
+    </figure>
+    <figure class="image-container" style="width: 60vw;">
+      <img src="/work/image/tatsumi-taeron-asics-tiger-typeface.webp" style="width: 60vw;" class="responsive-image" alt="Asics Tiger Typeface" loading="lazy">
+      <figcaption class="caption">Asics Tiger, Japanese footwear<br>old logo and new typeface</figcaption>
+    </figure>
+    <figure class="image-container" style="width: 50vw;">
+      <img src="/work/image/tatsumi-taeron-asics-tiger-wild-posting.webp" style="width: 50vw;" class="responsive-image" alt="Asics Tiger Wild Posting" loading="lazy">
+      <figcaption class="caption">Asics Tiger, Japanese footwear<br>layout system</figcaption>
+    </figure>
+    <figure class="image-container" style="width: 40vw;">
+      <img src="/work/image/tatsumi-taeron-asics-tiger-kith.webp" style="width: 40vw;" class="responsive-image" alt="Asics Tiger Kith" loading="lazy">
+      <figcaption class="caption">Asics Tiger, Japanese footwear<br>in collaboration with Bruce Mau Design</figcaption>
+    </figure>
+    <figure class="image-container" style="width: 80vw;">
+      <img src="/work/image/tatsumi-taeron-barcelona-design-museum-cerda-plan.webp" style="width: 80vw;" class="responsive-image" alt="Barcelona Design Museum Cerdà Plan" loading="lazy">
+      <figcaption class="caption">Barcelona Design Museum<br>a museum at the intersection of two diagonals</figcaption>
+    </figure>
+    <figure class="image-container" style="width: 60vw;">
+      <img src="/work/image/tatsumi-taeron-barcelona-design-museum-manual.webp" style="width: 60vw;" class="responsive-image" alt="Barcelona Design Museum Manual" loading="lazy">
+      <figcaption class="caption">Barcelona Design Museum<br>manual</figcaption>
+    </figure>
+    <figure class="image-container" style="width: 30vw;">
+      <img src="/work/image/tatsumi-taeron-barcelona-design-museum-wall.webp" style="width: 30vw;" class="responsive-image" alt="Barcelona Design Museum Wall" loading="lazy">
+      <figcaption class="caption">Barcelona Design Museum<br>posters</figcaption>
+    </figure>
+    <figure class="image-container" style="width: 40vw;">
+      <img src="/work/image/tatsumi-taeron-barcelona-design-museum-editorial.webp" style="width: 40vw;" class="responsive-image" alt="Barcelona Design Museum Editorial" loading="lazy">
+      <figcaption class="caption">Barcelona Design Museum<br>program</figcaption>
+    </figure>
+    <figure class="image-container" style="width: 50vw;">
+      <img src="/work/image/tatsumi-taeron-barcelona-design-museum-poster-dieter-rams.webp" style="width: 50vw;" class="responsive-image" alt="Barcelona Design Museum Poster Dieter Rams" loading="lazy">
+      <figcaption class="caption">Barcelona Design Museum<br>layout system</figcaption>
+    </figure>
+    <figure class="image-container" style="width: 50vw;">
+      <img src="/work/image/tatsumi-taeron-barcelona-design-museum-poster-kenya-hara.webp" style="width: 50vw;" class="responsive-image" alt="Barcelona Design Museum Poster Kenya Hara" loading="lazy">
+      <figcaption class="caption">Barcelona Design Museum<br>the logo fills the remaining space</figcaption>
+    </figure>
+    <figure class="image-container" style="width: 40vw;">
+      <img src="/work/image/tatsumi-taeron-barcelona-design-museum-signage-2.webp" style="width: 40vw;" class="responsive-image" alt="Barcelona Design Museum Signage 2" loading="lazy">
+      <figcaption class="caption">Barcelona Design Museum<br>designing at human scale</figcaption>
+    </figure>
+    <figure class="image-container" style="width: 70vw;">
+      <img src="/work/image/tatsumi-taeron-barcelona-design-museum-signage-3.webp" style="width: 70vw;" class="responsive-image" alt="Barcelona Design Museum Signage 3" loading="lazy">
+      <figcaption class="caption">Barcelona Design Museum<br>floor-by-floor navigation</figcaption>
+    </figure>
+    <figure class="image-container" style="width: 70vw;">
+      <img src="/work/image/tatsumi-taeron-barcelona-design-museum-signage-4.webp" style="width: 70vw;" class="responsive-image" alt="Barcelona Design Museum Signage 4" loading="lazy">
+      <figcaption class="caption">Barcelona Design Museum<br>in collaboration with Atlas</figcaption>
+    </figure>
+    <figure class="image-container hide-on-mobile" style="width: 40vw;">
+      <img src="/work/image/tatsumi-taeron-petit-plus-logo-grid.webp" style="width: 40vw;" class="responsive-image" alt="Petit+ Logo Grid" loading="lazy">
+      <figcaption class="caption">Petit+, little more, Paris<br>construction plan</figcaption>
+    </figure>
+    <figure class="image-container hide-on-mobile" style="width: 50vw;">
+      <img src="/work/image/tatsumi-taeron-petit-plus-packaging.webp" style="width: 50vw;" class="responsive-image" alt="Petit+ Packaging" loading="lazy">
+      <figcaption class="caption">Petit+, little more, Paris<br>products reflecting diverse tones</figcaption>
+    </figure>
+    <figure class="image-container hide-on-mobile" style="width: 50vw;">
+      <img src="/work/image/tatsumi-taeron-ynra-signage.jpg" style="width: 50vw;" class="responsive-image" alt="YNRA Signage" loading="lazy">
+      <figcaption class="caption">YNRA, restaurant, Paris<br>a family tree</figcaption>
+    </figure>
+    <figure class="image-container" style="width: 50vw;">
+      <img src="/work/image/tatsumi-taeron-corsair-logo.webp" style="width: 50vw;" class="responsive-image" alt="Corsair Logo" loading="lazy">
+      <figcaption class="caption">Corsair, French airline<br>circle in circle, square in square, sailboat in triangle</figcaption>
+    </figure>
+    <figure class="image-container" style="width: 40vw;">
+      <img src="/work/image/tatsumi-taeron-corsair-making-of.webp" style="width: 40vw;" class="responsive-image" alt="Corsair Making of" loading="lazy">
+      <figcaption class="caption">Corsair, French airline<br>a sailboat in the sky</figcaption>
+    </figure>
+    <figure class="image-container" style="width: 60vw;">
+      <img src="/work/image/tatsumi-taeron-issey-miyake-packaging-making-of.webp" style="width: 60vw;" class="responsive-image" alt="Issey Miyake Packaging Making of" loading="lazy">
+      <figcaption class="caption">A scent by Issey Miyake<br>no glue, no ink, just light</figcaption>
+    </figure>
+    <figure class="image-container" style="width: 40vw;">
+      <img src="/work/image/tatsumi-taeron-90-days-1.webp" style="width: 40vw;" class="responsive-image" alt="90 Days 1" loading="lazy">
+      <figcaption class="caption">Thesis Project<br>a light box</figcaption>
+    </figure>
+    <figure class="image-container" style="width: 50vw;">
+      <img src="/work/image/tatsumi-taeron-90-days-2.webp" style="width: 50vw;" class="responsive-image" alt="90 Days 2" loading="lazy">
+      <figcaption class="caption">Thesis Project<br>a train, a camera, a screen</figcaption>
+    </figure>
+    <figure class="image-container" style="width: 50vw;">
+      <img src="/work/image/tatsumi-taeron-90-days-3.webp" style="width: 50vw;" class="responsive-image" alt="90 Days 3" loading="lazy">
+      <figcaption class="caption">Thesis Project<br>the letters look like 3D on TV</figcaption>
+    </figure>
+    <figure class="image-container" style="width: 40vw;">
+      <img src="/work/image/tatsumi-taeron-90-days-4.webp" style="width: 40vw;" class="responsive-image" alt="90 Days 4" loading="lazy">
+      <figcaption class="caption">Thesis Project<br>misused tool, novel outcome</figcaption>
+    </figure>
+    <figure class="image-container" style="width: 40vw;">
+      <img src="/work/image/tatsumi-taeron-A4-paper-typeface-grid.webp" style="width: 40vw;" class="responsive-image" alt="A4 Paper Typeface Grid" loading="lazy">
+      <figcaption class="caption">Papier A4, typeface<br>height equals square diagonal<br>no ruler, no pencil</figcaption>
+    </figure>
+    <figure class="image-container" style="width: 50vw;">
+      <img src="/work/image/tatsumi-taeron-A4-paper-window.jpg" style="width: 50vw;" class="responsive-image" alt="A4 Paper Window" loading="lazy">
+      <figcaption class="caption">Papier A4, typeface<br>writing with paper</figcaption>
+    </figure>
+    <figure class="image-container" style="width: 45vw;">
+      <img src="/work/image/tatsumi-taeron-katapult-typeface-grid-a.webp" style="width: 45vw;" class="responsive-image" alt="Katapult Typeface Grid A" loading="lazy">
+      <figcaption class="caption">Katapult, minimal electro, Paris<br>minimal music, minimal typography</figcaption>
+    </figure>
+    <figure class="image-container" style="width: 45vw;">
+      <img src="/work/image/tatsumi-taeron-katapult-typeface-grid-p.webp" style="width: 45vw;" class="responsive-image" alt="Katapult Typeface Grid P" loading="lazy">
+      <figcaption class="caption">Katapult, minimal electro, Paris<br>wooden strip: 4x4 cm</figcaption>
+    </figure>
+    <figure class="image-container" style="width: 30vw;">
+      <img src="/work/image/tatsumi-taeron-katapult-making-of-1.jpg" style="width: 30vw;" class="responsive-image" alt="Katapult Making of 1" loading="lazy">
+      <figcaption class="caption">Katapult, minimal electro, Paris<br>13 meters of typography</figcaption>
+    </figure>
+    <figure class="image-container" style="width: 60vw;">
+      <img src="/work/image/tatsumi-taeron-katapult-making-of-2.jpg" style="width: 60vw;" class="responsive-image" alt="Katapult Making of 2" loading="lazy">
+      <figcaption class="caption">Katapult, minimal electro, Paris<br>disassemble to fit everything in a tiny car</figcaption>
+    </figure>
+    <figure class="image-container" style="width: 50vw;">
+      <img src="/work/image/tatsumi-taeron-katapult-typeface-small.webp" style="width: 50vw;" class="responsive-image" alt="Katapult Typeface Small" loading="lazy">
+      <figcaption class="caption">Katapult, minimal electro, Paris<br>each color corresponds to a different angle on the circular saw</figcaption>
+    </figure>
+    <figure class="image-container" style="width: 40vw;">
+      <img src="/work/image/tatsumi-taeron-opaz-making-of.webp" style="width: 40vw;" class="responsive-image" alt="Katapult Opaz Making of" loading="lazy">
+      <figcaption class="caption">Katapult, minimal electro, Paris<br>scraps recycled for the sponsor</figcaption>
+    </figure>
+    <figure class="image-container" style="width: 80vw;">
+      <img src="/work/image/tatsumi-taeron-tsigan-album-cover.webp" style="width: 70vw;" class="responsive-image" alt="Tsigan Album Cover" loading="lazy">
+      <figcaption class="caption">Tsigan, album cover<br>the guitarist smoked Gitanes</figcaption>
+    </figure>
+
+    <figure class="image-container" style="width: 20vw;">
+      <img src="https://tatsumitaeron.com/work/image/tatsumi-taeron-insecte-et-papillons.webp" style="width: 20vw;" class="responsive-image" alt="Insectes et Papillons" loading="lazy">
+      <figcaption class="caption">Papillons et insectes, dessin<br>avec mon père</figcaption>
+    </figure>
+  </div>
+
+  <div class="footer">
+    <div class="collection">
+      <span style="white-space:nowrap;">collecting
+        <a href="/logo/">signs</a>,
+        <a href="/grid/">structures</a>,
+        <a href="/surface/">surfaces</a>,</span><br>
+        <a href="/love-letters/">love letters</a>,
+        <a href="/systems/">systems</a>, and
+        <a href="https://tatsumi-taeron-idea-collection.tumblr.com" target="_blank">ideas</a>
+
+    </div>
+  </div>
+  <div class="menu">
+    <div class="menu-content">
+      <a href="https://tatsumitaeron.com" style="text-decoration: underline;">work</a><br>
+      <a href="#" style="pointer-events: none; color: #666666; text-decoration: line-through; cursor: not-allowed;">about</a>
+    </div>
+  </div>
+</body>
+</html>

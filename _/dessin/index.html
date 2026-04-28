@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Jean-Baptiste Tatsumi Taeron - Portfolio and Works" />
+  <meta name="keywords" content="Jean-Baptiste Tatsumi Taeron, Portfolio, Art, Design, minimalist, typography, branding, identity, construction, grid, system, light, space, architecture, signage, editorial, packaging, Japanese, French, New York, Paris" />
+  <meta property="og:title" content="Jean-Baptiste Tatsumi Taeron" />
+  <meta property="og:description" content="Portfolio and Works - Minimalist design, typography, and branding with a focus on construction, grid systems, and spatial relationships. Japanese-French designer." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://tatsumitaeron.com" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" type="image/x-icon" href="/dessin/image/favicon.ico">
+  <title>Dessin</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #000000;
+      color: #7f7f7f;
+      font-family: "Times New Roman", Times, serif;
+      font-weight: normal;
+      font-size: 15px;
+      line-height: 1em;
+      letter-spacing: 0.01em;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+      width: 100%;
+      position: relative;
+    }
+    html {
+      overflow-x: hidden;
+      width: 100%;
+    }
+    .header {
+      height: 288px;
+      padding: 24px;
+      margin: 0;
+      position: relative;
+    }
+    .intro {
+      max-width: 60%;
+      line-height: 1.2em;
+    }
+    .name, .tagline, .contact-text {
+      color: #7f7f7f;
+    }
+    .tagline {
+      font-style: italic;
+    }
+    .email-links {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      text-align: right;
+      line-height: 1.2em;
+    }
+    .email-links a {
+      color: #7f7f7f;
+      text-decoration: none;
+      transition: color 0.1s ease;
+    }
+    .email-links a:hover {
+      color: #FFFFFF;
+    }
+    .image-grid {
+      display: flex;
+      flex-wrap: wrap;
+      column-gap: 12px;
+      row-gap: 12px;
+      justify-content: center;
+      align-items: flex-end;
+      padding: 0;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .image-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      height: fit-content;
+      justify-content: flex-end;
+      position: relative;
+      background: #000000;
+      padding: 0;
+      margin: 0;
+    }
+    .responsive-image {
+      background: #000000;
+      opacity: 0;
+      transition: opacity 0.3s ease-in;
+    }
+    .responsive-image.loaded {
+      opacity: 1;
+    }
+    .caption {
+      font-size: 10px;
+      line-height: 1.2;
+      margin: 0 0 0 0;
+      padding: 4px 0;
+      text-align: left;
+      color: #7f7f7f;
+      height: 36px;
+      background: #000000;
+      width: 100%;
+      box-sizing: border-box;
+      display: none;
+    }
+    .image-container img.image-loaded + .caption {
+      display: block;
+    }
+    .footer {
+      height: 288px;
+      width: 100%;
+      background: #000000;
+      position: relative;
+      padding: 24px;
+      margin: 0;
+    }
+    .collection {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      color: #7f7f7f;
+      line-height: 1.2em;
+      max-width: 60%;
+      white-space: nowrap;
+    }
+    .collection a {
+      color: #7f7f7f;
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.1em;
+      transition: color 0.1s ease;
+    }
+    .collection a:hover {
+      color: #FFFFFF;
+    }
+    .menu {
+      position: absolute;
+      bottom: 24px;
+      right: 24px;
+      text-align: right;
+      line-height: 1.2em;
+    }
+    .menu-content a {
+      color: #7f7f7f;
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.1em;
+      transition: color 0.1s ease;
+    }
+    .menu-content a:hover {
+      color: #FFFFFF;
+    }
+    @media (max-width: 600px) {
+      body {
+        background: #000000;
+        color: #7f7f7f;
+        margin: 0;
+        padding: 0;
+        width: 100vw;
+        overflow-x: hidden;
+      }
+      .header {
+        height: 288px;
+        padding: 12px;
+        margin: 0;
+      }
+      .intro {
+        max-width: 100%;
+        font-size: 15px;
+        line-height: 1.2;
+        margin: 0;
+      }
+      .email-links {
+        position: static;
+        text-align: right;
+        margin-top: 1em;
+        line-height: 1.2;
+      }
+      .email-links a {
+        display: inline;
+        text-align: left;
+        text-decoration: none !important;
+      }
+      .responsive-image {
+        width: 100vw !important;
+        max-width: 100vw;
+        background: #000000;
+      }
+      .image-container {
+        background: #000000;
+        width: 100vw !important;
+        max-width: 100vw !important;
+      }
+      .image-grid {
+        row-gap: 72px;
+        width: 100vw;
+        overflow-x: hidden;
+      }
+      .footer {
+        background: #000000;
+        margin: 0;
+        height: 288px;
+        padding: 12px;
+      }
+      .collection {
+        position: absolute;
+        bottom: 12px;
+        left: 12px;
+        color: #7f7f7f;
+      }
+      .caption {
+        margin: 0 0 0 0;
+        padding: 4px;
+        font-size: 10px;
+        background: #000000;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      .menu {
+        bottom: 12px;
+        right: 12px;
+        color: #7f7f7f;
+      }
+      .image-container {
+        width: 100vw !important;
+        max-width: 100vw !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+      .image-container[style] {
+        width: 100vw !important;
+        max-width: 100vw !important;
+      }
+    }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const images = document.querySelectorAll('.responsive-image');
+      const loadImage = (img) => {
+        const src = img.getAttribute('src');
+        if (!src) return;
+        const tempImg = new Image();
+        tempImg.onload = () => {
+          img.classList.add('loaded');
+        };
+        tempImg.onerror = () => {
+          console.error('Failed to load image:', src);
+        };
+        tempImg.src = src;
+      };
+      images.forEach(loadImage);
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            loadImage(entry.target);
+            observer.unobserve(entry.target);
+          }
+        });
+      });
+      images.forEach(img => observer.observe(img));
+      document.querySelectorAll('.image-container').forEach(container => {
+        const img = container.querySelector('img');
+        function showCaption() {
+          img.classList.add('image-loaded');
+        }
+        if (img.complete && img.naturalWidth !== 0) {
+          showCaption();
+        } else {
+          img.addEventListener('load', showCaption, { once: true });
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+  <div class="header">
+    <div class="intro">
+      <span class="name">jean-baptiste tatsumi taëron</span><br>
+      <span>identities</span>
+    </div>
+    <div class="email-links">
+      <a href="mailto:jeanbaptistetaeron@gmail.com" class="hover-link" target="_blank">jeanbaptistetaeron(at)gmail.com</a><br>
+      <a href="mailto:tatsumitaeron@gmail.com" class="hover-link" target="_blank">tatsumitaeron(at)gmail.com</a>
+    </div>
+  </div>
+  <div class="image-grid">
+    <figure class="image-container" style="width: 40vw;">
+      <img src="image/037 2.jpg" style="width: 100%;" class="responsive-image" alt="Chip Kidd" loading="lazy">
+      <figcaption class="caption">Chip Kidd<br></figcaption>
+    </figure>
+
+    <figure class="image-container" style="width: 20vw;">
+      <img src="image/036 2.jpg" style="width: 100%;" class="responsive-image" alt="Chip Kidd" loading="lazy">
+      <figcaption class="caption">Chip Kidd<br></figcaption>
+    </figure>
+
+    <figure class="image-container" style="width: 20vw;">
+      <img src="image/035 2.jpg" style="width: 100%;" class="responsive-image" alt="Chip Kidd" loading="lazy">
+      <figcaption class="caption">Chip Kidd<br></figcaption>
+    </figure>
+
+    <figure class="image-container" style="width: 30vw;">
+      <img src="image/034 2.jpg" style="width: 100%;" class="responsive-image" alt="Chip Kidd" loading="lazy">
+      <figcaption class="caption">Girl and Flower<br></figcaption>
+    </figure>
+
+    <figure class="image-container" style="width: 20vw;">
+      <img src="image/032 2.jpg" style="width: 100%;" class="responsive-image" alt="Chip Kidd" loading="lazy">
+      <figcaption class="caption">Smoke<br></figcaption>
+    </figure>
+
+    <figure class="image-container" style="width: 15vw;">
+      <img src="image/031 2.jpg" style="width: 100%;" class="responsive-image" alt="Chip Kidd" loading="lazy">
+      <figcaption class="caption">Black Woman<br></figcaption>
+    </figure>
+
+    <figure class="image-container" style="width: 40vw;">
+      <img src="image/030 2.jpg" style="width: 100%;" class="responsive-image" alt="Chip Kidd" loading="lazy">
+      <figcaption class="caption">John Lennon<br></figcaption>
+    </figure>
+
+    <figure class="image-container" style="width: 30vw;">
+      <img src="image/027 2.jpg" style="width: 100%;" class="responsive-image" alt="Chip Kidd" loading="lazy">
+      <figcaption class="caption">Wrestler<br></figcaption>
+    </figure>
+
+    <figure class="image-container" style="width: 30vw;">
+      <img src="image/020.jpg" style="width: 100%;" class="responsive-image" alt="Chip Kidd" loading="lazy">
+      <figcaption class="caption">Chip Kidd<br></figcaption>
+    </figure>
+
+    <figure class="image-container" style="width: 50vw;">
+      <img src="image/019 2.jpg" style="width: 100%;" class="responsive-image" alt="Chip Kidd" loading="lazy">
+      <figcaption class="caption">Chip Kidd<br></figcaption>
+    </figure>
+
+    <figure class="image-container" style="width: 20vw;">
+      <img src="image/010.jpg" style="width: 100%;" class="responsive-image" alt="Chip Kidd" loading="lazy">
+      <figcaption class="caption">Architecture<br></figcaption>
+    </figure>
+
+    <figure class="image-container" style="width: 15vw;">
+      <img src="image/018 2.jpg" style="width: 100%;" class="responsive-image" alt="Chip Kidd" loading="lazy">
+      <figcaption class="caption">Chip Kidd<br></figcaption>
+    </figure>
+
+    <figure class="image-container" style="width: 50vw;">
+      <img src="image/014 3.jpg" style="width: 100%;" class="responsive-image" alt="Cy Twombly" loading="lazy">
+      <figcaption class="caption">Cy Twombly<br></figcaption>
+    </figure>
+
+    <figure class="image-container" style="width: 10vw;">
+      <img src="image/009.jpg" style="width: 100%;" class="responsive-image" alt="Chip Kidd" loading="lazy">
+      <figcaption class="caption">Chip Kidd<br></figcaption>
+    </figure>
+    
+    <figure class="image-container" style="width: 20vw;">
+      <img src="image/017 2.jpg" style="width: 100%;" class="responsive-image" alt="Unknown" loading="lazy">
+      <figcaption class="caption">Unknown<br></figcaption>
+    </figure>
+  </div>
+  <div class="footer">
+    <div class="collection">
+      <span style="white-space:nowrap;">collecting
+      <a href="/logo/">signs</a>,
+      <a href="/grid/">structures</a>,
+      <a href="/surface/">surfaces</a>,</span><br>
+      <a href="/love-letters/">love letters</a>,
+      <a href="/systems/">systems</a>, and
+      <a href="https://tatsumi-taeron-idea-collection.tumblr.com" target="_blank">ideas</a>
+    </div>
+  </div>
+  <div class="menu">
+    <div class="menu-content">
+      <a href="https://tatsumitaeron.com">work</a><br>
+      <a href="#" style="pointer-events: none; color: #7f7f7f; text-decoration: line-through; cursor: not-allowed;">about</a>
+    </div>
+  </div>
+</body>
+</html>
