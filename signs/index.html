@@ -955,8 +955,9 @@ body {
     const currentScrollY = window.scrollY;
     const scrollingUp = currentScrollY < lastScrollY;
     const atBottom = window.innerHeight + currentScrollY >= document.body.scrollHeight - 50;
+    const headerVisible = header.getBoundingClientRect().bottom > 0;
 
-    if (scrollingUp || atBottom) {
+    if ((scrollingUp || atBottom) && !headerVisible) {
       collection.style.opacity = '1';
       collection.style.pointerEvents = 'auto';
       if (mobileTitle) mobileTitle.style.opacity = '1';
