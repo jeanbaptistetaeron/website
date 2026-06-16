@@ -952,6 +952,25 @@
   }
 
   let lastScrollY = window.scrollY;
+  let hideTimeout = null;
+
+  function showMenu() {
+    clearTimeout(hideTimeout);
+    collection.style.opacity = '1';
+    if (mobileTitle) mobileTitle.style.opacity = '1';
+    collection.style.pointerEvents = 'auto';
+    if (pageTitle) pageTitle.style.opacity = '1';
+  }
+
+  function hideMenu() {
+    clearTimeout(hideTimeout);
+    hideTimeout = setTimeout(function() {
+      collection.style.opacity = '0';
+      if (mobileTitle) mobileTitle.style.opacity = '0';
+      collection.style.pointerEvents = 'none';
+      if (pageTitle) pageTitle.style.opacity = '0';
+    }, 1500);
+  }
 
   window.addEventListener('scroll', function () {
     const currentScrollY = window.scrollY;
@@ -960,14 +979,9 @@
     const headerVisible = header.getBoundingClientRect().bottom > 0;
 
     if ((scrollingUp || atBottom) && !headerVisible) {
-      collection.style.opacity = '1';
-      if (mobileTitle) mobileTitle.style.opacity = '1';
-      collection.style.pointerEvents = 'auto';
-      if (pageTitle) pageTitle.style.opacity = '1';
+      showMenu();
     } else {
-      collection.style.opacity = '0';
-      if (mobileTitle) mobileTitle.style.opacity = '0';
-      collection.style.pointerEvents = 'none';
+      hideMenu();
       if (pageTitle) pageTitle.style.opacity = '0';
     }
 
