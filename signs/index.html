@@ -158,12 +158,6 @@
       z-index: 100;
     }
 
-    .collection.over-image,
-    .page-title.over-image {
-      mix-blend-mode: difference;
-      filter: invert(1);
-    }
-
     .collection a {
       color: #da291c;
       text-decoration: underline;
@@ -931,7 +925,7 @@
       <span style="white-space:nowrap;">
       <a href="/systems/">systems</a>,
       <a href="/love-letters/">love letters</a>,</span><br>
-      <a href="https://www.instagram.com/tatsumitaeron/?hl=en" target="_blank">children books</a>, and
+      <a href="https://www.instagram.com/tatsumitaeron/?hl=en" target="_blank">books</a>, and
       <a href="https://tatsumi-taeron-idea-collection.tumblr.com" target="_blank">ideas</a>
     </div>
   </div>
@@ -972,29 +966,6 @@
     pageTitle.style.opacity = '0';
     pageTitle.style.transition = 'opacity 0.3s ease';
   }
-
-  // Detect when fixed elements overlap with images
-  const images = document.querySelectorAll('.responsive-image');
-  const fixedEls = [collection, pageTitle].filter(Boolean);
-
-  function rectsOverlap(a, b) {
-    return !(a.bottom < b.top || a.top > b.bottom || a.right < b.left || a.left > b.right);
-  }
-
-  function updateBlendMode() {
-    fixedEls.forEach(el => {
-      const elRect = el.getBoundingClientRect();
-      const overlaps = Array.from(images).some(img => {
-        const imgRect = img.getBoundingClientRect();
-        return rectsOverlap(elRect, imgRect);
-      });
-      el.classList.toggle('over-image', overlaps);
-    });
-  }
-
-  window.addEventListener('scroll', updateBlendMode, { passive: true });
-  window.addEventListener('resize', updateBlendMode, { passive: true });
-  updateBlendMode();
 
   let lastScrollY = window.scrollY;
 
