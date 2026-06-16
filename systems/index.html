@@ -44,20 +44,6 @@
       position: relative;
     }
 
-    .page-title {
-      display: block;
-      position: fixed;
-      top: 24px;
-      left: 0;
-      right: 0;
-      text-align: center;
-      font-size: 15px;
-      line-height: 1.2em;
-      color: #7f7f7f;
-      z-index: 100;
-      pointer-events: none;
-    }
-
     .intro {
       max-width: 60%;
       line-height: 1.2em;
@@ -554,14 +540,7 @@
       }
     }
 
-    @media (max-height: 430px) and (orientation: landscape) {
-      .page-title {
-        font-size: 15px;
-      }
-      .mobile-title {
-        font-size: 15px;
-      }
-    }
+
   </style>
 </head>
 <body>
@@ -577,8 +556,6 @@
       <a href="mailto:tatsumitaeron@gmail.com" class="hover-link" target="_blank">mail</a>
     </div>
   </div>
-  <div class="page-title">systems</div>
-
   <div class="mobile-title">systems</div>
 
 <div class="image-grid">
@@ -966,7 +943,7 @@
 
   const collection = document.querySelector('.collection');
   const header = document.querySelector('.header');
-  const pageTitle = document.querySelector('.page-title');
+  const pageTitle = null;
 
   collection.style.opacity = '0';
       if (mobileTitle) mobileTitle.style.opacity = '0';
