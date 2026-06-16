@@ -953,23 +953,29 @@
 
   let lastScrollY = window.scrollY;
   let hideTimeout = null;
+  let menuVisible = false;
 
   function showMenu() {
     clearTimeout(hideTimeout);
+    menuVisible = true;
     collection.style.opacity = '1';
     if (mobileTitle) mobileTitle.style.opacity = '1';
     collection.style.pointerEvents = 'auto';
     if (pageTitle) pageTitle.style.opacity = '1';
   }
 
-  function hideMenu() {
+  function hideMenuNow() {
     clearTimeout(hideTimeout);
-    hideTimeout = setTimeout(function() {
-      collection.style.opacity = '0';
-      if (mobileTitle) mobileTitle.style.opacity = '0';
-      collection.style.pointerEvents = 'none';
-      if (pageTitle) pageTitle.style.opacity = '0';
-    }, 1500);
+    menuVisible = false;
+    collection.style.opacity = '0';
+    if (mobileTitle) mobileTitle.style.opacity = '0';
+    collection.style.pointerEvents = 'none';
+    if (pageTitle) pageTitle.style.opacity = '0';
+  }
+
+  function hideMenuDelayed() {
+    clearTimeout(hideTimeout);
+    hideTimeout = setTimeout(hideMenuNow, 1500);
   }
 
   window.addEventListener('scroll', function () {
@@ -980,9 +986,10 @@
 
     if ((scrollingUp || atBottom) && !headerVisible) {
       showMenu();
+    } else if (menuVisible) {
+      hideMenuDelayed();
     } else {
-      hideMenu();
-      if (pageTitle) pageTitle.style.opacity = '0';
+      hideMenuNow();
     }
 
     lastScrollY = currentScrollY;
