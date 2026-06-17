@@ -548,7 +548,7 @@
     <div class="intro">
       <a href="/" class="hover-link" style="text-decoration: none;">
         <span class="name">jean-baptiste tatsumi taëron</span><br>
-        <span>identities</span>
+        <span>systems</span>
       </a>
     </div>
     <div class="email-links">
@@ -908,13 +908,9 @@
 
   <div class="footer">
     <div class="collection">
-      <span style="white-space:nowrap;">collecting
-      <a href="/signs/">signs</a>,
-      <a href="/structures/">structures</a>,</span><br>
-      <a href="/systems/">systems</a>,
-      <a href="/love-letters/">love letters</a>,<br>
-      and
-      <a href="https://tatsumi-taeron-idea-collection.tumblr.com" target="_blank">ideas</a>
+      <span style="white-space:nowrap;">collecting <a href="/signs/">signs</a>, <a href="/structures/">structures</a>,</span><br>
+      <span style="white-space:nowrap;"><a href="/systems/">systems</a>, <a href="/love-letters/">love letters</a>,</span><br>
+      and <a href="https://tatsumi-taeron-idea-collection.tumblr.com" target="_blank">ideas</a>
     </div>
   </div>
 
@@ -936,46 +932,39 @@
   </script>
 <script>
   const mobileTitle = document.querySelector('.mobile-title');
-  if (mobileTitle) {
-    mobileTitle.style.opacity = '0';
-    mobileTitle.style.transition = 'opacity 0.3s ease';
-  }
-
   const collection = document.querySelector('.collection');
   const header = document.querySelector('.header');
-  const pageTitle = null;
 
+  // start hidden
   collection.style.opacity = '0';
-      if (mobileTitle) mobileTitle.style.opacity = '0';
-  collection.style.transition = 'opacity 0.3s ease';
+  collection.style.transition = 'opacity 0.6s ease';
   collection.style.pointerEvents = 'none';
-
-  if (pageTitle) {
-    pageTitle.style.opacity = '0';
-    pageTitle.style.transition = 'opacity 0.3s ease';
+  if (mobileTitle) {
+    mobileTitle.style.opacity = '0';
+    mobileTitle.style.transition = 'opacity 0.6s ease';
   }
 
-  let lastScrollY = window.scrollY;
+  let showTimeout = null;
 
   window.addEventListener('scroll', function () {
-    const currentScrollY = window.scrollY;
-    const scrollingUp = currentScrollY < lastScrollY;
-    const atBottom = window.innerHeight + currentScrollY >= document.body.scrollHeight - 50;
-    const headerVisible = header.getBoundingClientRect().bottom > 0;
+    const headerGone = header.getBoundingClientRect().bottom <= 0;
 
-    if ((scrollingUp || atBottom) && !headerVisible) {
-      collection.style.opacity = '1';
-      if (mobileTitle) mobileTitle.style.opacity = '1';
-      collection.style.pointerEvents = 'auto';
-      if (pageTitle) pageTitle.style.opacity = '1';
+    if (headerGone) {
+      // scrolled past header — show with short delay
+      if (!showTimeout) {
+        showTimeout = setTimeout(function () {
+          collection.style.opacity = '1';
+          collection.style.pointerEvents = 'auto';
+          if (mobileTitle) mobileTitle.style.opacity = '1';
+        }, 300);
+      }
     } else {
+      // back at top — hide
+      if (showTimeout) { clearTimeout(showTimeout); showTimeout = null; }
       collection.style.opacity = '0';
-      if (mobileTitle) mobileTitle.style.opacity = '0';
       collection.style.pointerEvents = 'none';
-      if (pageTitle) pageTitle.style.opacity = '0';
+      if (mobileTitle) mobileTitle.style.opacity = '0';
     }
-
-    lastScrollY = currentScrollY;
   });
 </script>
 </body>
