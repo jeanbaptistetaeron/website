@@ -547,21 +547,9 @@ body {
   </script>
 </head>
 <body>
-  <div class="header">
-    <div class="intro">
-      <a href="/" class="hover-link" style="text-decoration: none;">
-        <span class="name">jean-baptiste tatsumi taëron</span><br>
-        <span>love letters</span>
-      </a>
-    </div>
-    <div class="email-links">
-      <a href="https://drive.google.com/file/d/1JZCIn6F4UsIe7j3l2xct2ACn30b97iCu/view?usp=drive_link" class="hover-link" target="_blank">portfolio</a><br>
-      <a href="mailto:tatsumitaeron@gmail.com" class="hover-link" target="_blank">mail</a>
-    </div>
-  </div>
   <div class="mobile-title">love letters</div>
 
-  <div class="image-grid">
+  <div class="image-grid" style="margin-top: 144px;">
 
     <figure class="image-container" style="width: 10vw;">
       <img src="/love-letters/image/172153432646.jpg" style="width: 100%;" class="responsive-image" alt="F" loading="lazy">
@@ -852,49 +840,18 @@ body {
 
   <div class="footer">
     <div class="collection">
+      tatsumi taëron<br>
+      <br>
       <span style="white-space:nowrap;">collecting <a href="/signs/">signs</a>, <a href="/structures/">structures</a>,</span><br>
       <span style="white-space:nowrap;"><a href="/systems/">systems</a>, <a href="/love-letters/">love letters</a>,</span><br>
-      and <a href="https://tatsumi-taeron-idea-collection.tumblr.com" target="_blank">ideas</a>
+      <a href="https://tatsumi-taeron-idea-collection.tumblr.com" target="_blank">ideas</a>, and <a href="https://drive.google.com/file/d/1JZCIn6F4UsIe7j3l2xct2ACn30b97iCu/view?usp=drive_link" target="_blank">works</a>
     </div>
   </div>
 
 <script>
-  const mobileTitle = document.querySelector('.mobile-title');
   const collection = document.querySelector('.collection');
-  const header = document.querySelector('.header');
-
-  // start hidden
-  collection.style.opacity = '0';
-  collection.style.transition = 'opacity 0.6s ease';
-  collection.style.pointerEvents = 'none';
-  if (mobileTitle) {
-    mobileTitle.style.opacity = '0';
-    mobileTitle.style.transition = 'opacity 0.6s ease';
-  }
-
-  let showTimeout = null;
-
-  window.addEventListener('scroll', function () {
-    const headerGone = header.getBoundingClientRect().bottom <= 0;
-    const atBottom = window.innerHeight + window.scrollY >= document.body.scrollHeight - 50;
-
-    if (headerGone) {
-      // scrolled past header — show with short delay
-      if (!showTimeout) {
-        showTimeout = setTimeout(function () {
-          collection.style.opacity = '1';
-          collection.style.pointerEvents = 'auto';
-          if (mobileTitle) mobileTitle.style.opacity = '1';
-        }, 300);
-      }
-    } else {
-      // back at top — hide
-      if (showTimeout) { clearTimeout(showTimeout); showTimeout = null; }
-      collection.style.opacity = '0';
-      collection.style.pointerEvents = 'none';
-      if (mobileTitle) mobileTitle.style.opacity = '0';
-    }
-  });
+  collection.style.opacity = '1';
+  collection.style.pointerEvents = 'auto';
 </script>
 </body>
 </html>
