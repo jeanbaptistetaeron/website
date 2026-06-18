@@ -278,8 +278,9 @@
     .menu {
       position: absolute;
       bottom: 24px;
-      right: 24px;
-      text-align: right;
+      left: 24px;
+      right: auto;
+      text-align: left;
       line-height: 1.2em;
     }
 
@@ -308,9 +309,9 @@
       display: block;
       position: fixed;
       top: 24px;
-      left: 0;
-      right: 0;
-      text-align: center;
+      left: 24px;
+      right: auto;
+      text-align: left;
       font-size: 15px;
       line-height: 1.2em;
       color: #da291c;
@@ -321,6 +322,9 @@
     @media (max-width: 600px) {
       .mobile-title {
         font-size: 20px;
+        left: 0;
+        right: 0;
+        text-align: center;
       }
 
       .header {
@@ -521,6 +525,8 @@
       .menu {
         bottom: 12px;
         right: 12px;
+        left: auto;
+        text-align: right;
       }
 
       .image-container,
